@@ -389,7 +389,7 @@ export default {
 
     // 웹소켓 연결, 성공시 메세지 받기
     connect() {
-      const serverURL = 'http://localhost:8090/ws';
+      const serverURL = 'http://13.125.144.0:8080/ws';
       // const serverURL = 'http://13.125.144.0:80/ws';
       let socket = new SockJS(serverURL);
       this.stompClient = Stomp.over(socket);
