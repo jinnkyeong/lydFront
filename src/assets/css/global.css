@@ -1,0 +1,318 @@
+/* Global */
+:root {
+    /* Color (CSS Variables) */
+    --color-red: #AC5067;
+    --color-white: #ffffff;
+    --color-light-white: #eeeeee;
+    /* --color-dark-white: #bdbdbd; */
+    --color-grey: #616161;
+    --color-little-light-grey:#BEBCBD;
+    --color-light-grey: #EDEDED;
+    --color-dark-grey: #4d4d4d;
+    --color-black: #3C4242;
+    --color-dark-black: #black;
+    --color-primary:#A0D8B3;
+    --color-secondary:#5CA9B3;
+    --color-orange: #F99417;
+    /* --color-highlight:#5CA9B3; */
+    
+
+
+    /* Font size */
+    --font-giant: 70px;
+    --font-xlarge: 55px;
+    --font-large: 40px;
+    --font-medium: 30px;
+    --font-regular: 24px;
+    --font-small: 18px;
+    --font-micro: 14px;
+
+    /* Font weight */
+    --weight-bold-more: 1000;
+    --weight-bold: 700;
+    --weight-semi-bold: 600;
+    --weight-regular: 400;
+
+    /* Size */
+    /* --size-border-radius: 4px; */
+
+    /* Animation */
+    /* --animation-duration: 300ms; */
+}
+
+
+
+/* Typography */
+
+
+
+
+h1 {
+    font-size: var(--font-xlarge);
+    font-weight: var(--weight-bold);
+    margin: 16px 0px;
+}
+
+h2 {
+    font-size: var(--font-large);
+    font-weight: var(--weight-semi-bold);
+    margin: 8px 0;
+}
+
+h3 {
+    font-size: var(--font-medium);
+    font-weight: var(--weight-semi-bold);
+    /* margin: 8px 0; */
+}
+
+p {
+    font-size: var(--font-regular);
+    font-weight: var(--weight-regular);
+    color: var(--color-black);
+    margin: 4px 0;
+}
+
+body {
+    margin: 0px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-white);
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+
+/* Section common */
+/* .section {
+    padding: 50px;
+    text-align: center;
+    margin: auto;
+}
+
+.section__container {
+    max-width: 1200px;
+    margin: auto;
+} */
+
+
+
+
+
+/* 수정 꺾쇠 아이콘 */
+.left-modify{ 
+    color:var(--color-light-grey);
+    cursor: pointer;
+}
+
+.back-grey-light{ /*배경용 회색*/
+    background-color: #F6F6F6;
+    border-radius: 30px;
+    padding: 50px;
+}
+
+
+/* 굵기 */
+.semi-bold{
+    font-weight: var(--weight-semi-bold);
+
+}
+
+/* 색 */
+.grey{
+    color: var(--color-grey);
+}
+.grey-little-light{
+    color:var(--color-little-light-grey);
+}
+.black{
+    color: var(--color-black);
+}
+.white{
+    color: var(--color-white)
+}
+.red{
+    color: var(--color-red)
+}
+.primary-color{
+    color: var(--color-primary);
+}
+.secondary-color{
+    color:var(--color-secondary);
+}
+
+
+/* 배경 색 */
+.back-primary-color{
+    background-color: var(--color-primary);
+
+}
+.back-secondary-color{
+    background-color: var(--color-secondary);
+}
+.back-dark-white-color{
+    background-color: #F6F6F6;
+}
+.back-white-color{
+    background-color: white;
+}
+
+
+
+/* 메인페이지 제목 */
+.main-logo{
+    font-size: var(--font-giant);
+    font-weight: var(--weight-bold-more);
+    color: var(--color-primary);
+}
+
+.main-title-white{
+    font-size: var(--font-xlarge);
+    font-weight: var(--weight-bold);
+    color: var(--color-white);
+}
+.main-title-primary{
+    font-size: var(--font-xlarge);
+    font-weight: var(--weight-bold-more);
+    color: var(--color-primary);
+}
+.main-title{
+    font-size: var(--font-xlarge);
+    font-weight: var(--weight-bold-more);
+    color: var(--color-dark-black);
+    /* color: var(--color-little-light-grey) */
+}
+
+/* 제목 */
+.title{
+    font-size: var(--font-medium);
+    font-weight: var(--weight-semi-bold);
+    color: var(--color-black);
+}
+/* 회색 제목 */
+.title-grey{
+    font-size: var(--font-medium);
+    font-weight: var(--weight-semi-bold);
+    color: var(--color-grey);
+}
+/* 좀 더 작은 제목 */
+.title-regular{
+    font-size: var(--font-regular);
+    font-weight: var(--weight-semi-bold);
+    color: var(--color-black);
+}
+
+/* 제목 밑에 설명 */
+.desc{
+    font-size: var(--font-small);
+    font-weight: var(--weight-regular);
+    color: var(--color-grey);
+}
+/* 텍스트 작은글씨 */
+.text-small{
+    font-size: var(--font-small);
+    font-weight: var(--weight-regular);
+    /* color: var(--color-black); */
+}
+/* 텍스트 가장 작은 글씨 */
+.text-micro{
+    font-size: var(--font-micro);
+    font-weight: var(--weight-regular);
+  }
+
+/* 텍스트 보통글씨 */
+.text-regular{
+    font-size: var(--font-regular);
+    /* font-weight: var(--weight-regular); */
+}
+
+/* my info main title 왼쪽 */
+.left-title{ 
+    color: var(--color-black);
+    font-size: var(--font-medium);
+    font-weight: var(--weight-semi-bold);
+
+}
+/* my info 리스트 */
+.list-box{
+    border-top: solid 2px var(--color-light-grey)
+}
+
+/* 상단바 메뉴 */
+.bar-menu{
+    font-size: var(--font-small);
+
+}
+
+
+
+/* 필터 옵션 박스 */
+.filterOpt{
+    border: solid var(--color-light-grey) 5px;
+}
+
+.button-large{
+    height: 70px;
+} 
+
+/* 둥근 모서리 박스 */
+.round-box{
+    border-radius: 12px; 
+    border: solid 2px var(--color-light-grey);
+}
+
+.square-box{
+    border: solid 2px var(--color-light-grey);
+}
+
+.square-box-primary{
+    border: solid 3px var(--color-primary);
+    background-color: white;
+}
+
+/* 직각 회색 배경 상자 */
+.square-grey-box{
+    background-color: var(--color-light-grey);
+
+}
+
+
+/* 로그인 링크 */
+.link{
+  cursor: pointer;
+  /* font-size: var(--font-micro); */
+  font-weight: var(--weight-regular);
+}
+
+
+/* 폰트적용을 위한 클래스 */
+.dialog{
+    font-family: 'omu_daippum';
+    font-size: 20px;
+}
+.menu-list {
+    font-family: 'omu_daippum';
+    font-size: 20px;
+
+    
+}
+
+/* figure  */
+.mx-auto{
+    border-radius: 30px;
+}
+
+
+.loginBtns{
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.label{
+    color: var(--color-secondary);
+
+}

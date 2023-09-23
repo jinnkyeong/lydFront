@@ -1,26 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <router-view />
+  <AlarmList />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AlarmList from '@/views/dialog/alarm/AlarmList.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    AlarmList,
+  },
+};
 </script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+/* 전역 css */
+@import './assets/css/global.css';
+
+/* 폰트 */
+.v-application {
+  font-family: 'omu_daippum';
+  font-size: 18px;
+}
+
+@font-face {
+  font-family: 'omu_daippum';
+  src: url('assets/fonts/omu_daippum.ttf') format('truetype');
+  font-weight: 400;
 }
 </style>
