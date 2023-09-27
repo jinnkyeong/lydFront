@@ -9,7 +9,7 @@ export default {
         
         return api({
             method : 'post',
-            url :'/applications',
+            url :'/api/applications',
             data : info,
 
         });
@@ -17,21 +17,21 @@ export default {
     getAppsByDwId: function(dwId){
         return api({
             method : 'get',
-            url :`/open/applications/dw/${dwId}`,
+            url :`/api/open/applications/dw/${dwId}`,
         });
     },
 
     getAppById: function(id){
         return api({
             method : 'get',
-            url :`/open/applications/${id}`,
+            url :`/api/open/applications/${id}`,
         });
     },
 
     getZipcode: function(){
         return api({
             method : 'get',
-            url :`/zipcode`,
+            url :`/api/zipcode`,
         });
     },
 

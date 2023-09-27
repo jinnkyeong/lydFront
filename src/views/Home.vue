@@ -382,14 +382,14 @@ export default {
           userType: userType,
         };
         console.log('Send message:' + msg);
-        this.stompClient.send('/app/receive', JSON.stringify(msg), {});
+        this.stompClient.send('/api/app/receive', JSON.stringify(msg), {});
       }
       // this.message = ''; 이거뭐지
     },
 
     // 웹소켓 연결, 성공시 메세지 받기
     connect() {
-      const serverURL = 'http://13.125.144.0:80/ws';
+      const serverURL = 'http://13.125.144.0:80/api/ws';
       let socket = new SockJS(serverURL);
       this.stompClient = Stomp.over(socket);
       // jwt
@@ -408,7 +408,7 @@ export default {
           this.sendMessage();
 
           // subscribe to '/send' -> 메세지 받음
-          this.stompClient.subscribe('/send', (res) => {
+          this.stompClient.subscribe('/api/send', (res) => {
             // str -> obj(Array)
             this.recvList = JSON.parse(res.body);
             let unreadCnt = 0;

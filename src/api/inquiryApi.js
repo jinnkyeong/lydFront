@@ -32,7 +32,7 @@ export default {
         info.size = 12
         return api({
             method : 'post',
-            url :`/open/inquiries/search`,
+            url :`/api/open/inquiries/search`,
             data: information
         });
     },
@@ -41,7 +41,7 @@ export default {
     postInquiry: function(datas){
             return api({
                 method: 'post',
-                url : 'inquiries',
+                url : '/api/inquiries',
                 data : datas
             })
         },
@@ -49,7 +49,7 @@ export default {
     postReserv: function(inquiryId){
         return api({
             method: 'post',
-            url : 'reservations',
+            url : '/api/reservations',
             data : {
                 inquiryId : inquiryId
             }
@@ -60,7 +60,7 @@ export default {
         console.log('zzzzzzzz',inquiryId,'  ',status)
         return api({
             method: 'get',
-            url : `/inquiries/invalid/${inquiryId}/${status}`,
+            url : `/api/inquiries/invalid/${inquiryId}/${status}`,
         })
     },
     

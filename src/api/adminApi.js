@@ -14,38 +14,38 @@ export default {
     getDogwalkers: function(){
         return api({
             method : 'get',
-            url :`/open/dogwalkers`,
+            url :`/api/open/dogwalkers`,
         });
     },
     passDogwalker: function(dwId,passed){
         return api({
             method : 'get',
-            url :`/admin/dogwalkers/${dwId}/${passed}`,
+            url :`/api/admin/dogwalkers/${dwId}/${passed}`,
         });
     },
     passApplDogwalker: function(dwId,passed){
         return api({
             method : 'get',
-            url :`/admin/dogwalkers/appl/${dwId}/${passed}`,
+            url :`/api/admin/dogwalkers/appl/${dwId}/${passed}`,
         });
     },
     passItvDogwalker: function(dwId,passed){
         return api({
             method : 'get',
-            url :`/admin/dogwalkers/itv/${dwId}/${passed}`,
+            url :`/api/admin/dogwalkers/itv/${dwId}/${passed}`,
         });
     },
 
     startCalculate: function(reservId){
         return api({
             method : 'get',
-            url :`/admin/reservations/cal/start/${reservId}`,
+            url :`/api/admin/reservations/cal/start/${reservId}`,
         });
     },
     endCalculate: function(reservId){
         return api({
             method : 'get',
-            url :`/admin/reservations/cal/end/${reservId}`,
+            url :`/api/admin/reservations/cal/end/${reservId}`,
         });
     },
 } 

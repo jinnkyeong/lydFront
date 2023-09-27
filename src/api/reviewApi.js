@@ -8,7 +8,7 @@ export default {
     getDogwalkers: function(){
         return api({
             method : 'get',
-            url :`/admin/dogwalkers`,
+            url :`/api/admin/dogwalkers`,
         });
     },
 
@@ -25,7 +25,7 @@ export default {
         formdata.append(`requestDto`, blob);
         return api({
             method : 'post',
-            url :`/reviews`,
+            url :`/api/reviews`,
             data : formdata,
             headers: {
                 "Content-Type": "multipart/form-data",
@@ -36,27 +36,27 @@ export default {
     getReviewsByDwId: function(dwId){
         return api({
             method : 'get',
-            url :`/open/reviews/dw/${dwId}`,
+            url :`/api/open/reviews/dw/${dwId}`,
         });
     },
 
     getCommentsByReviewId : function(reviewId){
         return api({
             method : 'get',
-            url :`/open/comments/${reviewId}`,
+            url :`/api/open/comments/${reviewId}`,
         });
     },
     getCommentsByReviewIdAndParentId: function(reviewId, parentId){
         return api({
             method : 'get',
-            url :`/open/comments/${reviewId}/${parentId}`,
+            url :`/api/open/comments/${reviewId}/${parentId}`,
         });
     },
     postComment: function(info){
        
         return api({
             method : 'post',
-            url :`/open/comments`,
+            url :`/api/open/comments`,
             data : info,
          
         });

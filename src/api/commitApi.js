@@ -9,7 +9,7 @@ export default {
     postCms: function(info){
         return api({
             method : 'post',
-            url :'/commisions',
+            url :'/api/commisions',
             data : info,
 
         });
@@ -18,7 +18,7 @@ export default {
     getCmsByCusId: function(cusId){
         return api({
             method : 'get',
-            url :`/open/commisions/cus/${cusId}`,
+            url :`/api/open/commisions/cus/${cusId}`,
 
         });
     },
@@ -26,7 +26,7 @@ export default {
     getCmById: function(id){
         return api({
             method : 'get',
-            url :`/open/commisions/${id}`,
+            url :`/api/open/commisions/${id}`,
 
         });
     },

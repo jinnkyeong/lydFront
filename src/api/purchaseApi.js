@@ -8,13 +8,13 @@ export default {
     verifiy: function(imp_uid){
         return api({
             method : 'post',
-            url :`/verifyIamport/${imp_uid}`,
+            url :`/api/verifyIamport/${imp_uid}`,
         });
     },
     purchaseSuccess: function(payload){
         return api({
             method : 'post',
-            url :`/purchaseSuccess`,
+            url :`/api/purchaseSuccess`,
             data  : payload,
         });
     },

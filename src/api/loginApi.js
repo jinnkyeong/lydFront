@@ -14,7 +14,7 @@ export default {
 
         return api({
             method : 'post',
-            url :'/register',
+            url :'/api/register',
             data : {
                 'email': email,
                 'pwd' : pwd,
@@ -33,7 +33,7 @@ export default {
         // console.log(store.state.userType)
         return api({
             method : 'post',
-            url : `/open/send-mail/pwd`,
+            url : `/api/open/send-mail/pwd`,
             data : {
                 email : email,
                 userType: userType
@@ -44,7 +44,7 @@ export default {
     postEmail: function(email){ 
         return api({
             method : 'post',
-            url : `/open/send-mail/email`,
+            url : `/api/open/send-mail/email`,
             data : {
                 email: email
             },
@@ -54,7 +54,7 @@ export default {
     checkDuplEmail: function(email,userType){
         return api({
             method : 'post',
-            url : `/auth/checkDuplEmail`,
+            url : `/api/auth/checkDuplEmail`,
             data : {
                 email : email,
                 userType: userType

@@ -10,7 +10,7 @@ export default {
     getPopluarAppsByCusId: function(cusId){
         return api({
             method : 'get',
-            url :`/applications/popular/${cusId}`,
+            url :`/api/applications/popular/${cusId}`,
         });
     },
     searchApp: function(page, opts, orderStr){
@@ -35,13 +35,13 @@ export default {
     getApp: function(appId){
         return api({
             method: 'get',
-            url :`/open/applications/${appId}`,
+            url :`/api/open/applications/${appId}`,
         })
     },
     modifyApp: function(appId,info){
         return api({
             method : 'post',
-            url :`/applications/mod/${appId}`,
+            url :`/api/applications/mod/${appId}`,
             data : info, 
             'Content-Type' : "application/json"
         })
@@ -49,20 +49,20 @@ export default {
     deleteApp: function(dwId){
         return api({
             method : 'get',
-            url :`/applications/del/${dwId}`,
+            url :`/api/applications/del/${dwId}`,
             // 'Content-Type' : "application/json"
         })
     },
     getComs: function(){
         return api({
             method : 'get',
-            url :'/open/commisions',
+            url :'/api/open/commisions',
         });
     },
     getCom: function(comId){
         return api({
             method : 'get',
-            url :`/open/commisions/${comId}`,
+            url :`/api/open/commisions/${comId}`,
         });
     },
     searchCom: function(page, opts, orderStr){
@@ -78,7 +78,7 @@ export default {
         console.log('seachconditions : ',info)
         return api({
             method : 'post',
-            url :'/open/commisions/condition',
+            url :'/api/open/commisions/condition',
             data : info, 
         });
     },
@@ -143,32 +143,32 @@ export default {
         }
         return api({
             method : 'post',
-            url :`/commisions/mod/${comId}`,
+            url :`/api/commisions/mod/${comId}`,
             data : info, 
         })
     },
     deleteCom: function(comId){
         return api({
             method : 'get',
-            url :`/commisions/del/${comId}`,
+            url :`/api/commisions/del/${comId}`,
         })
     },
     addAppViewCnt: function(appId){
         return api({
             method : 'get',
-            url :`/applications/add/view/${appId}`,
+            url :`/api/applications/add/view/${appId}`,
         })
     },
     addComViewCnt: function(comId){
         return api({
             method : 'get',
-            url :`/commisions/add/view/${comId}`,
+            url :`/api/commisions/add/view/${comId}`,
         })
     },
     setAlarmCheck: function(alarmId){
         return api({
             method : 'get',
-            url :`/open/alarms/chk/${alarmId}`,
+            url :`/api/open/alarms/chk/${alarmId}`,
         })
     },
 

@@ -9,7 +9,7 @@ export default {
     getReservs: function(){
         return api({
             method : 'get',
-            url :`/reservations`,
+            url :`/api/reservations`,
 
         });
     },
@@ -18,7 +18,7 @@ export default {
     getReservById: function(id){
         return api({
             method : 'get',
-            url :`/reservations/${id}`,
+            url :`/api/reservations/${id}`,
 
         });
     },
@@ -26,7 +26,7 @@ export default {
     getReservsByCusId: function(cusId){
             return api({
                 method : 'get',
-                url :`/reservations/cus/${cusId}`,
+                url :`/api/reservations/cus/${cusId}`,
 
             });
     },
@@ -34,7 +34,7 @@ export default {
     getReservsByDwId: function(DwId){
         return api({
             method : 'get',
-            url :`/reservations/dw/${DwId}`,
+            url :`/api/reservations/dw/${DwId}`,
 
         });
     },
@@ -43,7 +43,7 @@ export default {
     getReservsByDwIdAndStatus: function(DwId, status){
         return api({
             method : 'get',
-            url :`/reservations/dw/${DwId}/${status}`,
+            url :`/api/reservations/dw/${DwId}/${status}`,
 
         });
     },
@@ -52,14 +52,14 @@ export default {
     getReservsByCusIdAndStatus: function(cusId, status){
         return api({
             method : 'get',
-            url :`/reservations/cus/${cusId}/${status}`,
+            url :`/api/reservations/cus/${cusId}/${status}`,
 
         });
     },
     getDiariesByCusId: function(cusId){
         return api({
             method : 'get',
-            url :`/diaries/cus/${cusId}`,
+            url :`/api/diaries/cus/${cusId}`,
 
         });
     },

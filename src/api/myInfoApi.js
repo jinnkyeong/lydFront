@@ -10,14 +10,14 @@ export default {
     getBasicRequiresByReservId: function(reservId){
         return api({
             method : 'get',
-            url :`/basicRequires/${reservId}`,
+            url :`/api/basicRequires/${reservId}`,
         });
     },
     // reservation id -> cus require list
     getCusRequiresByReservId: function(reservId){
       return api({
           method : 'get',
-          url :`/cusRequires/${reservId}`,
+          url :`/api/cusRequires/${reservId}`,
       });
      
     },
@@ -43,7 +43,7 @@ export default {
 
         return api({
             method : 'post',
-            url : `/diaries`,
+            url : `/api/diaries`,
             data : formdata, 
             headers: {
                 'Content-Type': 'multipart/form-data',
@@ -55,7 +55,7 @@ export default {
     postModify: function(reservId, info){
         return api({
             method : 'post',
-            url :`/reservations/mod/${reservId}`,
+            url :`/api/reservations/mod/${reservId}`,
             data  : info,
         });
     },
@@ -64,14 +64,14 @@ export default {
     getProfileByCusId:function(cusId){
         return api({
             method : 'get',
-            url :`/customers/${cusId}`,
+            url :`/api/customers/${cusId}`,
         });
     },
     // dogwalker id -> profile
     getProfileByDwId:function(dwId){
         return api({
             method : 'get',
-            url :`/dogwalkers/${dwId}`,
+            url :`/api/dogwalkers/${dwId}`,
         });
     },
 
@@ -89,7 +89,7 @@ export default {
         formdata.append(`requestDto`, blob);
         return api({
             method : 'post',
-            url :`/profile`,
+            url :`/api/profile`,
             data : formdata,
             headers: {
                 "Content-Type": "multipart/form-data",
@@ -101,7 +101,7 @@ export default {
     getInquriesByCusId:function(cusId){
         return api({
             method : 'get',
-            url :`/inquiries/${cusId}/customer`,
+            url :`/api/inquiries/${cusId}/customer`,
         });
     },
 
@@ -109,26 +109,26 @@ export default {
     getLectures:function(dwId){
         return api({
             method: 'get',
-            url: `/open/lectures/dw/${dwId}`
+            url: `/api/open/lectures/dw/${dwId}`
         })
     },
     getTest:function(dwId){
         return api({
             method: 'get',
-            url: `/tests/${dwId}`
+            url: `/api/tests/${dwId}`
         })
     },
     getQuestionTypes:function(){
         return api({
             method: 'get',
-            url: `/questionTypes`
+            url: `/api/questionTypes`
         })
     },
 
     postTest: function(dwId,testStartAt,testEndAt,inputs){
         return api({
             method : 'post',
-            url :`/questionTypes/${dwId}/${testStartAt}/${testEndAt}`,
+            url :`/api/questionTypes/${dwId}/${testStartAt}/${testEndAt}`,
             data  : inputs,
         });
     },
@@ -137,7 +137,7 @@ export default {
     postLecture: function(info){
         return api({
             method : 'post',
-            url :`/open/lectures`,
+            url :`/api/open/lectures`,
             data  : info,
         });
     },
@@ -146,28 +146,28 @@ export default {
     checkPwd: function(info){
         return api({
             method : 'post',
-            url :`/pwd/mod/chk`,
+            url :`/api/pwd/mod/chk`,
             data  : info,
         });
     },
     changePwd: function(info){
         return api({
             method : 'post',
-            url :`/pwd/mod/mod`,
+            url :`/api/pwd/mod/mod`,
             data  : info,
         });
     },
     getCode: function(info){
         return api({
             method : 'post',
-            url :`/sms/send`,
+            url :`/api/sms/send`,
             data  : info,
         });
     },
     changePhone: function(info){
         return api({
             method : 'post',
-            url :`/phone/mod`,
+            url :`/api/phone/mod`,
             data  : info,
         });
     },

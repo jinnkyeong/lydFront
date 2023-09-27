@@ -8,7 +8,7 @@ export default {
     getFaqsByCate: function(cate){
         return api({
             method : 'get',
-            url :`/open/faqs/${cate}`,
+            url :`/api/open/faqs/${cate}`,
 
         });
     },
@@ -16,7 +16,7 @@ export default {
     getCates: function(){
         return api({
             method : 'get',
-            url :`/open/faqs/cates`,
+            url :`/api/open/faqs/cates`,
 
         });
     },

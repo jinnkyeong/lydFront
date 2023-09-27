@@ -9,7 +9,7 @@ export default {
     getOffers: function(userId, userType, key){
         return api({
             method : 'get',
-            url :`offers/${userId}/${userType}/${key}`,
+            url :`/api/offers/${userId}/${userType}/${key}`,
         });
     },
 
@@ -18,7 +18,7 @@ export default {
         datas.status = status // 1 or 4
             return api({
                 method: 'post',
-                url : '/offers',
+                url : '/api/offers',
                 data : datas
             })
         },
@@ -26,7 +26,7 @@ export default {
   postReserv: function(offerId){
     return api({
         method: 'post',
-        url : 'reservations',
+        url : '/api/reservations',
         data : {
             offerId : offerId
         }
@@ -38,7 +38,7 @@ export default {
      invalidateOffer: function(offerId, status){
         return api({
             method: 'get',
-            url : `/offers/invalid/${offerId}/${status}`,
+            url : `/api/offers/invalid/${offerId}/${status}`,
         })
     },
  
