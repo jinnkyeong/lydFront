@@ -96,7 +96,7 @@ const actions = {
     console.log("dologin에서 state.userType : "+ state.userType)
     return api({
         method : 'post',
-        url : '/login', 
+        url : '/api/login', 
         data :{ 
             email : payload.email,
             pwd : payload.pwd,
@@ -143,7 +143,7 @@ const actions = {
 
     return api({
         method : 'post',
-        url : `/auth/reissue`,
+        url : `/api/auth/reissue`,
         data : {
             userType : userType, // 현재 유저 타입
             oldAtk : state.accessToken,
@@ -172,7 +172,7 @@ const actions = {
     console.log("doLogout 메소드로 들오옴")
     return api({
         method : 'post',
-        url : `/auth/logout`,
+        url : `/api/auth/logout`,
     })
     .then((resData)=>{
         console.log("logout 결과 : ", resData.data)
@@ -208,7 +208,7 @@ const actions = {
   adminLogin({state, commit}, payload) {
     return api({
         method : 'post',
-        url : '/admin-login', 
+        url : '/api/admin-login', 
         data :{ 
             sign : payload.sign,
             pwd : payload.pwd,

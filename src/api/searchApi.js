@@ -156,13 +156,13 @@ export default {
     addAppViewCnt: function(appId){
         return api({
             method : 'get',
-            url :`/api/applications/add/view/${appId}`,
+            url :`/api/open/applications/add/view/${appId}`,
         })
     },
     addComViewCnt: function(comId){
         return api({
             method : 'get',
-            url :`/api/commisions/add/view/${comId}`,
+            url :`/api/open/commisions/add/view/${comId}`,
         })
     },
     setAlarmCheck: function(alarmId){
