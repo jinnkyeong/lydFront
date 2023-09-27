@@ -26,7 +26,7 @@ export default {
         console.log('seachconditions : ',info)
         return api({
             method : 'post',
-            url :`/open/applications/condition`,
+            url :`/api/open/applications/condition`,
             data : info
 
         });
