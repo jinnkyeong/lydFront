@@ -7,7 +7,7 @@ function createInstance() {
 
     const instance = axios.create({
         // baseURL: process.env.VUE_APP_API_BASE_URL // 환경변수로 할라그랬는데 안먹음;;
-        baseURL: "https://loveyourdog.co.kr",
+        baseURL: "https://loveyourdog.co.kr:443",
         contentType : "application/json; charset=utf-8",
         // console.log("interceptor : "+ `Bearer ${localStorage.getItem("accessToken")}`),
         headers : {
