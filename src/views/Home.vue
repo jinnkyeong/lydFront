@@ -389,8 +389,8 @@ export default {
 
     // 웹소켓 연결, 성공시 메세지 받기
     connect() {
-      // const serverURL = 'https://www.loveyourdog.co.kr/api/ws';
-      const serverURL = 'http://www.loveyourdog.co.kr:80/api/ws';
+      const serverURL = 'https://www.loveyourdog.co.kr/api/ws';
+      // const serverURL = 'http://www.loveyourdog.co.kr:80/api/ws';
 
       let socket = new SockJS(serverURL);
       this.stompClient = Stomp.over(socket);
