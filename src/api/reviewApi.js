@@ -61,7 +61,12 @@ export default {
          
         });
     },
-    
+    getCommentsByParentIdAndReviewId: function(parentId,reviewId){
+        return api({
+            method : 'get',
+            url :`/api/open/childComments/${parentId}/${reviewId}`,
+        });
+    },
     
 
 } 

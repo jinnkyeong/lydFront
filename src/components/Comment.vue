@@ -88,6 +88,7 @@
 
 <script>
 import CommentForm from './CommentForm.vue';
+import reviewApi from '@/api/reviewApi';
 export default {
   components: {
     CommentForm,
@@ -123,6 +124,19 @@ export default {
   methods: {
     // 답글 보기
     showChild() {
+      // 임시
+      reviewApi
+        .getCommentsByParentIdAndReviewId(
+          this.comment.id,
+          this.comment.reviewId
+        )
+        .then((res) => {
+          console.log('getCommentsByParentIdAndReviewId결과! : ', res.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+
       const toggle = {
         comment: this.comment,
         bool: true,
