@@ -60,7 +60,13 @@ export default {
                 userType: userType
             },
         })
-    }
+    },
+    kakaologin: function(){
+        return api({
+            method : 'get',
+            url : `/api/login/kakao`,
+        })
+    },
     
  
  

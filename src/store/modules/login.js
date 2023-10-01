@@ -123,6 +123,56 @@ const actions = {
         console.log('실패 ',e)
     })
   },
+  doSocialLogin({state, commit}, code) {
+    return api({
+        method : 'post',
+        url : `/api/auth/kakao`,
+        data :{ 
+          userType : state.userType, 
+          code: code
+        },
+    })
+    .then(res => {
+      console.log('login 결과 : ',res.data)
+        const accessToken = res.data.accessToken
+        if (accessToken) {
+            commit('setAccessToken', accessToken)
+            commit('setDwId', res.data.dogwalkerId) // 도그워커면
+            commit('setCusId', res.data.customerId) // 고객이면
+            commit('setUsernick', res.data.usernick)
+            commit('setGoalCnt', res.data.goalCnt)
+            const urlfront = 'https://lyd-bucket1.s3.ap-northeast-2.amazonaws.com';
+            const imgUrl = `${urlfront}/${res.data.dirName}/${res.data.fileName}.${res.data.extension}`;
+            commit('setUserImgUrl', imgUrl)
+            // router.go(0)
+        } 
+    })
+    .catch((e)=>{
+        console.log('실패 ',e)
+    })
+  },
+  setUserIdAfterSL({state, commit}) {
+    console.log('setUserIdAfterSL : ')
+    return api({
+        method : 'post',
+        url : `/api/auth/kakao/userId`,
+        data:{
+          userType: state.userType,
+          accessToken: state.accessToken
+        }
+    })
+    .then(res => {
+      console.log('id가져오기 : ',res.data)
+      if(res.data.dogwalkerId){
+        commit('setDwId', res.data.dogwalkerId) // 도그워커면
+      } else {
+        commit('setCusId', res.data.customerId) // 고객이면
+      }
+    })
+    .catch((e)=>{
+        console.log('실패 ',e)
+    })
+  },
   // jwt 만료 -> 호출되어 재발급 -> 재요청
   doReissue({state, commit}, originalReq){
     // console.log("doreissue 메소드로 들오옴")
@@ -235,6 +285,7 @@ const actions = {
         console.log('실패 ', e)
     })
   },
+
 
 
 }

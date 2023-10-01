@@ -144,7 +144,7 @@
                       @click="clickDetail(rs.reservationId)">
                       <div class="ma-3 text-center">
                         <div>
-                          {{ formatDateTime(rs.reservCreatedAt) }}
+                          {{ formatDateTime(rs.canceledAt) }}
                         </div>
                         <div>
                           <h3 class="grey title">

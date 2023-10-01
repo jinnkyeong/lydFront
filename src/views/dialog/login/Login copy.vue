@@ -13,9 +13,9 @@
           <v-col align-self="center" cols="12" md="10" sm="10"> </v-col>
           <v-col align-self="end" cols="12" md="1" sm="1">
             <!-- 나가기 버튼 -->
-            <!-- <button @click="clickClose">
+            <button @click="clickClose">
               <font-awesome-icon icon="fa-solid fa-xmark" />
-            </button> -->
+            </button>
           </v-col>
         </v-row>
       </v-card-title>
@@ -24,8 +24,7 @@
         <v-row justify="center" no-gutters style="height: 60px">
           <h3>로그인</h3>
         </v-row>
-        <!-- <v-row justify="center" no-gutters style="height: 300px"> -->
-        <v-row justify="center" no-gutters style="height: 180px">
+        <v-row justify="center" no-gutters style="height: 300px">
           <!-- 로그인 -->
           <div class="text-center">
             <!-- 카카오로그인 -->
@@ -40,7 +39,7 @@
               <span class="text-small">카카오로 로그인</span>
             </v-btn>
             <!-- 네이버로그인 -->
-            <!-- <v-btn class="loginBtns" color="green_naver" block>
+            <v-btn class="loginBtns" color="green_naver" block>
               <span class="mr-2">
                 <font-awesome-icon
                   icon="fa-solid fa-n"
@@ -48,9 +47,9 @@
                   style="color: #fff" />
               </span>
               <span class="text-small">네이버로 로그인</span>
-            </v-btn> -->
+            </v-btn>
             <!-- 구글로그인 -->
-            <!-- <v-btn class="loginBtns" block>
+            <v-btn class="loginBtns" block>
               <span class="mr-2">
                 <font-awesome-icon
                   icon="fa-solid fa-g"
@@ -58,7 +57,7 @@
                   style="color: #511f3a" />
               </span>
               <span class="text-small">구글로 로그인</span>
-            </v-btn> -->
+            </v-btn>
             <!-- <v-checkbox label="로그인 상태 유지"></v-checkbox> -->
             <v-btn
               class="loginBtns"
@@ -87,18 +86,13 @@
                 </span>
               </button>
             </div>
-            <div>
-              <!-- <a
-                href="https://kauth.kakao.com/oauth/authorize?client_id=939adb4627ac2f9e1653f58dc85e8ff3&redirect_uri=http://localhost:8090/api/auth/kakao&response_type=code"
-                >카카오로그인임시</a
-              > -->
-              <!-- <button @click="kakaoLogout">
-                <span class="link text-small"> 카카오로그아웃 </span>
-              </button> -->
-            </div>
           </div>
         </v-row>
-
+        <v-row>
+          <button @click="kakaoLogout()">
+            <span class="link text-small"> 카카오로그아웃 </span>
+          </button>
+        </v-row>
         <v-spacer style="height: 200px" />
       </v-card-text>
     </v-card>
@@ -111,9 +105,7 @@ import login from '@/store/modules/login';
 export default {
   components: {},
   data() {
-    return {
-      url: '',
-    };
+    return {};
   },
   methods: {
     clickClose() {
@@ -156,22 +148,19 @@ export default {
     //     },
     //   });
     // },
-    kakaoLogout() {
-      window.Kakao.Auth.logout((res) => {
-        console.log('kakao logout : ', res);
-      });
-    },
+    // kakaoLogout() {
+    //   window.Kakao.Auth.logout((res) => {
+    //     console.log('kakao logout : ', res);
+    //   });
+    // },
     kakaoLogin() {
       loginApi
         .kakaologin()
         .then((res) => {
-          // const url =
-          //   'https://kauth.kakao.com/oauth/authorize?client_id=939adb4627ac2f9e1653f58dc85e8ff3&redirect_uri=http://localhost:8080&response_type=code';
+          console.log('kakaologin : ', res.data);
+          console.log(res);
           window.location.href = res.data;
-          // window.open(res.data, '_blank', 'width=500, height=500');
-          // window.open(url, '_blank', 'width=500, height=500');
-          // this.$store.dispatch('doSocialLogin', res.data);
-          // console.log('here : ', window.location.href);
+          console.log('zzz ', res.data);
         })
         .catch((e) => {
           console.log(e);

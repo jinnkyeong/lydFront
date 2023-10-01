@@ -290,6 +290,7 @@ import Figure from '@/components/Figure';
 import DropMain from '@/components/DropMain';
 import reviewApi from '@/api/reviewApi';
 
+
 export default {
   name: 'App',
 
@@ -299,6 +300,16 @@ export default {
   },
 
   created() {
+    // kakao login code
+    if (this.$route.query.code) {
+      console.log('code로 login ?? : ', this.$route.query.code);
+      this.$store.dispatch('doSocialLogin', this.$route.query.code);
+    }
+
+    if(this.$store.state.login.accessToken && !this.$store.state.login.dwId && !this.$store.state.login.cusId){
+      this.$store.dispatch('setUserIdAfterSL')
+    }
+
     // 소켓 연결
     this.connect();
 
@@ -389,7 +400,8 @@ export default {
 
     // 웹소켓 연결, 성공시 메세지 받기
     connect() {
-      const serverURL = 'https://loveyourdog.co.kr/api/ws';
+      // const serverURL = 'https://loveyourdog.co.kr/api/ws';
+      const serverURL = 'http://localhost:8090/api/ws';
 
       let socket = new SockJS(serverURL);
       this.stompClient = Stomp.over(socket);

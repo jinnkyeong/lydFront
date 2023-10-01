@@ -24,12 +24,17 @@ import { faXmark, faChevronLeft, faUser, faLocationDot,
 library.add(faXmark, faChevronLeft, faUser, faLocationDot, 
   faCertificate, faVenusMars,faSignal, faMoneyBill,faCalendarDays, faChevronRight,
   faDog, faArrowUp,faArrowDown, faMagnifyingGlass, faMinus, faCheck, faQuoteLeft,
-  faKey, faClock, faTemperatureThreeQuarters, faAddressCard, faMessage, faN, faG, faEnvelope,faEye, faChevronDown, faChevronUp, faTrashCan,faCircleCheck)
+  faKey, faClock, faTemperatureThreeQuarters, faAddressCard, faMessage, faN, faG, faEnvelope,faEye, faChevronDown, faChevronUp, faTrashCan,faCircleCheck
+)
 
+
+  window.Kakao.init("1531269640c1a1ec1d211656da4aa0ff");  //rest api key
 
 
 loadFonts()
 const vue = createApp(App)
+
+
 
 vue.config.productionTip = false // 이게 뭐지?
 vue.component('font-awesome-icon', FontAwesomeIcon)  
@@ -38,4 +43,6 @@ vue.component('font-awesome-icon', FontAwesomeIcon)
   .use(store)
   .use(format)
   .mount('#app')
+
+
 

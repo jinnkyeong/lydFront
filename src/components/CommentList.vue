@@ -8,18 +8,17 @@
         @reply="getReply"
         @replied="getReplied" />
     </v-row>
-    <v-divider />
+    <!-- <v-divider /> -->
     <!-- 대댓글 -->
     <v-row v-if="comment.childVisible">
       <v-spacer v-if="comment.depth === 1" />
       <v-col cols="12" md="11">
-        <CommentList
-          v-for="child in children"
-          :key="child"
-          :comment="child"
-          :children="child.children"
+        <Comment
+          v-for="desc in comment.descendants"
+          :key="desc"
+          :comment="desc"
           @replied="getReplied">
-        </CommentList>
+        </Comment>
       </v-col>
     </v-row>
   </v-container>
@@ -28,19 +27,14 @@
 <script>
 import reviewApi from '@/api/reviewApi';
 import Comment from '@/components/Comment.vue';
-import CommentList from './CommentList.vue';
 
 export default {
-  name: 'CommentList',
   components: {
     Comment,
-    CommentList,
   },
   created() {
     this.reviewId = this.$store.state.item.reviewId;
   },
-
-  props: ['comment', 'children'],
 
   data() {
     return {

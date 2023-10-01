@@ -61,6 +61,7 @@ export default {
       } else {
         info.customerId = this.$store.state.login.cusId;
       }
+      console.log('before post parentid : ', info.parentId);
       reviewApi
         .postComment(info)
         .then((res) => {

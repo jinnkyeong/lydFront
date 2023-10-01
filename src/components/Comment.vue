@@ -1,10 +1,10 @@
 <!-- 출력될 댓글 하나하나 -->
 <template>
-  <v-container>
+  <v-container class="ma-1">
     <!-- 작성자아바타 및 닉네임, 내용, 삭제버튼 -->
     <v-row no-gutters>
       <!-- 아바타 -->
-      <v-col cols="12" md="1" class="mr-3">
+      <v-col cols="12" md="1" class="ml-3 mt-1">
         <v-avatar v-if="comment.imgUrl">
           <v-img :src="comment.imgUrl" cover />
         </v-avatar>
@@ -15,11 +15,13 @@
       <v-spacer />
       <v-col cols="12" md="9">
         <!-- 닉네임 -->
-        <v-row class="black semi-bold">{{ comment.writerNick }}</v-row>
+        <v-row class="black semi-bold mt-1">{{ comment.writerNick }}</v-row>
         <v-row>
           <div style="word-break: break-all">
             <!-- 부모댓글 닉네임 -->
-            <span v-if="comment.parentWriterNick" class="secondary-color mr-2">
+            <span
+              v-if="comment.depth > 2 && comment.parentWriterNick"
+              class="secondary-color mr-2">
               @ {{ comment.parentWriterNick }}
             </span>
             <!-- 내용 -->
@@ -77,12 +79,14 @@
         </v-btn>
       </div>
     </v-row>
+    <!-- 대댓글 작성( + 대대댓글...) -->
     <v-row v-if="writeToggle" class="ma-1">
       <CommentForm
         :parent="comment"
         :reviewId="comment.reviewId"
         @replied="getReplied" />
     </v-row>
+    <v-divider />
   </v-container>
 </template>
 
@@ -97,14 +101,6 @@ export default {
     comment: Object,
   },
   mounted() {
-    // const toggle = {
-    //   reviewId: this.comment.reviewId,
-    //   parentId: this.comment.parentId,
-    //   commentId: this.comment.id,
-    //   bool: false,
-    // };
-    // console.log(toggle);
-    // this.$store.commit('setToggles', toggle);
     // 이미지 출력
     const dirName = this.comment.dirName;
     const fileName = this.comment.fileName;
@@ -126,12 +122,13 @@ export default {
     showChild() {
       // 임시
       reviewApi
-        .getCommentsByParentIdAndReviewId(
-          this.comment.id,
+        .getCommentsByAncestorIdAndReviewId(
+          this.comment.id, // ancestorId
           this.comment.reviewId
         )
         .then((res) => {
-          console.log('getCommentsByParentIdAndReviewId결과! : ', res.data);
+          console.log('getCommentsByAncestorIdAndReviewId결과! : ', res.data);
+          this.comment.descendants = res.data;
         })
         .catch((e) => {
           console.log(e);

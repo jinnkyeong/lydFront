@@ -61,10 +61,10 @@ export default {
          
         });
     },
-    getCommentsByParentIdAndReviewId: function(parentId,reviewId){
+    getCommentsByAncestorIdAndReviewId: function(ancestorId,reviewId){
         return api({
             method : 'get',
-            url :`/api/open/childComments/${parentId}/${reviewId}`,
+            url :`/api/open/childComments/${ancestorId}/${reviewId}`,
         });
     },
     

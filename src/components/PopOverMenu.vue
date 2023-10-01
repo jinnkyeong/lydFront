@@ -10,7 +10,7 @@
           <div
             v-if="!$store.state.login.adminId"
             class="bar-menu secondary-color menu-list">
-            반갑습니다 {{ nick }} 님
+            반갑습니다 {{ nick ? nick : '손' }}님
           </div>
         </v-btn>
       </template>

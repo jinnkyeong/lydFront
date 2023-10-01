@@ -98,10 +98,7 @@
           <CommentForm :reviewId="review.reviewId" @replied="getReplied" />
         </v-row>
         <v-row v-for="comment in commentList" :key="comment">
-          <CommentList
-            :comment="comment"
-            :children="comment.children"
-            @replied="getReplied" />
+          <CommentList :comment="comment" @replied="getReplied" />
         </v-row>
       </v-container>
     </div>
@@ -146,12 +143,11 @@ export default {
       }
     },
     clickComment() {
-      // 댓글 열기
       reviewApi
         .getCommentsByReviewId(this.review.reviewId)
         .then((res) => {
           this.commentList = res.data;
-          this.comment = true;
+          this.comment = true; // 댓글창 열기
           this.$store.commit('setReviewId', this.review.reviewId);
           console.log('this.commentList', this.commentList);
           console.log('after : ', this.review);
@@ -161,12 +157,13 @@ export default {
         });
     },
     getReplied(replied) {
+      // 댓,답글 달리면 댓글 리스트 갱신
       if (replied) {
         reviewApi
           .getCommentsByReviewId(this.review.reviewId)
           .then((res) => {
             this.commentList = res.data;
-            this.comment = true;
+            this.comment = true; // 댓글창 열기
             this.$store.commit('setReviewId', this.review.reviewId);
             console.log('this.commentList', this.commentList);
             console.log('after : ', this.review);
