@@ -29,7 +29,9 @@
               v-for="(opt, index) in options"
               :key="index"
               @click="clickSearch(opt.key)">
-              <v-list-item-title>{{ opt.title }}</v-list-item-title>
+              <v-list-item-title class="text-regular"
+                >{{ opt.title }}
+              </v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>

@@ -12,11 +12,9 @@
           <v-row>
             <div class="desc mt-7">
               <div>도그워커에게 산책대행 서비스를 문의하신 목록입니다.</div>
-              <div>.</div>
             </div>
           </v-row>
         </v-container>
-        <v-row style="height: 100px" />
       </v-col>
     </v-row>
     <v-row style="height: 100px" />
@@ -26,12 +24,17 @@
       <!-- tab -->
       <v-tabs
         v-model="tab"
-        class="primary-color"
-        align-tabs="center"
+        color="secondary"        align-tabs="center"
         fixed-tabs>
-        <v-tab :value="'waiting'"><p>미수락 문의</p></v-tab>
-        <v-tab :value="'canceled'"><p>취소된 문의</p></v-tab>
-        <v-tab :value="'rejected'"><p>거절된 문의</p></v-tab>
+        <v-tab :value="'waiting'"
+          ><span class="text-regular semi-bold">미수락 문의</span></v-tab
+        >
+        <v-tab :value="'canceled'"
+          ><span class="text-regular semi-bold">취소된 문의</span></v-tab
+        >
+        <v-tab :value="'rejected'"
+          ><span class="text-regular semi-bold">거절된 문의</span></v-tab
+        >
       </v-tabs>
       <!-- tab 선택 시 출력될 window -->
       <v-spacer style="height: 80px" />
@@ -47,27 +50,24 @@
               :key="inq"
               class="list-box pa-2">
               <!-- (의뢰한)고객 이미지 -->
-              <v-col cols="12" md="2">
+              <v-col cols="12" md="2" v-if="inq.imgUrl">
                 <v-img
-                  v-if="inq.imgUrl"
-                  class="ma-5"
+                  style="border-radius: 30px"
+                  class="ma-1"
                   :src="inq.imgUrl"
-                  height="100px"
-                  width="150px"
-                  aspect-ratio="4/3"
+                  aspect-ratio="1"
                   cover></v-img>
+              </v-col>
+              <v-col cols="12" md="2" v-if="!inq.imgUrl">
                 <v-img
-                  v-if="!inq.imgUrl"
-                  class="ma-5"
+                  style="border-radius: 30px"
+                  class="ma-1"
                   src="@/assets/images/profile/profileImage.jpg"
-                  height="100px"
-                  width="150px"
-                  aspect-ratio="4/3"
+                  aspect-ratio="1"
                   cover />
               </v-col>
-              <v-spacer />
               <!-- 정보 -->
-              <v-col cols="12" md="6">
+              <v-col cols="12" md="7">
                 <!-- 문의날짜 -->
                 <div class="ma-1">
                   <span class="pl-3 pr-3 secondary-color"> 문의 날짜 </span>
@@ -96,24 +96,25 @@
                   <span>{{ inq.day }} 일</span>
                 </div>
               </v-col>
-              <!-- 버튼 -->
-              <v-col align-self="center">
-                <div class="primary-color text-micro text-center mb-2">
-                  <div>미수락 된 문의는</div>
-                  <div>취소할 수 있습니다</div>
-                </div>
-                <div>
-                  <ConfirmCancel
-                    @cancel="cancelInquiry"
-                    :inquiryId="inq.inquiryId" />
-                </div>
+              <!-- 취소버튼 -->
+              <v-col align-self="center" cols="12" md="2">
+                <v-row justify="center">
+                  <div class="primary-color text-micro text-center mb-2">
+                    <div>미수락 된 문의는</div>
+                    <div>취소할 수 있습니다</div>
+                  </div>
+                  <div>
+                    <ConfirmCancel
+                      @cancel="cancelInquiry"
+                      :inquiryId="inq.inquiryId" />
+                  </div>
+                </v-row>
               </v-col>
               <!-- 버튼 -->
-              <v-spacer />
               <v-col cols="12" md="1" align-self="center">
                 <div
                   @click="clickDetail(inq.applicationId, inq.commisionId)"
-                  class="pd-5">
+                  class="ml-5 pl-5">
                   <font-awesome-icon
                     icon="fa-solid fa-chevron-right "
                     size="xl"
@@ -128,6 +129,7 @@
               </v-col>
             </v-row>
           </v-container>
+
           <!-- canceled 탭이 열리면-->
           <v-container v-if="t === 'canceled'">
             <!-- 하나라도 있는 경우 -->
@@ -137,27 +139,24 @@
               :key="inq"
               class="list-box pa-2">
               <!-- (의뢰한)고객 이미지 -->
-              <v-col cols="12" md="2">
+              <v-col cols="12" md="2" v-if="inq.imgUrl">
                 <v-img
-                  v-if="inq.imgUrl"
-                  class="ma-5"
+                  style="border-radius: 30px"
+                  class="ma-1"
                   :src="inq.imgUrl"
-                  height="100px"
-                  width="150px"
-                  aspect-ratio="4/3"
-                  cover></v-img>
-                <v-img
-                  v-if="!inq.imgUrl"
-                  class="ma-5"
-                  src="@/assets/images/profile/profileImage.jpg"
-                  height="100px"
-                  width="150px"
-                  aspect-ratio="4/3"
+                  aspect-ratio="1"
                   cover></v-img>
               </v-col>
-              <v-spacer />
+              <v-col cols="12" md="2" v-if="!inq.imgUrl">
+                <v-img
+                  style="border-radius: 30px"
+                  class="ma-1"
+                  src="@/assets/images/profile/profileImage.jpg"
+                  aspect-ratio="1"
+                  cover />
+              </v-col>
               <!-- 정보 -->
-              <v-col cols="12" md="6">
+              <v-col cols="12" md="7">
                 <!-- 문의날짜 -->
                 <div class="ma-1">
                   <span class="pl-3 pr-3 secondary-color"> 문의 날짜 </span>
@@ -186,18 +185,18 @@
                   <span>{{ inq.day }} 일</span>
                 </div>
               </v-col>
-              <!-- 버튼 -->
-              <v-spacer />
-              <v-col align-self="center">
+              <!-- 문의 취소됨 표시-->
+              <v-col align-self="center" cols="12" md="2">
                 <div class="grey-little-light text-center mb-2">
                   <div>{{ formatDateTime(inq.invalidatedAt) }}</div>
                   <div>문의 취소됨</div>
                 </div>
               </v-col>
+              <!-- 버튼 -->
               <v-col cols="12" md="1" align-self="center">
                 <div
                   @click="clickDetail(inq.applicationId, inq.commisionId)"
-                  class="pd-5">
+                  class="ml-5 pl-5">
                   <font-awesome-icon
                     icon="fa-solid fa-chevron-right "
                     size="xl"
@@ -213,6 +212,7 @@
             </v-row>
           </v-container>
           <!-- rejected 탭이 열리면-->
+
           <v-container v-if="t === 'rejected'">
             <!-- 하나라도 있는 경우 -->
             <v-row
@@ -221,57 +221,64 @@
               :key="inq"
               class="list-box pa-2">
               <!-- (의뢰한)고객 이미지 -->
-              <v-col cols="12" md="2">
+              <v-col cols="12" md="2" v-if="inq.imgUrl">
                 <v-img
-                  class="ma-5"
+                  style="border-radius: 30px"
+                  class="ma-1"
                   :src="inq.imgUrl"
-                  height="100px"
-                  width="150px"
-                  aspect-ratio="4/3"
+                  aspect-ratio="1"
                   cover></v-img>
               </v-col>
-              <v-spacer />
+              <v-col cols="12" md="2" v-if="!inq.imgUrl">
+                <v-img
+                  style="border-radius: 30px"
+                  class="ma-1"
+                  src="@/assets/images/profile/profileImage.jpg"
+                  aspect-ratio="1"
+                  cover />
+              </v-col>
               <!-- 정보 -->
-              <v-col cols="12" md="6">
-                <div>
-                  <span class="pl-3 pr-3">
-                    <font-awesome-icon icon="fa-solid fa-user"
-                  /></span>
-                  <span class="pr-1">{{ inq.cusNick }}</span>
+              <v-col cols="12" md="7">
+                <!-- 문의날짜 -->
+                <div class="ma-1">
+                  <span class="pl-3 pr-3 secondary-color"> 문의 날짜 </span>
+                  <span class="pr-1">
+                    {{ formatDateTime(inq.inquiryCreatedAt) }}
+                  </span>
                 </div>
-                <div>
-                  <span class="pl-3 pr-3"
-                    ><font-awesome-icon icon="fa-solid fa-location-dot"
-                  /></span>
+                <!-- 고객 닉네임 -->
+                <div class="ma-1">
+                  <span class="pl-3 pr-3 secondary-color"> 문의 대상</span>
+                  <span class="pr-1">도그워커 {{ inq.dwNick }} </span>
+                </div>
+                <!-- 고객님 주소 -->
+                <div class="ma-1">
+                  <span class="pl-3 pr-3 grey-little-light">
+                    <font-awesome-icon icon="fa-solid fa-location-dot" />
+                  </span>
                   <span class="pr-1">{{ inq.addrState }}</span>
                   <span>{{ inq.addrTown }}</span>
                 </div>
-                <div>
-                  <span class="pl-3 pr-3">
+                <div class="ma-1">
+                  <span class="pl-3 pr-3 grey-little-light">
                     <font-awesome-icon icon="fa-solid fa-calendar-days" />
                   </span>
                   <span class="pr-1">{{ inq.month }} 월</span>
                   <span>{{ inq.day }} 일</span>
                 </div>
-                <div>
-                  <span class="pl-3 pr-3 hightlight"> 문의날짜 </span>
-                  <span class="pr-1">
-                    {{ formatDateTime(inq.inquiryCreatedAt) }}
-                  </span>
-                </div>
               </v-col>
-              <!-- 버튼 -->
-              <v-spacer />
-              <v-col align-self="center">
+              <!-- 문의 거절됨 표시 -->
+              <v-col align-self="center" cols="12" md="2">
                 <div class="grey-little-light text-center mb-2">
                   <div>{{ formatDateTime(inq.invalidatedAt) }}</div>
                   <div>문의 거절됨</div>
                 </div>
               </v-col>
+              <!-- 버튼 -->
               <v-col cols="12" md="1" align-self="center">
                 <div
                   @click="clickDetail(inq.applicationId, inq.commisionId)"
-                  class="pd-5">
+                  class="ml-5 pl-5">
                   <font-awesome-icon
                     icon="fa-solid fa-chevron-right "
                     size="xl"

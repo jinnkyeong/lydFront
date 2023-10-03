@@ -13,7 +13,7 @@
     <v-spacer />
   </v-row>
   <!-- 카테고리 -->
-  <v-row style="height: 180px"></v-row>
+  <v-spacer style="height: 180px" />
   <v-row>
     <!-- <v-spacer /> -->
     <!-- <v-col cols="12" md="6"> -->

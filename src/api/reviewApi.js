@@ -67,6 +67,12 @@ export default {
             url :`/api/open/childComments/${ancestorId}/${reviewId}`,
         });
     },
+    getGoodReviews: function(ancestorId,reviewId){
+        return api({
+            method : 'get',
+            url :`/api/open/reviews/good`,
+        });
+    },
     
 
 } 

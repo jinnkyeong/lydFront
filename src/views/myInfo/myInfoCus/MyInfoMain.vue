@@ -1,13 +1,12 @@
 <template>
   <v-container>
     <v-row>
-      <v-spacer />
-      <v-col cols="12" md="8">
+      <v-col cols="12" md="11">
         <v-container>
-          <v-row style="height: 120px"></v-row>
+          <v-row style="height: 50px"></v-row>
           <!-- title -->
           <v-row>
-            <div class="title">기본정보</div>
+            <div class="title">기본정보 / 보안</div>
           </v-row>
           <!-- avartar -->
           <v-row justify="center" class="ma-10">
@@ -38,23 +37,19 @@
             </v-container>
           </v-row>
           <!-- email -->
-          <v-row>
+          <v-row v-if="$store.state.login.accountType == 'EMAIL'">
             <v-container>
               <v-row class="mt-16" no-gutters>
                 <v-col cols="12" md="11">
-                  <v-field-label ref_for="info.email">이메일</v-field-label>
+                  <v-field-label ref_for="info.email">
+                    <span> 이메일 </span>
+                  </v-field-label>
                   <v-text-field
                     :model-value="info.email"
                     variant="underlined"
                     readonly></v-text-field>
                 </v-col>
-                <v-col align-self="center" cols="12" md="1">
-                  <font-awesome-icon
-                    @click="modEmail"
-                    icon="fa-solid fa-chevron-right"
-                    size="2xl"
-                    class="mb-5 left-modify" />
-                </v-col>
+                <v-col align-self="center" cols="12" md="1"> </v-col>
               </v-row>
             </v-container>
           </v-row>
@@ -81,10 +76,7 @@
               </v-row>
             </v-container>
           </v-row>
-          <!-- passed
-          <v-row>
-            <div class="highlight">도그워커 합격여부 확인</div>
-          </v-row> -->
+
           <!-- title -->
           <v-row class="mt-16 pt-16">
             <div class="title">보안</div>
@@ -93,13 +85,12 @@
           <v-row class="mt-16">
             <v-col cols="12" md="4">
               <span class="ma-3">비밀번호 변경</span>
-              <span>
-                <font-awesome-icon icon="fa-solid fa-key" size="lg" />
-              </span>
             </v-col>
             <v-spacer />
-            <v-col cols="12" md="2">
-              <v-btn @click="modPwd">변경</v-btn>
+            <v-col cols="12" md="1">
+              <span class="link grey" @click="modPwd">
+                <font-awesome-icon icon="fa-solid fa-key" size="xl" />
+              </span>
             </v-col>
           </v-row>
           <v-row style="height: 120px"></v-row>
@@ -143,8 +134,14 @@ export default {
       this.$router.push('/cusInfo/cusInfoMod');
     },
     modEmail() {},
-    modPhone() {},
-    modPwd() {},
+    modPhone() {
+      this.$store.commit('setOpen', true);
+      this.$router.push('/cusInfo/changePhone');
+    },
+    modPwd() {
+      this.$store.commit('setOpen', true);
+      this.$router.push('/cusInfo/changePwd');
+    },
   },
 };
 </script>

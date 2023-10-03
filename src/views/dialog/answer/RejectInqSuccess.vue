@@ -13,22 +13,25 @@
       <v-card-text>
         <v-row no-gutters class="pa-3">
           <div>예약 정보는 ‘내 정보 - 예약 내역’에서 확인할</div>
-        </v-row>
-        <v-row no-gutters class="pa-3">
           <div>수 있습니다.</div>
         </v-row>
       </v-card-text>
-      <v-card-actions class="pt-5">
+      <div class="pt-10">
         <v-row justify="center" class="text-center">
           <v-col cols="12" md="4" align-self="center">
-            <v-btn @click="goToMain">메인으로</v-btn>
+            <v-btn @click="goToMain" color="grey">
+              <span class="white text-regular">메인으로</span>
+            </v-btn>
           </v-col>
           <v-spacer />
           <v-col cols="12" md="4" align-self="center">
-            <v-btn @click="goToMyReserv">예약 내역으로</v-btn>
+            <v-btn @click="goToMyReserv" color="primary">
+              <span class="white text-regular">예약내역으로</span>
+            </v-btn>
           </v-col>
         </v-row>
-      </v-card-actions>
+        <v-spacer style="height: 50px" />
+      </div>
     </v-card>
   </v-dialog>
 </template>

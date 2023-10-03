@@ -8,39 +8,43 @@
     <v-card class="pa-10">
       <div>
         <h3 class="pa-6">
-          도그워커
-          <span class="highlight">{{ $route.query.dogwalkerNick }}</span
-          >에게 산책 문의를 완료했습니다.
+          <div>
+            도그워커
+            <span class="primary-color">{{ $route.query.dogwalkerNick }}</span>
+            에게
+          </div>
+          <div>산책 문의를 완료했습니다.</div>
         </h3>
       </div>
 
       <v-card-text>
-        <v-row no-gutters class="pa-3">
-          <div>
-            도그워커가 <span class="highlight">의뢰를 수락</span>하는 때에
-            예약이 완료됩니다.
-          </div>
-        </v-row>
-        <v-row no-gutters class="pa-3">
-          <div>의뢰의 상태정보는 ‘내 정보 - 내 문의 내역’에서 확인할</div>
-        </v-row>
-        <v-row no-gutters class="pa-3">
-          <div>수 있습니다.</div>
+        <v-row no-gutters>
+          <v-col cols="12" md="12">
+            <div>
+              도그워커가 <span class="secondary-color">의뢰를 수락</span>하는
+              때에 예약이 완료됩니다.
+            </div>
+            <div>
+              의뢰의 상태정보는 ‘내 정보 - 내 문의 내역’에서 확인할 수 있습니다.
+            </div>
+          </v-col>
         </v-row>
       </v-card-text>
-      <div class="pt-5">
+      <div class="mt-10">
         <v-row justify="center" class="text-center">
+          <v-spacer />
           <v-col cols="12" md="4" align-self="center">
-            <v-btn @click="goToMain" color="grey"
-              ><span class="pl-3 pr-3">메인으로</span></v-btn
-            >
+            <v-btn @click="goToMain" size="large" color="grey">
+              <span class="pl-3 pr-3 white text-regular">메인으로</span>
+            </v-btn>
           </v-col>
           <v-spacer />
           <v-col cols="12" md="4" align-self="center">
-            <v-btn @click="goToMyInquiry" color="primary"
-              >내 문의 내역으로</v-btn
-            >
+            <v-btn @click="goToMyInquiry" size="large" color="primary">
+              <span class="pl-3 pr-3 white text-regular">문의 내역으로</span>
+            </v-btn>
           </v-col>
+          <v-spacer />
         </v-row>
         <v-spacer style="height: 20px" />
       </div>

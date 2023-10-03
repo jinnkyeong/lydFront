@@ -306,5 +306,53 @@ export default {
       default:
         break;              
     }
-  }
+  },
+  dogAggrConvert(aggrCode) {
+    switch (aggrCode) {
+      case 1:
+        return '매우 양호';
+      case 2:
+        return '약간 양호';
+      case 3:
+        return '보통';
+      case 4:
+        return '약간 심함';
+      case 5:
+        return '매우 심함';
+      default:
+        return aggrCode;
+    }
+  },
+  dogHealthConvert(healthCode) {
+    switch (healthCode) {
+      case 1:
+        return '매우 나쁨';
+      case 2:
+        return '약간 나쁨';
+      case 3:
+        return '보통';
+      case 4:
+        return '약간 좋음';
+      case 5:
+        return '매우 좋음';
+      default:
+        return healthCode;
+    }
+  },
+  dogTypeConvert(dogTypeCode) {
+    if (dogTypeCode) {
+      switch (dogTypeCode) {
+        case 1:
+          return '소형견';
+        case 2:
+          return '중형견';
+        case 3:
+          return '대형견';
+        case 4:
+          return '초대형견';
+        default:
+          return dogTypeCode;
+      }
+    }
+  },
 }

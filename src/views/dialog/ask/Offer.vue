@@ -172,8 +172,11 @@ export default {
         .then((res) => {
           console.log('제안성공 ', res.data);
           // 문의 완료 창으로
-          this.$router.push('offerSuccess', {
-            customerNick: this.comInfo.nick,
+          this.$router.push({
+            name: 'offerSuccess',
+            query: {
+              customerNick: this.comInfo.nick,
+            },
           });
         })
         .catch((e) => {

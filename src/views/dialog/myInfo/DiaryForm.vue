@@ -1,5 +1,5 @@
 <template>
-  <v-dialog class="dialog" v-model="$store.state.just_state.open" width="800">
+  <v-dialog class="dialog" v-model="$store.state.just_state.open" width="1200">
     <v-card color="grey_lighter">
       <v-row class="mt-16 mb-16">
         <v-spacer />
@@ -9,7 +9,7 @@
               <!-- 예약 정보 요약 -->
               <v-col cols="12" md="8" class="square-box-primary pa-5">
                 <v-row class="pa-4">
-                  <v-col>
+                  <v-col cols="12" md="4">
                     <v-img
                       :src="info.cusImgUrl"
                       aspect-ratio="1"
@@ -17,26 +17,28 @@
                       class="pa-5"
                       cover></v-img>
                   </v-col>
-                  <v-col>
+                  <v-col cols="12" md="8">
                     <v-row class="ml-2 mt-3 mb-3">
-                      <span>
+                      <span class="mr-1">
                         [{{ comDto.addrState }} {{ comDto.addrTown }}]
                       </span>
                       <span>{{ comDto.breed }}/</span>
-                      <span>{{ comDto.dogAggr }}/</span>
-                      <span>{{ comDto.dogHealth }}</span>
+                      <span>공격성 {{ dogAggrConvert(comDto.dogAggr) }}/</span>
+                      <span>건강 {{ dogHealthConvert(comDto.dogHealth) }}</span>
                     </v-row>
                     <v-row class="ml-2 mt-3 mb-1">
-                      <span> {{ comDto.month }}월 {{ comDto.day }}일 </span>
+                      <span>
+                        2023년 {{ comDto.month }}월 {{ comDto.day }}일
+                      </span>
                     </v-row>
                     <v-row class="ml-2 mt-1 mb-1">
-                      <span class="mr-3">시작</span>
+                      <span class="mr-3 secondary-color">시작</span>
                       <span>
                         {{ formatTime(comDto.startHour, comDto.startMin) }}
                       </span>
                     </v-row>
                     <v-row class="ml-2 mt-1 mb-1">
-                      <span class="mr-3">종료</span>
+                      <span class="mr-3 secondary-color">종료</span>
                       <span>
                         {{ formatTime(comDto.endHour, comDto.endMin) }}
                       </span>
@@ -47,18 +49,22 @@
               <v-spacer />
               <!-- 산책 시작,종료 버튼 -->
               <v-col col="12" md="3" align-self="center">
-                <div class="ma-2">
-                  <span v-if="info.startDt === null && info.endDt === null">
+                <div class="ma-2 pl-2">
+                  <span
+                    class="secondary-color"
+                    v-if="info.startDt === null && info.endDt === null">
                     <div>산책 시작 시</div>
                     <div>클릭해주세요</div>
                   </span>
-                  <span v-if="info.startDt != null && info.endDt === null">
+                  <span
+                    class="secondary-color"
+                    v-if="info.startDt != null && info.endDt === null">
                     <div>산책 완료 시</div>
                     <div>클릭해주세요</div>
                   </span>
                   <span
                     v-if="info.startDt != null && info.endDt != null"
-                    class="title-grey">
+                    class="secondary-color semi-bold">
                     산책완료
                   </span>
                 </div>
@@ -66,16 +72,14 @@
                   <v-btn
                     v-if="info.startDt === null && info.endDt === null"
                     @click="begin"
-                    variant="tonal"
                     color="secondary">
-                    산책시작
+                    <span class="white text-regular">산책시작</span>
                   </v-btn>
                   <v-btn
                     v-if="info.startDt != null && info.endDt === null"
                     @click="finish"
-                    variant="tonal"
                     color="secondary">
-                    산책완료
+                    <span class="white text-regular">산책완료</span>
                   </v-btn>
                 </div>
               </v-col>
@@ -506,14 +510,10 @@
               </v-row>
             </v-container>
             <!-- 제출버튼 -->
-            <v-row>
-              <v-spacer />
-              <v-col cols="12" md="4">
-                <v-btn block @click="submit" color="primary">
-                  <span class="white pa-10"> 산책일기 저장 </span>
-                </v-btn>
-              </v-col>
-              <v-spacer />
+            <v-row justify="center">
+              <v-btn @click="submit" color="primary" size="large">
+                <span class="white text-regular"> 산책일기 저장 </span>
+              </v-btn>
             </v-row>
           </v-container>
         </v-col>
@@ -808,6 +808,12 @@ export default {
     },
     formatTime(h, m) {
       return format.formatTime(h, m);
+    },
+    dogAggrConvert(aggr) {
+      return format.dogAggrConvert(aggr);
+    },
+    dogHealthConvert(health) {
+      return format.dogHealthConvert(health);
     },
   },
 };

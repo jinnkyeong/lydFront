@@ -91,7 +91,7 @@
                 @click="clickWrite"
                 color="primary"
                 size="large">
-                <span class="white"> 작성하기 </span>
+                <span class="white text-regular"> 작성하기 </span>
               </v-btn>
             </v-row>
           </v-container>

@@ -6,7 +6,8 @@
         <v-col cols="12" md="10">
           <v-container>
             <!-- 예약 정보 요약 -->
-            <v-row class="mb-10">
+
+            <v-row>
               <v-col>
                 <v-container>
                   <!-- <v-divider thickness="3" /> -->
@@ -52,10 +53,17 @@
                 </v-container>
               </v-col>
             </v-row>
-
+            <!-- 최종수정일 -->
+            <v-row no-gutters justify="end">
+              <div class="text-micro grey-little-light mb-10">
+                최종수정 {{ finalUpdateDt }}
+              </div>
+            </v-row>
             <!-- 요구사항 -->
             <v-row>
-              <div class="ma-3 secondary-color semi-bold">기본 수행사항</div>
+              <div class="mb-5 ml-5 mr-5 mt-16 secondary-color semi-bold">
+                기본 수행사항
+              </div>
             </v-row>
 
             <v-row>
@@ -96,6 +104,11 @@
                   </v-card>
                 </v-timeline-item>
               </v-timeline>
+              <v-container v-if="basicNullMsg">
+                <v-row justify="center">
+                  <div class="grey">{{ basicNullMsg }}</div>
+                </v-row>
+              </v-container>
             </v-row>
             <!-- 요청사항 -->
             <v-row>
@@ -137,6 +150,11 @@
                   </v-card>
                 </v-timeline-item>
               </v-timeline>
+              <v-container v-if="cusNullMsg">
+                <v-row justify="center">
+                  <div class="grey">{{ cusNullMsg }}</div>
+                </v-row>
+              </v-container>
             </v-row>
             <v-spacer style="height: 100px" />
 
@@ -176,6 +194,7 @@ export default {
       .then((res) => {
         this.info = res.data;
         console.log('created : ', this.info);
+        // 예약자 이미지
         const dirName = this.info.dwDirName;
         const fileName = this.info.dwFileName;
         const extension = this.info.dwExtension;
@@ -185,6 +204,14 @@ export default {
           const imgUrl = `${urlfront}/${dirName}/${fileName}.${extension}`;
 
           this.info.imgUrl = imgUrl;
+        }
+        // 수정일자
+        if (this.info.diaryUpdatedAt) {
+          this.finalUpdateDt = this.formatDateTime(this.info.diaryUpdatedAt);
+        } else if (this.info.diaryCreatedAt) {
+          this.finalUpdateDt = this.formatDateTime(this.info.diaryCreatedAt);
+        } else {
+          console.log('diaryUpdatedAt,diaryCreatedAt null!!');
         }
       })
       .catch((e) => {
@@ -207,6 +234,9 @@ export default {
         //     this.fourthList.push(res.data[i]);
         //   }
         // }
+        if (this.basicReqList.length < 1) {
+          this.basicNullMsg = '해당 수행사항은 작성 전입니다';
+        }
         // 이미지 출력
         for (let i = 0; i < this.basicReqList.length; i++) {
           const dirName = this.basicReqList[i].dirName;
@@ -216,7 +246,6 @@ export default {
             const urlfront =
               'https://lyd-bucket1.s3.ap-northeast-2.amazonaws.com';
             const imgUrl = `${urlfront}/${dirName}/${fileName}.${extension}`;
-
             this.basicReqList[i].imgUrl = imgUrl;
           }
         }
@@ -230,6 +259,9 @@ export default {
       .then((res) => {
         console.log('getCusRequiresByReservId : ', res.data);
         this.cusReqList = res.data;
+        if (this.cusReqList.length < 1) {
+          this.cusNullMsg = '해당 수행사항은 작성 전입니다';
+        }
         // 이미지 출력
         for (let i = 0; i < this.cusReqList.length; i++) {
           const dirName = this.cusReqList[i].dirName;
@@ -272,6 +304,9 @@ export default {
       //   1:url1,
       //   2:url2
       // }
+      finalUpdateDt: '',
+      basicNullMsg: '',
+      cusNullMsg: '',
     };
   },
   methods: {
@@ -302,6 +337,11 @@ export default {
     formatDate(dt) {
       if (dt) {
         return format.formatDate(dt);
+      }
+    },
+    formatDateTime(dt) {
+      if (dt) {
+        return format.formatDateTime(dt);
       }
     },
   },

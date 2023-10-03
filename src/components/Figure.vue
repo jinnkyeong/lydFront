@@ -2,8 +2,9 @@
   <v-card class="mx-auto" width="300" height="400">
     <v-container>
       <div class="text-micro grey-little-light">
-        <span class="mr-1">조회</span>
-        <span>{{ appl.view }}</span>
+        <span v-if="appl.view" class="mr-1">조회</span>
+        <span v-if="appl.view">{{ appl.view }}</span>
+        <span v-if="!appl.view" style="height: 23px" />
       </div>
       <!-- 이미지 -->
       <v-row no-gutters="" class="ma-1 mb-3">
@@ -31,7 +32,7 @@
           <font-awesome-icon icon="fa-solid fa-user" />
         </v-col>
         <v-col cols="12" md="9">
-          {{ appl.name }} / {{ appl.gen === 'm' ? '남' : '여' }} /
+          {{ appl.nick }} / {{ appl.gen === 'm' ? '남' : '여' }} /
           {{ getAge(appl.birthYear) }} 세
         </v-col>
       </v-row>

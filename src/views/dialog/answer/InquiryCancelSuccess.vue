@@ -21,7 +21,9 @@
       <v-row justify="center" class="pt-5 text-center">
         <v-spacer />
         <v-col cols="12" md="4" align-self="center">
-          <v-btn @click="close" color="grey" block>확인</v-btn>
+          <v-btn @click="close" color="grey" block>
+            <span class="text-regular white">확인</span>
+          </v-btn>
         </v-col>
         <v-spacer />
       </v-row>
@@ -40,6 +42,7 @@ export default {
   methods: {
     close() {
       this.$store.commit('setOpen', false); // 창 닫기
+      this.$router.go(0);
     },
   },
 };

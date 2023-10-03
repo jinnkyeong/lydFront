@@ -17,19 +17,19 @@
           <!-- tab -->
           <v-tabs v-model="tab" color="primary" align-tabs="center" fixed-tabs>
             <v-tab :value="'canceled'">
-              <p>취소 완료</p>
+              <span class="text-regular semi-bold">취소 완료</span>
             </v-tab>
             <v-tab :value="'reserved'">
-              <p>예약 완료</p>
+              <span class="text-regular semi-bold">예약 완료</span>
             </v-tab>
             <v-tab :value="'priced'">
-              <p>결제 완료</p>
+              <span class="text-regular semi-bold">결제 완료</span>
             </v-tab>
             <v-tab :value="'walking'">
-              <p>산책 중</p>
+              <span class="text-regular semi-bold">산책 중</span>
             </v-tab>
             <v-tab :value="'walked'">
-              <p>산책 완료</p>
+              <span class="text-regular semi-bold">산책 완료</span>
             </v-tab>
           </v-tabs>
 
@@ -46,7 +46,7 @@
                     class="list-box"
                     style="height: 300px">
                     <v-col align-self="center" cols="12" md="5">
-                      <div>
+                      <div class="text-regular grey">
                         {{ message }}
                       </div>
                     </v-col>
@@ -65,12 +65,12 @@
                       <v-img
                         v-if="rs.imgUrl"
                         :src="rs.imgUrl"
-                        height="80px"
+                        height="100px"
                         cover></v-img>
                       <v-img
                         v-if="!rs.imgUrl"
                         src="@/assets/images/profile/profileImage.jpg"
-                        height="80px"
+                        height="100px"
                         aspect-ratio="1"
                         cover />
                     </v-col>
@@ -155,7 +155,7 @@
                     class="list-box"
                     style="height: 300px">
                     <v-col align-self="center" cols="12" md="5">
-                      <div>
+                      <div class="text-regular grey">
                         {{ message }}
                       </div>
                     </v-col>
@@ -174,12 +174,12 @@
                       <v-img
                         v-if="rs.imgUrl"
                         :src="rs.imgUrl"
-                        height="80px"
+                        height="100px"
                         cover></v-img>
                       <v-img
                         v-if="!rs.imgUrl"
                         :src="rs.imgUrl"
-                        height="80px"
+                        height="100px"
                         cover></v-img>
                     </v-col>
                     <v-spacer />
@@ -263,7 +263,7 @@
                     class="list-box"
                     style="height: 300px">
                     <v-col align-self="center" cols="12" md="5">
-                      <div>
+                      <div class="text-regular grey">
                         {{ message }}
                       </div>
                     </v-col>
@@ -282,12 +282,12 @@
                       <v-img
                         v-if="rs.imgUrl"
                         :src="rs.imgUrl"
-                        height="80px"
+                        height="100px"
                         cover></v-img>
                       <v-img
                         v-if="!rs.imgUrl"
                         src="@/assets/images/profile/profileImage.jpg"
-                        height="80px"
+                        height="100px"
                         cover></v-img>
                     </v-col>
                     <v-spacer />
@@ -371,7 +371,7 @@
                     class="list-box"
                     style="height: 300px">
                     <v-col align-self="center" cols="12" md="5">
-                      <div>
+                      <div class="text-regular grey">
                         {{ message }}
                       </div>
                     </v-col>
@@ -390,12 +390,12 @@
                       <v-img
                         v-if="rs.imgUrl"
                         :src="rs.imgUrl"
-                        height="80px"
+                        height="100px"
                         cover></v-img>
                       <v-img
                         v-if="!rs.imgUrl"
                         :src="rs.imgUrl"
-                        height="80px"
+                        height="100px"
                         cover></v-img>
                     </v-col>
                     <v-spacer />
@@ -479,7 +479,7 @@
                     class="list-box"
                     style="height: 300px">
                     <v-col align-self="center" cols="12" md="5">
-                      <div>
+                      <div class="text-regular grey">
                         {{ message }}
                       </div>
                     </v-col>
@@ -498,12 +498,12 @@
                       <v-img
                         v-if="rs.imgUrl"
                         :src="rs.imgUrl"
-                        height="80px"
+                        height="100px"
                         cover></v-img>
                       <v-img
                         v-if="!rs.imgUrl"
                         src="@/assets/images/profile/profileImage.jpg"
-                        height="80px"
+                        height="100px"
                         cover></v-img>
                     </v-col>
                     <v-spacer />

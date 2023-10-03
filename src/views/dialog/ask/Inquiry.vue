@@ -178,9 +178,13 @@ export default {
         .postInquiry(this.datas)
         .then((res) => {
           console.log('문의성공 ', res.data);
+          // console.log('nick ? ', this.appInfo.nick);
           // 문의 완료 창으로
-          this.$router.push('inquirySuccess', {
-            dogwalkerNick: this.appInfo.nick,
+          this.$router.push({
+            name: 'inquirySuccess',
+            query: {
+              dogwalkerNick: this.appInfo.nick,
+            },
           });
         })
         .catch((e) => {

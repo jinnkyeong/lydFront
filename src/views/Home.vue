@@ -261,23 +261,113 @@
     </v-row>
   </v-container>
   <!-- 광고3 -->
-  <!-- <v-container>
-    <v-row>
-      <h3>믿고 맡길 수 있는 도그워커</h3>
+  <v-container
+    style="height: 1000px; background-color: #a0d8b3"
+    fluid
+    class="ma-0 pa-0">
+    <v-spacer />
+    <v-row class="ma-5">
+      <h1 class="grey">믿고 맡길 수 있는 도그워커</h1>
     </v-row>
     <v-row>
-      <v-col>
-        <div>
-          <v-row>
-            <font-awesome-icon icon="fa-solid fa-address-card" size="2xl" />
+      <v-spacer />
+      <v-col cols="12" md="3">
+        <v-container style="border-radius: 30px">
+          <v-row justify="center" class="ma-2">
+            <div class="wrapper">
+              <div class="circle">
+                <!-- <v-img
+                  src="@/assets/images/home/certs.png"
+                  width="300px"
+                  height="300px" /> -->
+              </div>
+            </div>
           </v-row>
-        </div>
+          <v-row justify="center" class="ma-2">
+            <div class="title">철저한 신원 검증</div>
+          </v-row>
+          <v-divider thickness="2" />
+          <v-row justify="center" class="ma-2">
+            <div>
+              <div class="text-regular">주민등록본 등의 공적 서류로</div>
+              <div class="text-regular">철저한 신원검증이 완료된 후에야</div>
+              <div class="text-regular">도그워커로 보호자를 만나게 됩니다</div>
+            </div>
+          </v-row>
+        </v-container>
+      </v-col>
+      <v-spacer />
+      <v-col cols="12" md="3">
+        <v-container style="border-radius: 30px">
+          <v-row justify="center" class="ma-2">
+            <v-img
+              src="@/assets/images/home/study.png"
+              width="300px"
+              height="300px" />
+          </v-row>
+          <v-row justify="center" class="ma-2">
+            <div class="title">산책 교육 이수</div>
+          </v-row>
+          <v-divider thickness="2" />
+          <v-row justify="center" class="ma-2">
+            <div>
+              <div class="text-regular">신원이 검증된 도그워커들에 대하여</div>
+              <div class="text-regular">
+                산책에 필요한 이론을 온라인으로 교육하고
+              </div>
+              <div class="text-regular">실습과정을 거쳐 테스트를 통과한</div>
+              <div class="text-regular">
+                지원자만이 도그워커가 될 수 있습니다.
+              </div>
+            </div>
+          </v-row>
+        </v-container>
+      </v-col>
+      <v-spacer />
+      <v-col cols="12" md="3">
+        <v-container style="border-radius: 30px">
+          <v-row justify="center" class="ma-2">
+            <v-img
+              src="@/assets/images/home/program.png"
+              width="300px"
+              height="300px" />
+          </v-row>
+          <v-row justify="center" class="ma-2">
+            <div class="title">안전보상 프로그램</div>
+          </v-row>
+          <v-divider thickness="2" />
+          <v-row justify="center" class="ma-2">
+            <div>
+              <div class="text-regular">
+                예상치못하게 발생하는 사고를 대비하여
+              </div>
+              <div class="text-regular">
+                안전보상 프로그램을 운영하고 있습니다.
+              </div>
+            </div>
+          </v-row>
+        </v-container>
+      </v-col>
+
+      <v-spacer />
+    </v-row>
+  </v-container>
+  <v-container fluid class="ma-0 pa-0 back-grey-light-square">
+    <v-spacer style="height: 100px" />
+    <v-row class="ml-15 mr-5 mb-5">
+      <h2 class="grey">
+        <div>산책 대행 서비스에 만족한</div>
+        <div>이용후기를 확인해보세요</div>
+      </h2>
+    </v-row>
+    <v-spacer style="height: 50px" />
+    <v-row justify="center">
+      <v-col cols="12" md="6" v-for="r in goodReviews" :key="r">
+        <GoodReview :review="r" />
       </v-col>
     </v-row>
-  </v-container> -->
-  <v-row v-for="comment in list" :key="comment">
-    <DropMain :comment="comment" />
-  </v-row>
+    <v-spacer style="height: 150px" />
+  </v-container>
 </template>
 
 <script>
@@ -289,6 +379,7 @@ import Figure from '@/components/Figure';
 
 import DropMain from '@/components/DropMain';
 import reviewApi from '@/api/reviewApi';
+import GoodReview from '@/components/GoodReview.vue';
 
 export default {
   name: 'App',
@@ -296,13 +387,14 @@ export default {
   components: {
     Figure,
     DropMain,
+    GoodReview,
   },
 
   created() {
     // kakao login code
     if (this.$route.query.code) {
-      console.log('code로 login ?? : ', this.$route.query.code);
-      this.$store.dispatch('doSocialLogin', this.$route.query.code);
+      console.log('kakaologin code : ', this.$route.query.code);
+      this.$store.dispatch('doSocialLogin', this.$route.query.code); // 로그인 처리
     }
 
     if (
@@ -310,7 +402,7 @@ export default {
       !this.$store.state.login.dwId &&
       !this.$store.state.login.cusId
     ) {
-      this.$store.dispatch('setUserIdAfterSL');
+      this.$store.dispatch('setUserIdAfterSL'); // 소셜로그인 이후 state에 현재 유저정보 올리기
     }
 
     // 소켓 연결
@@ -347,27 +439,36 @@ export default {
         });
     }
 
-    // temp
-
-    // reviewApi
-    //   .getCommentsByReviewId(8)
-    //   .then((res) => {
-    //     this.list = res.data;
-    //     console.log('getCommentsByReviewId', this.list);
-    //   })
-    //   .catch((e) => {
-    //     console.log(e);
-    //   });
+    // 리뷰
+    reviewApi
+      .getGoodReviews()
+      .then((res) => {
+        console.log('getGoodReviews : ', res.data);
+        this.goodReviews = res.data;
+        for (let i = 0; i < this.goodReviews.length; i++) {
+          const dirName = this.goodReviews[i].dirName;
+          const fileName = this.goodReviews[i].fileName;
+          const extension = this.goodReviews[i].extension;
+          if (dirName && fileName && extension) {
+            const urlfront =
+              'https://lyd-bucket1.s3.ap-northeast-2.amazonaws.com';
+            const imgUrl = `${urlfront}/${dirName}/${fileName}.${extension}`;
+            this.goodReviews[i].imgUrl = imgUrl;
+          }
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   },
 
   data: () => ({
     userName: '',
     message: '',
     recvList: [],
-    // list: [],
-
     // 인기 도그워커
     apps: [],
+    goodReviews: [],
   }),
   methods: {
     // 선택 시 상세보기
@@ -469,5 +570,11 @@ export default {
   padding-top: 8px;
   margin-right: 12px;
   color: var(--color-primary);
+}
+.bg-green {
+  /* background: url('@/assets/images/home/background_green.jpg'); */
+  /* background-size: cover; */
+  background-color: #a0d8b3;
+  height: 100vh;
 }
 </style>

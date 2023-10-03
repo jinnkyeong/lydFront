@@ -19,11 +19,15 @@
       <div class="pt-5">
         <v-row justify="center" class="text-center">
           <v-col cols="12" md="4" align-self="center">
-            <v-btn @click="goToMain" color="grey">메인으로</v-btn>
+            <v-btn @click="goToMain" color="grey">
+              <span class="text-regular white">메인으로</span>
+            </v-btn>
           </v-col>
           <v-spacer />
           <v-col cols="12" md="4" align-self="center">
-            <v-btn @click="goToMyReserv" color="primary">예약 내역으로</v-btn>
+            <v-btn @click="goToMyReserv" color="primary">
+              <span class="text-regular white">예약내역으로</span>
+            </v-btn>
           </v-col>
         </v-row>
       </div>

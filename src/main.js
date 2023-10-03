@@ -16,16 +16,17 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 */
 import { faXmark, faChevronLeft, faUser, faLocationDot, 
   faCertificate,faVenusMars,faSignal, faMoneyBill,faCalendarDays, faChevronRight,
-   faDog, faArrowUp, faArrowDown, faMagnifyingGlass, faMinus, faCheck, faQuoteLeft, 
+   faDog, faArrowUp, faArrowDown,faArrowRight, faMagnifyingGlass, faMinus, faCheck, faQuoteLeft, 
    faKey,
-   faClock, faTemperatureThreeQuarters, faAddressCard, faMessage, faN, faG, faEnvelope, faEye, faChevronDown,faChevronUp, faTrashCan, faCircleCheck} 
+   faClock, faTemperatureThreeQuarters, faAddressCard, faMessage, faN, faG, faEnvelope, faEye, faChevronDown,faChevronUp, faTrashCan, faCircleCheck, faHandshake} 
   from '@fortawesome/free-solid-svg-icons'
 /* 위에서 import한 아이콘들을 Core library에 등록 */
 library.add(faXmark, faChevronLeft, faUser, faLocationDot, 
   faCertificate, faVenusMars,faSignal, faMoneyBill,faCalendarDays, faChevronRight,
-  faDog, faArrowUp,faArrowDown, faMagnifyingGlass, faMinus, faCheck, faQuoteLeft,
-  faKey, faClock, faTemperatureThreeQuarters, faAddressCard, faMessage, faN, faG, faEnvelope,faEye, faChevronDown, faChevronUp, faTrashCan,faCircleCheck
-)
+  faDog, faArrowUp,faArrowDown,faArrowRight, faMagnifyingGlass, faMinus, faCheck, faQuoteLeft,
+  faKey, faClock, faTemperatureThreeQuarters, faAddressCard, faMessage, faN, faG, faEnvelope,faEye, faChevronDown, faChevronUp, faTrashCan,faCircleCheck,
+  faHandshake
+  )
 
 
   window.Kakao.init("1531269640c1a1ec1d211656da4aa0ff");  //rest api key

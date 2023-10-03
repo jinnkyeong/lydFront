@@ -220,10 +220,11 @@ export default {
     },
 
     // 제안 수락 -> 예약처리(1->2)
-    clickAccept(offerId, comId) {
+    clickAccept(offerId, appId, comId) {
       // 제안 수락 창 -> 변경 여부 결정
       // 그냥 수락하면 예약 생성
       // 변경하는 경우 새로운 청약이 됨
+      this.$store.commit('setAppId', appId); // 변경 선택 시 필요
       this.$store.commit('setComId', comId); // 변경 선택 시 필요
       this.$store.commit('setOfferId', offerId);
       this.$store.commit('setOpen', true);

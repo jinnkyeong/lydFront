@@ -13,23 +13,31 @@
       </v-card-title>
 
       <v-card-text>
-        <div class="desc ma-1">한번 거절된 문의를 되돌릴 수 없습니다.</div>
+        <v-row justify="center">
+          <div class="desc">한번 거절된 문의를 되돌릴 수 없습니다.</div>
+        </v-row>
       </v-card-text>
 
-      <v-card-actions class="ma-5">
+      <div class="ma-5">
         <v-row justify="center" class="text-center">
-          <v-col cols="12" md="5" align-self="center">
-            <v-btn size="large" block @click="clickCancel" color="grey"
-              >취소</v-btn
+          <v-spacer />
+
+          <v-col cols="12" md="4" align-self="center">
+            <v-btn size="large" block @click="clickCancel" color="grey">
+              <span class="pl-3 pr-3 white text-regular"> 취소 </span></v-btn
             >
           </v-col>
-          <v-col cols="12" md="5" align-self="center">
-            <v-btn size="large" block @click="clickReject" color="primary"
-              >거절하기</v-btn
-            >
+          <v-spacer />
+
+          <v-col cols="12" md="4" align-self="center">
+            <v-btn size="large" block @click="clickReject" color="primary">
+              <span class="pl-3 pr-3 white text-regular"> 거절하기 </span>
+            </v-btn>
           </v-col>
+          <v-spacer />
         </v-row>
-      </v-card-actions>
+        <v-spacer style="height: 20px" />
+      </div>
     </v-card>
   </v-dialog>
 </template>

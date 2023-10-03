@@ -12,6 +12,7 @@ const state = {
   dwId:null,
   cusId:null,
   adminId:null,
+  accountType:'',
 
   // pop over menu 출력용
   usernick:'',
@@ -47,6 +48,9 @@ const mutations = {
   setCusId(state,newCusId){
         state.cusId = newCusId
     
+  },
+  setAccountType(state,type){
+    state.accountType = type
   },
 
 
@@ -113,6 +117,7 @@ const actions = {
             commit('setCusId', res.data.customerId) // 고객이면
             commit('setUsernick', res.data.usernick)
             commit('setGoalCnt', res.data.goalCnt)
+            commit('setAccountType', "EMAIL")
             const urlfront = 'https://lyd-bucket1.s3.ap-northeast-2.amazonaws.com';
             const imgUrl = `${urlfront}/${res.data.dirName}/${res.data.fileName}.${res.data.extension}`;
             commit('setUserImgUrl', imgUrl)
@@ -141,6 +146,7 @@ const actions = {
             commit('setCusId', res.data.customerId) // 고객이면
             commit('setUsernick', res.data.usernick)
             commit('setGoalCnt', res.data.goalCnt)
+            commit('setAccountType', "KAKAO")
             const urlfront = 'https://lyd-bucket1.s3.ap-northeast-2.amazonaws.com';
             const imgUrl = `${urlfront}/${res.data.dirName}/${res.data.fileName}.${res.data.extension}`;
             commit('setUserImgUrl', imgUrl)
@@ -168,6 +174,8 @@ const actions = {
       } else {
         commit('setCusId', res.data.customerId) // 고객이면
       }
+      router.push('/')
+
     })
     .catch((e)=>{
         console.log('실패 ',e)

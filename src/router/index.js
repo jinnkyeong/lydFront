@@ -586,6 +586,22 @@ const routes = [
                 path: '',
                 name: 'cusInfo',
                 component: () => import('@/views/myInfo/myInfoCus/MyInfoMain'),
+                children:[
+                    {
+                        path:'/cusInfo/changePwd',
+                        components:{
+                            default: () => import('@/views/myInfo/myInfoCus/MyInfoMain'),
+                            dialog: ()=> import('@/views/dialog/myInfo/ChangePwd')
+                        }
+                    },
+                    {
+                        path:'/cusInfo/changePhone',
+                        components:{
+                            default: () => import('@/views/myInfo/myInfoCus/MyInfoMain'),
+                            dialog: ()=> import('@/views/dialog/myInfo/ChangePhone')
+                        }
+                    }
+                ]
             },
             {
                 path: '/cusInfo/cusInfoMod',

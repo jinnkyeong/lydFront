@@ -15,286 +15,289 @@
             </div>
           </v-row>
         </v-container>
-        <v-row style="height: 100px" />
-        <!-- 제안 나열 -->
-        <v-container>
-          <!-- tab -->
-          <v-tabs
-            v-model="tab"
-            class="primary-color"
-            align-tabs="center"
-            fixed-tabs>
-            <v-tab :value="'waiting'">
-              <p>미수락 제안</p>
-            </v-tab>
-            <v-tab :value="'canceled'">
-              <p>취소된 제안</p>
-            </v-tab>
-            <v-tab :value="'rejected'">
-              <p>거절된 제안</p>
-            </v-tab>
-          </v-tabs>
-          <!-- tab 선택 시 출력될 window -->
-          <v-spacer style="height: 80px" />
-          <v-window v-model="tab">
-            <v-window-item v-for="t in tabList" :key="t" :value="t">
-              <!-- waiting 탭이 열리면-->
-              <v-container v-if="t === 'waiting'">
-                <!-- 하나라도 있는 경우 -->
-                <v-row
-                  justify="center"
-                  v-for="ofr in offerList"
-                  :key="ofr"
-                  class="list-box pa-2">
-                  <!-- (의뢰한)고객 이미지 -->
-                  <v-col cols="12" md="2">
-                    <v-img
-                      v-if="ofr.imgUrl"
-                      class="ma-5"
-                      :src="ofr.imgUrl"
-                      height="100px"
-                      width="150px"
-                      aspect-ratio="4/3"
-                      cover></v-img>
-                    <v-img
-                      v-if="!ofr.imgUrl"
-                      class="ma-5"
-                      src="@/assets/images/profile/profileImage.jpg"
-                      height="100px"
-                      width="150px"
-                      aspect-ratio="4/3"
-                      cover />
-                  </v-col>
-                  <v-spacer />
-                  <!-- 정보 -->
-                  <v-col cols="12" md="6">
-                    <!-- 제안날짜 -->
-                    <div class="ma-1">
-                      <span class="pl-3 pr-3 secondary-color highlight">
-                        제안 날짜
-                      </span>
-                      <span class="pr-1">
-                        {{ formatDateTime(ofr.offerCreatedAt) }}
-                      </span>
-                    </div>
-                    <!-- 고객 닉네임 -->
-                    <div class="ma-1">
-                      <span class="pl-3 pr-3 secondary-color"> 제안 대상</span>
-                      <span class="pr-1">{{ ofr.cusNick }} 고객님</span>
-                    </div>
-                    <!-- 고객님 주소 -->
-                    <div class="ma-1">
-                      <span class="pl-3 grey-little-light pr-3"
-                        ><font-awesome-icon icon="fa-solid fa-location-dot"
-                      /></span>
-                      <span class="pr-1">{{ ofr.addrState }}</span>
-                      <span>{{ ofr.addrTown }}</span>
-                    </div>
-                    <div class="ma-1">
-                      <span class="pl-3 grey-little-light pr-3">
-                        <font-awesome-icon icon="fa-solid fa-calendar-days" />
-                      </span>
-                      <span class="pr-1">{{ ofr.month }} 월</span>
-                      <span>{{ ofr.day }} 일</span>
-                    </div>
-                  </v-col>
-                  <v-col align-self="center">
+      </v-col>
+    </v-row>
+
+    <v-row style="height: 100px" />
+    <!-- 제안 나열 -->
+    <v-container>
+      <!-- tab -->
+      <v-tabs v-model="tab" color="secondary" align-tabs="center" fixed-tabs>
+        <v-tab :value="'waiting'">
+          <span class="text-regular semi-bold">미수락 제안</span>
+        </v-tab>
+        <v-tab :value="'canceled'">
+          <span class="text-regular semi-bold">취소된 제안</span>
+        </v-tab>
+        <v-tab :value="'rejected'">
+          <span class="text-regular semi-bold">거절된 제안</span>
+        </v-tab>
+      </v-tabs>
+      <!-- tab 선택 시 출력될 window -->
+      <v-spacer style="height: 80px" />
+
+      <v-window v-model="tab">
+        <v-window-item v-for="t in tabList" :key="t" :value="t">
+          <!-- waiting 탭이 열리면-->
+          <v-container v-if="t === 'waiting'">
+            <!-- 하나라도 있는 경우 -->
+            <v-row
+              justify="center"
+              v-for="ofr in offerList"
+              :key="ofr"
+              class="list-box pa-2">
+              <!-- (의뢰한)고객 이미지 -->
+              <v-col cols="12" md="2" v-if="ofr.imgUrl">
+                <v-img
+                  style="border-radius: 30px"
+                  class="ma-1"
+                  :src="ofr.imgUrl"
+                  aspect-ratio="1"
+                  cover></v-img>
+              </v-col>
+              <v-col cols="12" md="2" v-if="!ofr.imgUrl">
+                <v-img
+                  style="border-radius: 30px"
+                  class="ma-1"
+                  src="@/assets/images/profile/profileImage.jpg"
+                  aspect-ratio="1"
+                  cover />
+              </v-col>
+              <!-- 정보 -->
+              <v-col cols="12" md="7">
+                <!-- 제안날짜 -->
+                <div class="ma-1">
+                  <span class="pl-3 pr-3 secondary-color highlight">
+                    제안 날짜
+                  </span>
+                  <span class="pr-1">
+                    {{ formatDateTime(ofr.offerCreatedAt) }}
+                  </span>
+                </div>
+                <!-- 고객 닉네임 -->
+                <div class="ma-1">
+                  <span class="pl-3 pr-3 secondary-color"> 제안 대상</span>
+                  <span class="pr-1">{{ ofr.cusNick }} 고객님</span>
+                </div>
+                <!-- 고객님 주소 -->
+                <div class="ma-1">
+                  <span class="pl-3 grey-little-light pr-3"
+                    ><font-awesome-icon icon="fa-solid fa-location-dot"
+                  /></span>
+                  <span class="pr-1">{{ ofr.addrState }}</span>
+                  <span>{{ ofr.addrTown }}</span>
+                </div>
+                <div class="ma-1">
+                  <span class="pl-3 grey-little-light pr-3">
+                    <font-awesome-icon icon="fa-solid fa-calendar-days" />
+                  </span>
+                  <span class="pr-1">{{ ofr.month }} 월</span>
+                  <span>{{ ofr.day }} 일</span>
+                </div>
+              </v-col>
+              <!-- 취소버튼 -->
+
+              <v-col align-self="center" cols="12" md="2">
+                <v-row justify="center">
+                  <div class="primary-color text-micro text-center mb-2">
+                    <div>미수락 된 제안은</div>
+                    <div>취소할 수 있습니다</div>
+                  </div>
+                  <div>
                     <ConfirmCancel
                       @cancel="cancelOffer"
                       :offerId="ofr.offerId" />
-                  </v-col>
-                  <!-- 버튼 -->
-                  <v-spacer />
-                  <v-col cols="12" md="1" align-self="center">
-                    <div
-                      @click="clickDetail(ofr.applicationId, ofr.commisionId)"
-                      class="pd-5">
-                      <font-awesome-icon
-                        icon="fa-solid fa-chevron-right "
-                        size="xl"
-                        class="left-modify" />
-                    </div>
-                  </v-col>
+                  </div>
                 </v-row>
-                <!-- 하나도 없는 경우 -->
-                <v-row justify="center" style="height: 200px">
-                  <v-col cols="12" md="8" align-self="center">
-                    <div>{{ messageW }}</div>
-                  </v-col>
-                </v-row>
-              </v-container>
-              <!-- canceled 탭이 열리면-->
-              <v-container v-if="t === 'canceled'">
-                <!-- 하나라도 있는 경우 -->
-                <v-row
-                  justify="center"
-                  v-for="ofr in canceledOfferList"
-                  :key="ofr"
-                  class="list-box">
-                  <!-- (의뢰한)고객 이미지 -->
-                  <v-col cols="12" md="2">
-                    <v-img
-                      v-if="ofr.imgUrl"
-                      class="ma-5"
-                      :src="ofr.imgUrl"
-                      height="100px"
-                      width="150px"
-                      aspect-ratio="4/3"
-                      cover></v-img>
-                    <v-img
-                      v-if="!ofr.imgUrl"
-                      class="ma-5"
-                      src="@/assets/images/profile/profileImage.jpg"
-                      height="100px"
-                      width="150px"
-                      aspect-ratio="4/3"
-                      cover />
-                  </v-col>
-                  <v-spacer />
-                  <!-- 정보 -->
-                  <v-col cols="12" md="6">
-                    <!-- 제안날짜 -->
-                    <div class="ma-1">
-                      <span class="pl-3 pr-3 secondary-color highlight">
-                        제안 날짜
-                      </span>
-                      <span class="pr-1">
-                        {{ formatDateTime(ofr.offerCreatedAt) }}
-                      </span>
-                    </div>
-                    <!-- 고객 닉네임 -->
-                    <div class="ma-1">
-                      <span class="pl-3 pr-3 secondary-color"> 제안 대상</span>
-                      <span class="pr-1">{{ ofr.cusNick }} 고객님</span>
-                    </div>
-                    <!-- 고객님 주소 -->
-                    <div class="ma-1">
-                      <span class="pl-3 grey-little-light pr-3"
-                        ><font-awesome-icon icon="fa-solid fa-location-dot"
-                      /></span>
-                      <span class="pr-1">{{ ofr.addrState }}</span>
-                      <span>{{ ofr.addrTown }}</span>
-                    </div>
-                    <div class="ma-1">
-                      <span class="pl-3 grey-little-light pr-3">
-                        <font-awesome-icon icon="fa-solid fa-calendar-days" />
-                      </span>
-                      <span class="pr-1">{{ ofr.month }} 월</span>
-                      <span>{{ ofr.day }} 일</span>
-                    </div>
-                  </v-col>
-                  <!-- 버튼 -->
-                  <v-spacer />
-                  <v-col cols="12" md="2" align-self="center">
-                    <div class="grey-little-light text-center mb-2">
-                      <div>{{ formatDateTime(ofr.invalidatedAt) }}</div>
-                      <div>문의 취소됨</div>
-                    </div>
-                  </v-col>
-                  <v-col cols="12" md="1" align-self="center">
-                    <div
-                      @click="clickDetail(ofr.applicationId, ofr.commisionId)"
-                      class="pd-5">
-                      <font-awesome-icon
-                        icon="fa-solid fa-chevron-right "
-                        size="xl"
-                        class="left-modify" />
-                    </div>
-                  </v-col>
-                </v-row>
-                <!-- 하나도 없는 경우 -->
-                <v-row justify="center" style="height: 200px">
-                  <v-col cols="12" md="8" align-self="center">
-                    <div>{{ messageC }}</div>
-                  </v-col>
-                </v-row>
-              </v-container>
-              <!-- rejected 탭이 열리면-->
-              <v-container v-if="t === 'rejected'">
-                <!-- 하나라도 있는 경우 -->
-                <v-row
-                  justify="center"
-                  v-for="ofr in rejectedOfferList"
-                  :key="ofr"
-                  class="list-box">
-                  <!-- (의뢰한)고객 이미지 -->
-                  <v-col cols="12" md="2">
-                    <v-img
-                      v-if="ofr.imgUrl"
-                      class="ma-5"
-                      :src="ofr.imgUrl"
-                      height="100px"
-                      width="150px"
-                      aspect-ratio="4/3"
-                      cover></v-img>
-                    <v-img
-                      v-if="!ofr.imgUrl"
-                      class="ma-5"
-                      src="@/assets/images/profile/profileImage.jpg"
-                      height="100px"
-                      width="150px"
-                      aspect-ratio="4/3"
-                      cover />
-                  </v-col>
-                  <v-spacer />
-                  <!-- 정보 -->
-                  <v-col cols="12" md="6">
-                    <!-- 제안날짜 -->
-                    <div class="ma-1">
-                      <span class="pl-3 pr-3 secondary-color highlight">
-                        제안 날짜
-                      </span>
-                      <span class="pr-1">
-                        {{ formatDateTime(ofr.offerCreatedAt) }}
-                      </span>
-                    </div>
-                    <!-- 고객 닉네임 -->
-                    <div class="ma-1">
-                      <span class="pl-3 pr-3 secondary-color"> 제안 대상</span>
-                      <span class="pr-1">{{ ofr.cusNick }} 고객님</span>
-                    </div>
-                    <!-- 고객님 주소 -->
-                    <div class="ma-1">
-                      <span class="pl-3 grey-little-light pr-3"
-                        ><font-awesome-icon icon="fa-solid fa-location-dot"
-                      /></span>
-                      <span class="pr-1">{{ ofr.addrState }}</span>
-                      <span>{{ ofr.addrTown }}</span>
-                    </div>
-                    <div class="ma-1">
-                      <span class="pl-3 grey-little-light pr-3">
-                        <font-awesome-icon icon="fa-solid fa-calendar-days" />
-                      </span>
-                      <span class="pr-1">{{ ofr.month }} 월</span>
-                      <span>{{ ofr.day }} 일</span>
-                    </div>
-                  </v-col>
+              </v-col>
+              <!-- 버튼 -->
+              <v-col cols="12" md="1" align-self="center">
+                <div
+                  @click="clickDetail(ofr.applicationId, ofr.commisionId)"
+                  class="ml-5 pl-5">
+                  <font-awesome-icon
+                    icon="fa-solid fa-chevron-right "
+                    size="xl"
+                    class="left-modify" />
+                </div>
+              </v-col>
+            </v-row>
+            <!-- 하나도 없는 경우 -->
+            <v-row justify="center" style="height: 200px">
+              <v-col cols="12" md="8" align-self="center">
+                <div>{{ messageW }}</div>
+              </v-col>
+            </v-row>
+          </v-container>
 
-                  <!-- 버튼 -->
-                  <v-spacer />
-                  <v-col cols="12" md="1" align-self="center">
-                    <div
-                      @click="clickDetail(ofr.applicationId, ofr.commisionId)"
-                      class="pd-5">
-                      <font-awesome-icon
-                        icon="fa-solid fa-chevron-right "
-                        size="xl"
-                        class="left-modify" />
-                    </div>
-                  </v-col>
-                </v-row>
-                <!-- 하나도 없는 경우 -->
-                <v-row justify="center" style="height: 200px">
-                  <v-col cols="12" md="8" align-self="center">
-                    <div>{{ messageR }}</div>
-                  </v-col>
-                </v-row>
-              </v-container>
-            </v-window-item>
-          </v-window>
-        </v-container>
-      </v-col>
-    </v-row>
+          <!-- canceled 탭이 열리면-->
+          <v-container v-if="t === 'canceled'">
+            <!-- 하나라도 있는 경우 -->
+            <v-row
+              justify="center"
+              v-for="ofr in canceledOfferList"
+              :key="ofr"
+              class="list-box">
+              <!-- (의뢰한)고객 이미지 -->
+              <v-col cols="12" md="2" v-if="ofr.imgUrl">
+                <v-img
+                  style="border-radius: 30px"
+                  class="ma-1"
+                  :src="ofr.imgUrl"
+                  aspect-ratio="1"
+                  cover></v-img>
+              </v-col>
+              <v-col cols="12" md="2" v-if="!ofr.imgUrl">
+                <v-img
+                  style="border-radius: 30px"
+                  class="ma-1"
+                  src="@/assets/images/profile/profileImage.jpg"
+                  aspect-ratio="1"
+                  cover />
+              </v-col>
+              <!-- 정보 -->
+              <v-col cols="12" md="7">
+                <!-- 제안날짜 -->
+                <div class="ma-1">
+                  <span class="pl-3 pr-3 secondary-color highlight">
+                    제안 날짜
+                  </span>
+                  <span class="pr-1">
+                    {{ formatDateTime(ofr.offerCreatedAt) }}
+                  </span>
+                </div>
+                <!-- 고객 닉네임 -->
+                <div class="ma-1">
+                  <span class="pl-3 pr-3 secondary-color"> 제안 대상</span>
+                  <span class="pr-1">{{ ofr.cusNick }} 고객님</span>
+                </div>
+                <!-- 고객님 주소 -->
+                <div class="ma-1">
+                  <span class="pl-3 grey-little-light pr-3"
+                    ><font-awesome-icon icon="fa-solid fa-location-dot"
+                  /></span>
+                  <span class="pr-1">{{ ofr.addrState }}</span>
+                  <span>{{ ofr.addrTown }}</span>
+                </div>
+                <div class="ma-1">
+                  <span class="pl-3 grey-little-light pr-3">
+                    <font-awesome-icon icon="fa-solid fa-calendar-days" />
+                  </span>
+                  <span class="pr-1">{{ ofr.month }} 월</span>
+                  <span>{{ ofr.day }} 일</span>
+                </div>
+              </v-col>
+              <!-- 버튼 -->
+              <v-col cols="12" md="2" align-self="center">
+                <div class="grey-little-light text-center mb-2">
+                  <div>{{ formatDateTime(ofr.invalidatedAt) }}</div>
+                  <div>문의 취소됨</div>
+                </div>
+              </v-col>
+              <v-col cols="12" md="1" align-self="center">
+                <div
+                  @click="clickDetail(ofr.applicationId, ofr.commisionId)"
+                  class="ml-5 pl-5">
+                  <font-awesome-icon
+                    icon="fa-solid fa-chevron-right "
+                    size="xl"
+                    class="left-modify" />
+                </div>
+              </v-col>
+            </v-row>
+            <!-- 하나도 없는 경우 -->
+            <v-row justify="center" style="height: 200px">
+              <v-col cols="12" md="8" align-self="center">
+                <div>{{ messageC }}</div>
+              </v-col>
+            </v-row>
+          </v-container>
+          <!-- rejected 탭이 열리면-->
+          <v-container v-if="t === 'rejected'">
+            <!-- 하나라도 있는 경우 -->
+            <v-row
+              justify="center"
+              v-for="ofr in rejectedOfferList"
+              :key="ofr"
+              class="list-box">
+              <!-- (의뢰한)고객 이미지 -->
+              <v-col cols="12" md="2" v-if="ofr.imgUrl">
+                <v-img
+                  style="border-radius: 30px"
+                  class="ma-1"
+                  :src="ofr.imgUrl"
+                  aspect-ratio="1"
+                  cover></v-img>
+              </v-col>
+              <v-col cols="12" md="2" v-if="!ofr.imgUrl">
+                <v-img
+                  style="border-radius: 30px"
+                  class="ma-1"
+                  src="@/assets/images/profile/profileImage.jpg"
+                  aspect-ratio="1"
+                  cover />
+              </v-col>
+              <!-- 정보 -->
+              <v-col cols="12" md="7">
+                <!-- 제안날짜 -->
+                <div class="ma-1">
+                  <span class="pl-3 pr-3 secondary-color highlight">
+                    제안 날짜
+                  </span>
+                  <span class="pr-1">
+                    {{ formatDateTime(ofr.offerCreatedAt) }}
+                  </span>
+                </div>
+                <!-- 고객 닉네임 -->
+                <div class="ma-1">
+                  <span class="pl-3 pr-3 secondary-color"> 제안 대상</span>
+                  <span class="pr-1">{{ ofr.cusNick }} 고객님</span>
+                </div>
+                <!-- 고객님 주소 -->
+                <div class="ma-1">
+                  <span class="pl-3 grey-little-light pr-3"
+                    ><font-awesome-icon icon="fa-solid fa-location-dot"
+                  /></span>
+                  <span class="pr-1">{{ ofr.addrState }}</span>
+                  <span>{{ ofr.addrTown }}</span>
+                </div>
+                <div class="ma-1">
+                  <span class="pl-3 grey-little-light pr-3">
+                    <font-awesome-icon icon="fa-solid fa-calendar-days" />
+                  </span>
+                  <span class="pr-1">{{ ofr.month }} 월</span>
+                  <span>{{ ofr.day }} 일</span>
+                </div>
+              </v-col>
+              <!-- 문의 거절됨 표시 -->
+              <v-col align-self="center" cols="12" md="2">
+                <div class="grey-little-light text-center mb-2">
+                  <div>{{ formatDateTime(ofr.invalidatedAt) }}</div>
+                  <div>제안 거절됨</div>
+                </div>
+              </v-col>
+              <!-- 버튼 -->
+              <v-col cols="12" md="1" align-self="center">
+                <div
+                  @click="clickDetail(ofr.applicationId, ofr.commisionId)"
+                  class="ml-5 pl-5">
+                  <font-awesome-icon
+                    icon="fa-solid fa-chevron-right "
+                    size="xl"
+                    class="left-modify" />
+                </div>
+              </v-col>
+            </v-row>
+            <!-- 하나도 없는 경우 -->
+            <v-row justify="center" style="height: 200px">
+              <v-col cols="12" md="8" align-self="center">
+                <div>{{ messageR }}</div>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-window-item>
+      </v-window>
+    </v-container>
   </v-container>
   <router-view name="dialog" />
 </template>

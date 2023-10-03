@@ -16,25 +16,25 @@
           <!-- tab -->
           <v-tabs v-model="tab" align-tabs="center" color="primary" fixed-tabs>
             <v-tab :value="'canceled'">
-              <p>취소 완료</p>
+              <span class="text-regular semi-bold">취소 완료</span>
             </v-tab>
             <v-tab :value="'reserved'">
-              <p>예약 완료</p>
+              <span class="text-regular semi-bold">예약 완료</span>
             </v-tab>
             <v-tab :value="'priced'">
-              <p>결제 완료</p>
+              <span class="text-regular semi-bold">결제 완료</span>
             </v-tab>
             <v-tab :value="'walking'">
-              <p>산책 중</p>
+              <span class="text-regular semi-bold">산책 중</span>
             </v-tab>
             <v-tab :value="'walked'">
-              <p>산책 완료</p>
+              <span class="text-regular semi-bold">산책 완료</span>
             </v-tab>
             <v-tab :value="'calculating'">
-              <p>정산 중</p>
+              <span class="text-regular semi-bold">정산 중</span>
             </v-tab>
             <v-tab :value="'calculated'">
-              <p>정산 완료</p>
+              <span class="text-regular semi-bold">정산 완료</span>
             </v-tab>
           </v-tabs>
 
@@ -52,7 +52,7 @@
                     class="list-box"
                     style="height: 300px">
                     <v-col align-self="center" cols="12" md="5">
-                      <div>
+                      <div class="text-regular grey">
                         {{ message }}
                       </div>
                     </v-col>
@@ -166,7 +166,7 @@
                     class="list-box"
                     style="height: 300px">
                     <v-col align-self="center" cols="12" md="5">
-                      <div>
+                      <div class="text-regular grey">
                         {{ message }}
                       </div>
                     </v-col>
@@ -275,7 +275,7 @@
                     class="list-box"
                     style="height: 300px">
                     <v-col align-self="center" cols="12" md="5">
-                      <div>
+                      <div class="text-regular grey">
                         {{ message }}
                       </div>
                     </v-col>
@@ -383,7 +383,7 @@
                     class="list-box"
                     style="height: 300px">
                     <v-col align-self="center" cols="12" md="5">
-                      <div>
+                      <div class="text-regular grey">
                         {{ message }}
                       </div>
                     </v-col>
@@ -492,7 +492,7 @@
                     class="list-box"
                     style="height: 300px">
                     <v-col align-self="center" cols="12" md="5">
-                      <div>
+                      <div class="text-regular grey">
                         {{ message }}
                       </div>
                     </v-col>
@@ -601,7 +601,7 @@
                     class="list-box"
                     style="height: 300px">
                     <v-col align-self="center" cols="12" md="5">
-                      <div>
+                      <div class="text-regular grey">
                         {{ message }}
                       </div>
                     </v-col>
@@ -710,7 +710,7 @@
                     class="list-box"
                     style="height: 300px">
                     <v-col align-self="center" cols="12" md="5">
-                      <div>
+                      <div class="text-regular grey">
                         {{ message }}
                       </div>
                     </v-col>

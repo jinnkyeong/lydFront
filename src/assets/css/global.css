@@ -12,6 +12,7 @@
     --color-black: #3C4242;
     --color-dark-black: #black;
     --color-primary:#A0D8B3;
+    --color-primary-light:#D0E7D2;
     --color-secondary:#5CA9B3;
     --color-orange: #F99417;
     /* --color-highlight:#5CA9B3; */
@@ -114,7 +115,16 @@ ul {
     border-radius: 30px;
     padding: 50px;
 }
-
+.back-white{ 
+    background-color: var(--color-white);
+    border-radius: 30px;
+}
+.back-grey-light-square{ /*배경용 회색*/
+    background-color: #F6F6F6;
+}
+.back-primary-light-square{ 
+    background-color: var(--color-primary-light);
+}
 
 /* 굵기 */
 .semi-bold{
@@ -244,7 +254,8 @@ ul {
 
 /* 상단바 메뉴 */
 .bar-menu{
-    font-size: var(--font-small);
+    /* font-size: var(--font-small); */
+    font-size: var(--font-regular);
 
 }
 
@@ -296,9 +307,6 @@ ul {
 }
 .menu-list {
     font-family: 'omu_daippum';
-    font-size: 20px;
-
-    
 }
 
 /* figure  */
@@ -316,3 +324,13 @@ ul {
     color: var(--color-secondary);
 
 }
+
+.layout-options{
+    cursor: pointer;
+
+}
+/* 예약상세보기 박스 */
+.detail-box {
+    border: solid 3px var(--color-light-grey);
+    border-radius: 15px;
+  }

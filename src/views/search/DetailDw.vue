@@ -45,6 +45,7 @@ export default {
       .getApp(this.$store.state.item.appId)
       .then((res) => {
         this.info = res.data;
+        this.$store.commit('setItems', res.data); // 도그워커 정보 올려놓음
         this.$store.commit('setTempId', res.data.dogwalkerId); // 리뷰용
         console.log('getApp 결과 ', res.data);
 
@@ -109,7 +110,6 @@ export default {
     // 문의하기
     inquire(didInquired) {
       if (didInquired) {
-        this.$store.commit('setItems', this.info); // 도그워커 정보 올려놓음(?)
         // 문의하기 click
         // 문의 창으로
         this.$router.push('inquiry');

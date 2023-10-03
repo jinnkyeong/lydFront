@@ -133,17 +133,17 @@
                   </div>
                 </v-col>
               </v-row>
+              <!-- 문의가 하나도 없는 경우 -->
+              <v-row style="height: 200px" justify="center">
+                <div>
+                  <div class="text-regular grey">{{ message }}</div>
+                </div>
+              </v-row>
               <v-spacer style="height: 250px" />
+
               <!-- 페이지 -->
               <v-row justify="center">
                 <v-pagination v-model="page" :length="page" rounded="circle" />
-              </v-row>
-
-              <!-- 문의가 하나도 없는 경우 -->
-              <v-row justify="center" style="height: 200px">
-                <v-col cols="12" md="8" align-self="center">
-                  <div>{{ message }}</div>
-                </v-col>
               </v-row>
             </v-container>
           </v-row>

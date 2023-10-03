@@ -37,11 +37,13 @@
             </v-container>
           </v-row>
           <!-- email -->
-          <v-row>
+          <v-row v-if="$store.state.login.accountType == 'EMAIL'">
             <v-container>
               <v-row class="mt-16" no-gutters>
                 <v-col cols="12" md="11">
-                  <v-field-label ref_for="info.email">이메일</v-field-label>
+                  <v-field-label ref_for="info.email">
+                    <span> 이메일 </span>
+                  </v-field-label>
                   <v-text-field
                     :model-value="info.email"
                     variant="underlined"

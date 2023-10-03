@@ -3,8 +3,9 @@
     <v-container>
       <!-- <span><font-awesome-icon icon="fa-solid fa-eye" /></span> -->
       <div class="text-micro grey-little-light">
-        <span class="mr-1">조회</span>
-        <span>{{ comm.view }}</span>
+        <span v-if="comm.view" class="mr-1">조회</span>
+        <span v-if="comm.view">{{ comm.view }}</span>
+        <span v-if="!comm.view" style="height: 23px" />
       </div>
       <!-- 이미지 -->
       <v-row no-gutters="" class="ma-1 mb-3">

@@ -280,7 +280,7 @@ export default {
   created() {
     //상세보기 데이터 가져오기
     commitApi
-      .getCmById()
+      .getCmById(this.$store.state.item.comId)
       .then((res) => {
         console.log('result : ', res.data);
         this.info = res.data;

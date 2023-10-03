@@ -16,22 +16,34 @@
           <v-col align-self="center">
             <v-container>
               <v-divider thickness="3" />
+              <!-- 목차 -->
+              <v-row class="text-center mt-3 mb-3" no-gutters>
+                <v-col cols="12" md="8" align-self="center">
+                  <span class="text-regular grey">산책정보</span>
+                </v-col>
+                <v-col cols="12" md="2" align-self="center">
+                  <span class="text-regular grey">최종 수정일시</span>
+                </v-col>
+                <v-col cols="12" md="2" align-self="center">
+                  <span class="text-regular grey">상태</span>
+                </v-col>
+              </v-row>
+              <v-divider thickness="3" />
+              <!-- 내용 -->
               <v-row
-                class="pa-5"
+                class="pa-5 text-center"
                 v-for="(d, index) in diaries"
                 :key="index"
                 @click="selectDiary(d.reservationId)">
                 <!-- 도그워커 사진 -->
-                <v-col cols="12" md="3" align-self="center">
+                <v-col cols="12" md="1" align-self="center">
                   <v-img
                     :src="d.dwImgUrl"
                     aspect-ratio="1"
-                    height="100px"
                     class="pa-5"
                     cover></v-img>
                 </v-col>
-                <v-col cols="12" md="1" />
-                <v-col cols="12" md="5" align-self="center">
+                <v-col cols="12" md="7" align-self="center">
                   <!-- 날짜 -->
                   <v-row>
                     <div class="mt-2 mb-2">
@@ -42,22 +54,40 @@
                   <!-- {{ typeof d.startDt }} -->
                   <!-- 시간 -->
                   <v-row>
-                    <span class="mr-2 secondary-color">시작</span>
-                    <span class="black">
+                    <span
+                      class="mr-2 secondary-color"
+                      v-if="!d.startDt && !d.endDt"
+                      >산책 수행 전</span
+                    >
+                    <span class="mr-2 secondary-color" v-if="d.startDt"
+                      >시작</span
+                    >
+                    <span class="black" v-if="d.startDt">
                       {{ formatDTtoTime(d.startDt) }}
                     </span>
-                    <span class="ml-3 mr-2 secondary-color">종료</span>
-                    <span class="black">
-                      {{ formatDTtoTime(d.startDt) }}
+                    <span class="ml-3 mr-2 secondary-color" v-if="d.endDt">
+                      종료
+                    </span>
+                    <span class="black" v-if="d.endDt">
+                      {{ formatDTtoTime(d.endDt) }}
                     </span>
                   </v-row>
+                </v-col>
+                <v-col cols="12" md="2" align-self="center">
+                  <div>
+                    {{
+                      d.diaryUpdatedAt
+                        ? formatDate(d.diaryUpdatedAt)
+                        : formatDate(d.diaryCreatedAt)
+                    }}
+                  </div>
                 </v-col>
                 <v-col cols="12" md="2" align-self="center">
                   <div class="grey text-regular primary-color semi-bold">
                     {{ d.diaryStatus === 2 ? '작성 중' : '작성 완료' }}
                   </div>
                 </v-col>
-                <v-divider />
+                <v-divider class="mt-3" />
               </v-row>
             </v-container>
           </v-col>

@@ -8,7 +8,9 @@
         <span>
           <font-awesome-icon icon="fa-solid fa-minus" rotation="90" size="xl" />
         </span>
-        <span class="pl-1">내 정보</span>
+        <span class="pl-1">
+          <span class="title-regular">내 정보</span>
+        </span>
       </div>
 
       <!-- 고객인 경우 -->
