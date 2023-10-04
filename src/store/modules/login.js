@@ -121,7 +121,7 @@ const actions = {
             const urlfront = 'https://lyd-bucket1.s3.ap-northeast-2.amazonaws.com';
             const imgUrl = `${urlfront}/${res.data.dirName}/${res.data.fileName}.${res.data.extension}`;
             commit('setUserImgUrl', imgUrl)
-            router.go(0)
+            router.go('0')
         } 
     })
     .catch((e)=>{
@@ -150,7 +150,7 @@ const actions = {
             const urlfront = 'https://lyd-bucket1.s3.ap-northeast-2.amazonaws.com';
             const imgUrl = `${urlfront}/${res.data.dirName}/${res.data.fileName}.${res.data.extension}`;
             commit('setUserImgUrl', imgUrl)
-            // router.go(0)
+            router.go(0)
         } 
     })
     .catch((e)=>{
@@ -174,7 +174,7 @@ const actions = {
       } else {
         commit('setCusId', res.data.customerId) // 고객이면
       }
-      router.push('/')
+      // router.push('/')
 
     })
     .catch((e)=>{

@@ -254,8 +254,8 @@ ul {
 
 /* 상단바 메뉴 */
 .bar-menu{
-    /* font-size: var(--font-small); */
-    font-size: var(--font-regular);
+    font-size: var(--font-small);
+    /* font-size: var(--font-regular); */
 
 }
 

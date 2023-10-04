@@ -191,9 +191,9 @@
             ">
             <v-spacer />
             <v-col cols="12" md="4">
-              <v-btn @click="clickModify" block size="50px" color="primary">
+              <!-- <v-btn @click="clickModify" block size="50px" color="primary">
                 <div class="white">수정하기</div>
-              </v-btn>
+              </v-btn> -->
             </v-col>
             <v-spacer />
           </v-row>

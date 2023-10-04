@@ -21,7 +21,7 @@
     </v-row>
   </v-container>
   <!-- 우리동네 인기 도그워커(4명 이하) -->
-  <v-container v-if="$store.state.login.cusId">
+  <v-container v-if="$store.state.login.cusId && apps.length > 0">
     <v-spacer style="height: 200px" />
     <v-row class="ma-5">
       <h3>우리동네 인기 도그워커</h3>
@@ -265,21 +265,21 @@
     style="height: 1000px; background-color: #a0d8b3"
     fluid
     class="ma-0 pa-0">
-    <v-spacer />
-    <v-row class="ma-5">
-      <h1 class="grey">믿고 맡길 수 있는 도그워커</h1>
+    <v-spacer style="height: 100px" />
+    <v-row class="ma-5" justify="center">
+      <h1 class="white">믿고 맡길 수 있는 도그워커</h1>
     </v-row>
     <v-row>
       <v-spacer />
       <v-col cols="12" md="3">
         <v-container style="border-radius: 30px">
-          <v-row justify="center" class="ma-2">
+          <v-row justify="center" class="mt-2 ml-2 mr-2">
             <div class="wrapper">
               <div class="circle">
-                <!-- <v-img
+                <v-img
                   src="@/assets/images/home/certs.png"
-                  width="300px"
-                  height="300px" /> -->
+                  width="350px"
+                  height="350px" />
               </div>
             </div>
           </v-row>
@@ -504,7 +504,8 @@ export default {
 
     // 웹소켓 연결, 성공시 메세지 받기
     connect() {
-      const serverURL = 'https://loveyourdog.co.kr/api/ws';
+      const serverURL = 'http://loveyourdog.co.kr:80/api/ws';
+      // const serverURL = 'https://loveyourdog.co.kr/api/ws';
       // const serverURL = 'http://localhost:8090/api/ws';
 
       let socket = new SockJS(serverURL);

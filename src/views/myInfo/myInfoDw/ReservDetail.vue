@@ -291,6 +291,22 @@ export default {
       .then((res) => {
         this.info = res.data;
         console.log('getReservById ', this.info);
+        // 이미지 출력
+        const urlfront = 'https://lyd-bucket1.s3.ap-northeast-2.amazonaws.com';
+        if (
+          this.info.applicationDto.dirName &&
+          this.info.applicationDto.fileName &&
+          this.info.applicationDto.extension
+        ) {
+          this.info.applicationDto.imgUrl = `${urlfront}/${this.info.applicationDto.dirName}/${this.info.applicationDto.fileName}.${this.info.applicationDto.extension}`;
+        }
+        if (
+          this.info.commisionDto.dirName &&
+          this.info.commisionDto.fileName &&
+          this.info.commisionDto.extension
+        ) {
+          this.info.commisionDto.imgUrl = `${urlfront}/${this.info.commisionDto.dirName}/${this.info.commisionDto.fileName}.${this.info.commisionDto.extension}`;
+        }
       })
       .catch((e) => {
         console.log(e);

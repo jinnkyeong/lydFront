@@ -183,17 +183,17 @@
     <v-spacer style="height: 150px" />
     <!-- 제목 -->
     <v-row justify="center">
-      <h1 class="white">어떻게 도그워커가 될 수 있나요?</h1>
+      <h1 class="grey">어떻게 도그워커가 될 수 있나요?</h1>
     </v-row>
     <!-- 설명 -->
     <v-row class="mt-6 mb-12">
       <v-spacer />
-      <v-col cols="12" md="8">
-        <div class="text-regular white">
+      <v-col cols="12" md="9">
+        <div class="text-regular grey text-center">
           loveyourdog은 고객님에게 편리하고 안전한 산책 서비스를 제공하기 위하여
           반려견에 대한 애정과 이해가 있는 도그워커를 모집합니다.
         </div>
-        <div class="text-regular white">
+        <div class="text-regular grey text-center">
           따라서 아래와 같이 소정의 심사와 반려견 산책 교육을 이수한 지원자에
           대해서만 loveyourdog의 도그워커 자격을 부여하고 있습니다.
         </div>

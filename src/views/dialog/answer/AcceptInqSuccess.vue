@@ -35,7 +35,7 @@
           <v-spacer />
           <v-col cols="12" md="4" align-self="center">
             <v-btn @click="goToMyReserv" color="primary">
-              <span class="white text-regular"> 예약내역으로 </span>
+              <span class="white text-regular pl-2 pr-2"> 예약내역으로 </span>
             </v-btn>
           </v-col>
           <v-spacer />

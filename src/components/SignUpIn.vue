@@ -15,7 +15,6 @@
             v-for="(reg, index) in regList"
             :key="index">
             <v-list-item-title
-              class="text-regular"
               style="cursor: pointer"
               @click="register(reg.userType)"
               >{{ reg.title }}</v-list-item-title
@@ -43,7 +42,6 @@
             v-for="(log, index) in logList"
             :key="index">
             <v-list-item-title
-              class="text-regular"
               style="cursor: pointer"
               @click="loginn(log.userType)"
               >{{ log.title }}</v-list-item-title

@@ -185,6 +185,7 @@ export default {
 
               this.offerList[i].imgUrl = imgUrl;
             }
+            this.offerList[i].nick = this.offerList[i].dwNick;
           }
           console.log('this.offerList', this.offerList);
         } else {
