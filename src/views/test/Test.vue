@@ -16,11 +16,12 @@
   <v-row>
     <v-spacer />
     <v-col cols="12" md="6">
+      <!-- 질문리스트(객관식,주관식) -->
       <div v-for="q in qs" :key="q">
         <div v-if="q.type === 1">
           <!-- 객관식 -->
-          <!-- <Question1 :q="q" @input="input" /> -->
-          <v-container class="field">
+          <Question1 :q="q" />
+          <!-- <v-container class="field">
             <v-row class="field-top">
               <div class="field-top-label">{{ q.questionSentence }}</div>
             </v-row>
@@ -32,12 +33,13 @@
                   @change="change(q.questionTypeId, a)" />
               </v-radio-group>
             </v-row>
-          </v-container>
+          </v-container> -->
         </div>
+
         <div v-if="q.type === 2">
           <!-- 주관식 -->
-          <!-- <Question2 :q="q" /> -->
-          <v-container class="field">
+          <Question2 :q="q" />
+          <!-- <v-container class="field">
             <v-row class="field-top">
               <div class="field-top-label">{{ q.questionSentence }}</div>
             </v-row>
@@ -48,7 +50,7 @@
                 @input="write(q.questionTypeId)"
                 v-model="writen[q.questionTypeId]"></v-text-field>
             </v-row>
-          </v-container>
+          </v-container> -->
         </div>
       </div>
     </v-col>
@@ -63,9 +65,9 @@
         block
         variant="tonal"
         color="primary"
-        size="x-large"
-        >제출하기</v-btn
-      >
+        size="x-large">
+        제출하기
+      </v-btn>
     </v-col>
     <v-spacer />
   </v-row>
@@ -73,25 +75,20 @@
 </template>
 
 <script>
+import Question1 from '@/components/test/Question1.vue';
+import Question2 from '@/components/test/Question2.vue';
 import myInfoApi from '@/api/myInfoApi';
 import format from '@/utillFunction/format';
 export default {
-  components: {},
+  components: {
+    Question1,
+    Question2,
+  },
   created() {
     myInfoApi
       .getQuestionTypes()
       .then((res) => {
-        let data = res.data;
-        // 객관식
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].type === 1) {
-            let shuffledAnswers = [...data[i].answers].sort(
-              () => Math.random() - 0.5
-            ); // 보기 배열 섞기(원본 유지X)
-            data[i].answers = shuffledAnswers;
-          }
-        }
-        this.qs = data;
+        this.qs = res.data;
         this.startDt = new Date(); // 시작 시간 세팅
       })
       .catch((e) => {
@@ -103,14 +100,6 @@ export default {
       qs: [],
       startDt: '', // new Date
       endDt: '', // new Date
-
-      // 객관식
-      answers: [],
-      picked: null,
-      writen: {},
-
-      // post
-      inputs: [],
     };
   },
   methods: {
@@ -119,12 +108,17 @@ export default {
       return format.formatDateTimeForReq(dt);
     },
     submit() {
-      this.endDt = new Date();
+      this.endDt = new Date(); // 종료시간 세팅
       const startStr = this.formatDt(this.startDt);
       const endStr = this.formatDt(this.endDt);
 
       myInfoApi
-        .postTest(this.$store.state.login.dwId, startStr, endStr, this.inputs)
+        .postTest(
+          this.$store.state.login.dwId,
+          startStr,
+          endStr,
+          this.$store.state.just_state.testInputs
+        )
         .then((res) => {
           if (res.data) {
             // true 통과
@@ -137,33 +131,6 @@ export default {
         .catch((e) => {
           console.log(e);
         });
-    },
-
-    // 객관식
-    change(questionTypeId, answer) {
-      for (let i = 0; i < this.inputs.length; i++) {
-        if (this.inputs[i].questionTypeId === questionTypeId) {
-          this.inputs.splice(i, 1);
-        }
-      }
-      const aObj = {
-        questionTypeId: questionTypeId,
-        input: answer,
-      };
-      this.inputs.push(aObj);
-    },
-    // 주관식
-    write(questionTypeId) {
-      for (let i = 0; i < this.inputs.length; i++) {
-        if (this.inputs[i].questionTypeId === questionTypeId) {
-          this.inputs.splice(i, 1);
-        }
-      }
-      const aObj = {
-        questionTypeId: questionTypeId,
-        input: this.writen[questionTypeId],
-      };
-      this.inputs.push(aObj);
     },
   },
 };

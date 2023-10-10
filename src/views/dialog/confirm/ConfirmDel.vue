@@ -1,5 +1,7 @@
 <template>
-  <v-btn block @click="clickDelete" color="grey" size="large"> 삭제하기 </v-btn>
+  <v-btn block @click="clickDelete" color="grey" size="large">
+    <span class="text-regular white"> 삭제하기 </span>
+  </v-btn>
   <v-dialog class="dialog" width="450" height="300" v-model="confirmDel">
     <!-- 너버 - 임의로 정함 -->
     <v-card>

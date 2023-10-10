@@ -213,6 +213,36 @@
         <!-- 산책완료 -->
         <v-container v-if="this.info.status === 4">
           <DwReservDetail :info="info" :title="title4" />
+          <!-- 산책일지 작성 -->
+          <v-row class="ma-8">
+            <v-col align-self="center" cols="12" md="4">
+              <v-btn @click="writeDiary" color="primary" size="x-large">
+                <span v-if="info.diaryStatus === 1">산책일지 작성</span>
+                <span v-if="info.diaryStatus === 2 || info.diaryStatus === 3">
+                  산책일지 수정
+                </span>
+              </v-btn>
+            </v-col>
+            <v-col align-self="center" cols="12" md="8">
+              <span v-if="info.diaryStatus === 1" class="">
+                지금 바로 산책일지를 작성할 수 있습니다
+              </span>
+              <!-- <span v-if="info.diaryStatus === 2" class="">
+                      모든 요구사항에 대하여 인증사진을 첨부하여 일지 작성을
+                      완료해주세요
+                    </span> -->
+              <span
+                v-if="info.diaryStatus === 2"
+                class="secondary-color title-regular">
+                <span class="mr-2">산책일지 작성을 완료했습니다</span>
+                <span>{{
+                  info.diaryUpdatedAt
+                    ? formatDateTime(info.diaryUpdatedAt)
+                    : formatDateTime(info.diaryCreatedAt)
+                }}</span>
+              </span>
+            </v-col>
+          </v-row>
         </v-container>
         <!-- 정산중 -->
         <v-container v-if="this.info.status === 5">

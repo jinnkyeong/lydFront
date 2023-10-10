@@ -35,6 +35,9 @@ import InquirySuccess from '@/views/dialog/ask/InquirySuccess'
 
 const MyInfoDwLayout = () => import('@/layouts/myInfo/MyDwLayout')
 const MyInfoCusLayout = () => import('@/layouts/myInfo/MyCusLayout')
+// const ReviewDetail = () => import('@/views/dialog/review/ReviewDetail')
+import ReviewDetail from '@/views/dialog/review/ReviewDetail'
+import DefaultLayout from '@/layouts/default/Default.vue';
 
 import store from '@/store/index'
 
@@ -60,7 +63,8 @@ import store from '@/store/index'
 const routes = [
     {
         path: '/',
-        component: () => import('@/layouts/default/Default.vue'), // 레이아웃
+        // component: () => import('@/layouts/default/Default.vue'), // 레이아웃
+        component: DefaultLayout, // 레이아웃
         children: [
             {
                 path: '',
@@ -68,20 +72,22 @@ const routes = [
                 // route level code-splitting
                 // this generates a separate chunk (about.[hash].js) for this route
                 // which is lazy-loaded when the route is visited.
-                component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
+                // component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
+                component: Home,
+            },
+            {
+                path : '/reviewDetail',
+                // name : 'reviewDetail',
+                component: ReviewDetail,
+                // components: {
+                //     default: Home,
+                //     dialog: ReviewDetail,
+                // }
             },
             {
                 path: '/qna',
                 name: 'qna',
                 component: () => import('@/views/qna/Qna'),
-            },
-            {
-                path : '/signUp',
-                name : "signUp",
-                components: {
-                    default: Home,
-                    dialog: SignUp
-                }
             },
             {
                 path : '/signUp',
@@ -412,6 +418,17 @@ const routes = [
                     dialog: ()=> import('@/views/dialog/ask/OfferSuccess')
                 }
             },
+            {
+                path : '/dwProfile',
+                name : "dwProfile",
+                component: ()=> import('@/views/profile/DwProfile'),
+            },
+            {
+                path : '/cusProfile',
+                name : "cusProfile",
+                component: ()=> import('@/views/profile/CusProfile'),
+            },
+
 
 
 

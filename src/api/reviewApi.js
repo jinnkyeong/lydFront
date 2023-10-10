@@ -39,6 +39,12 @@ export default {
             url :`/api/open/reviews/dw/${dwId}`,
         });
     },
+    getReviewsByDwId: function(cusId){
+        return api({
+            method : 'get',
+            url :`/api/open/reviews/cus/${cusId}`,
+        });
+    },
 
     getCommentsByReviewId : function(reviewId){
         return api({
@@ -73,6 +79,12 @@ export default {
             url :`/api/open/reviews/good`,
         });
     },
-    
+    findReviewById: function(id){
+        return api({
+            method : 'get',
+            url :`/api/open/reviews/${id}`,
+        });
+    },
+
 
 } 

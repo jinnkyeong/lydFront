@@ -1,6 +1,6 @@
 <template>
   <v-btn block @click="clickModify" color="primary" size="large">
-    수정하기
+    <span class="text-regular white"> 수정하기 </span>
   </v-btn>
   <v-dialog class="dialog" width="450" height="300" v-model="confirmMod">
     <!-- 너버 - 임의로 정함 -->

@@ -1,5 +1,5 @@
 <template>
-  <v-container class="field">
+  <!-- <v-container class="field">
     <v-row class="field-top">
       <div class="field-top-label">{{ q.questionSentence }}</div>
     </v-row>
@@ -8,6 +8,18 @@
         variant="outlined"
         placeholder="문자열로 입력해주세요"></v-text-field>
     </v-row>
+  </v-container> -->
+  <v-container class="field">
+    <v-row class="field-top">
+      <div class="field-top-label">{{ q.questionSentence }}</div>
+    </v-row>
+    <v-row class="field-middle">
+      <v-text-field
+        variant="outlined"
+        placeholder="문자열로 입력해주세요"
+        @input="write(q.questionTypeId)"
+        v-model="answer"></v-text-field>
+    </v-row>
   </v-container>
 </template>
 
@@ -15,6 +27,20 @@
 export default {
   props: {
     q: Object,
+  },
+  data() {
+    return {
+      answer: '',
+    };
+  },
+  methods: {
+    write(questionTypeId) {
+      const aObj = {
+        questionTypeId: questionTypeId,
+        input: this.answer,
+      };
+      this.$store.commit('addTestInput', aObj);
+    },
   },
 };
 </script>

@@ -1,6 +1,5 @@
 <template>
-  <!-- 일단 안쓰기.. -->
-  <!-- border-radius: 30px" -->
+  <!-- 리뷰 리스트에서 한 리뷰 미리보기 모양 -->
   <v-container
     class="pt-10 pb-10 pl-10 back-white mb-10"
     style="outline: solid 2px var(--color-light-grey); width: 750px">
@@ -47,16 +46,15 @@
           height="150px"></v-img>
       </v-col>
       <v-col cols="12" md="1" align-self="center" class="pl-5">
-        <div @click="clickReview">
+        <!-- <div>
           <font-awesome-icon
             icon="fa-solid fa-chevron-right "
             size="xl"
             class="left-modify" />
-        </div>
+        </div> -->
       </v-col>
     </v-row>
   </v-container>
-  <router-view name="dialog"></router-view>
 </template>
 
 <script>
@@ -64,12 +62,7 @@ export default {
   props: {
     review: Object,
   },
-  methods: {
-    clickReview() {
-      this.$store.commit('setReviewId', this.review.reviewId);
-      this.$emit('clickReview', this.review);
-    },
-  },
+  methods: {},
 };
 </script>
 

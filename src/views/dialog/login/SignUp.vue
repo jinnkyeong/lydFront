@@ -24,18 +24,18 @@
         <v-row justify="center" no-gutters style="height: 60px">
           <h3>회원가입</h3>
         </v-row>
-        <v-row justify="center" no-gutters style="height: 400px">
+        <v-row justify="center" no-gutters style="height: 200px">
           <!-- 로그인 -->
           <div class="text-center">
             <!-- 카카오로그인 -->
-            <v-btn class="loginBtns" color="yellow_kakao" block>
+            <!-- <v-btn class="loginBtns" color="yellow_kakao" block>
               <span class="mr-2">
                 <font-awesome-icon icon="fa-solid fa-message" size="lg" />
               </span>
               <span class="text-small">카카오로 로그인</span>
-            </v-btn>
+            </v-btn> -->
             <!-- 네이버로그인 -->
-            <v-btn class="loginBtns" color="green_naver" block>
+            <!-- <v-btn class="loginBtns" color="green_naver" block>
               <span class="mr-2">
                 <font-awesome-icon
                   icon="fa-solid fa-n"
@@ -43,9 +43,9 @@
                   style="color: #fff" />
               </span>
               <span class="text-small">네이버로 로그인</span>
-            </v-btn>
+            </v-btn> -->
             <!-- 구글로그인 -->
-            <v-btn class="loginBtns" block>
+            <!-- <v-btn class="loginBtns" block>
               <span class="mr-2">
                 <font-awesome-icon
                   icon="fa-solid fa-g"
@@ -53,7 +53,7 @@
                   style="color: #511f3a" />
               </span>
               <span class="text-small">구글로 로그인</span>
-            </v-btn>
+            </v-btn> -->
             <!-- <v-checkbox label="로그인 상태 유지"></v-checkbox> -->
             <v-btn
               class="loginBtns"

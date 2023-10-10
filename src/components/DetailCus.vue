@@ -87,7 +87,7 @@
     <!-- 자격증 -->
     <v-container class="mt-7 mb-5">
       <v-row>
-        <div class="info-label">자격증</div>
+        <div class="info-label">희망 자격증</div>
       </v-row>
       <v-row>
         <div class="info-text">
@@ -99,7 +99,7 @@
               {{ certificateConvert(cert) }}
             </v-chip>
           </span>
-          <span v-if="!info.certificateKeywords"> 자격증 없음 </span>
+          <span v-if="!info.certificateKeywords"> 없음 </span>
         </div>
       </v-row>
       <v-divider class="mt-4" />
@@ -141,7 +141,7 @@
         <div class="info-label">반려견 견종</div>
       </v-row>
       <v-row>
-        <div class="info-text">{{ info.breed }}개월</div>
+        <div class="info-text">{{ info.breed }}</div>
       </v-row>
       <v-divider class="mt-4" />
     </v-container>

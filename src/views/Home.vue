@@ -361,13 +361,69 @@
       </h2>
     </v-row>
     <v-spacer style="height: 50px" />
+    <!-- 베스트 리뷰 4개 -->
     <v-row justify="center">
       <v-col cols="12" md="6" v-for="r in goodReviews" :key="r">
-        <GoodReview :review="r" />
+        <!-- <div><GoodReview :review="r" @clickReview="clickReviewFunc" /></div> -->
+        <v-container
+          @click="clickReviewFunc(r)"
+          class="pt-10 pb-10 pl-10 back-white mb-10"
+          style="outline: solid 2px var(--color-light-grey); width: 750px">
+          <v-row>
+            <!-- 나머지 -->
+            <v-col cols="12" md="8">
+              <!-- 작성자정보 -->
+              <v-row>
+                <!-- 주소 -->
+                <v-col cols="12" md="4" align-self="center">
+                  <div class="title">{{ r.addrState }} {{ r.addrTown }}</div>
+                </v-col>
+                <!-- 별점 -->
+                <v-col cols="12" md="7" align-self="center">
+                  <span>
+                    <v-rating
+                      :model-value="r.star / 2"
+                      color="amber"
+                      density="compact"
+                      half-increments
+                      readonly></v-rating>
+                  </span>
+                </v-col>
+              </v-row>
+              <v-divider class="mt-2 mb-4" />
+              <!-- 내용 -->
+              <v-row>
+                <v-spacer />
+                <v-col cols="12" md="12" class="text-regular">
+                  {{ r.context }}
+                </v-col>
+                <v-spacer />
+              </v-row>
+            </v-col>
+            <!-- 이미지 -->
+            <v-col cols="12" md="3">
+              <v-img
+                :src="r.imgUrl"
+                class="pa-5"
+                cover
+                aspect-ratio="1"
+                height="150px"></v-img>
+            </v-col>
+            <v-col cols="12" md="1" align-self="center" class="pl-5">
+              <div @click="clickReview">
+                <font-awesome-icon
+                  icon="fa-solid fa-chevron-right "
+                  size="xl"
+                  class="left-modify" />
+              </div>
+            </v-col>
+          </v-row>
+        </v-container>
       </v-col>
     </v-row>
     <v-spacer style="height: 150px" />
   </v-container>
+  <router-view name="dialog" />
 </template>
 
 <script>
@@ -396,11 +452,19 @@ export default {
       console.log('kakaologin code : ', this.$route.query.code);
       this.$store.dispatch('doSocialLogin', this.$route.query.code); // 로그인 처리
     }
+    // 소셜로그인 시도 시 중복이메일이 존재하는 경우
+    if (this.$store.state.login.socialDuplEmail) {
+      alert('중복되는 이메일이 존재합니다');
+      this.$store.state.login.socialDuplEmail = false;
+    }
 
     if (
       this.$store.state.login.accessToken &&
-      !this.$store.state.login.dwId &&
-      !this.$store.state.login.cusId
+      ((!this.$store.state.login.dwId && !this.$store.state.login.cusId) ||
+        (!this.$store.state.login.dwId &&
+          this.$store.state.login.userType == 'dogwalker') ||
+        (!this.$store.state.login.cusId &&
+          this.$store.state.login.userType == 'customer'))
     ) {
       this.$store.dispatch('setUserIdAfterSL'); // 소셜로그인 이후 state에 현재 유저정보 올리기
     }
@@ -504,8 +568,8 @@ export default {
 
     // 웹소켓 연결, 성공시 메세지 받기
     connect() {
-      const serverURL = 'https://loveyourdog.co.kr/api/ws';
-      // const serverURL = 'http://localhost:8090/api/ws';
+      // const serverURL = 'https://loveyourdog.co.kr/api/ws';
+      const serverURL = 'http://localhost:8090/api/ws';
 
       let socket = new SockJS(serverURL);
       this.stompClient = Stomp.over(socket);
@@ -555,6 +619,14 @@ export default {
           console.log('소켓 연결 실패', error);
         }
       );
+    },
+    clickReviewFunc(review) {
+      this.$router.push('/reviewDetail');
+
+      console.log('clickReviewFunc', review);
+      this.$store.commit('setReviewId', review.reviewId);
+      this.$store.commit('setOpen', true);
+      this.$store.commit('setReview', review);
     },
   },
 };

@@ -1,6 +1,8 @@
 
 export default {
 
+
+  
   // 2023-08-23T06:33:06 -> 2023년 8월 23일 오전 6시 33분
   formatDateTime(dt) {
     const date = dt.split('T')[0];
@@ -355,4 +357,19 @@ export default {
       }
     }
   },
+  // 'A' -> 초고수
+  formatGrade(grade){
+    if (grade) {
+      switch (grade) {
+        case 'A':
+          return '초고수';
+        case 'B':
+          return '프로';
+        case 'C':
+          return '뉴비';
+        default:
+          return grade;
+      }
+    }
+  }
 }

@@ -1,5 +1,6 @@
 <template>
   <!-- 리뷰작성자 정보 -->
+
   <v-container>
     <div class="writer-box">
       <div class="ma-7 pa-3">
@@ -51,8 +52,6 @@
                 half-increments
                 readonly></v-rating>
             </span>
-            <!-- <span>              <span class="mb-4 ml-2">{{ review.star / 2 }}</span>
-            </span> -->
           </v-col>
 
           <v-spacer></v-spacer>
@@ -60,13 +59,18 @@
       </div>
     </div>
   </v-container>
-  <!-- 리뷰내용 -->
+  <!-- 리뷰내용, 댓글 -->
   <v-container>
     <div class="back-grey-light">
       <!-- 리뷰 이미지 -->
       <v-row>
         <v-col cols="12" md="3">
-          <v-img :src="review.imgUrl" height="100px" class="pa-5" cover></v-img>
+          <v-img
+            :src="review.imgUrl"
+            max-height="200px"
+            class="pa-5"
+            aspect-ratio="4/3"
+            cover></v-img>
         </v-col>
       </v-row>
       <!-- 내용 -->
@@ -115,7 +119,28 @@ export default {
     CommentList,
     CommentForm,
   },
-  created() {},
+  mounted() {
+    // console.log('review로 들어옴');
+    // console.log('this.alarmTargetCmtId', this.alarmTargetCmtId);
+    // if (this.alarmTargetCmtId) {
+    //   console.log('gogo');
+    //   reviewApi
+    //     .getCommentsByReviewId(this.review.reviewId)
+    //     .then((res) => {
+    //       this.commentList = res.data;
+    //       this.comment = true; // 댓글창 열기
+    //       console.log('this.comment', this.comment);
+    //       this.$store.commit('setReviewId', this.review.reviewId);
+    //       console.log('this.commentList', this.commentList);
+    //       console.log('after : ', this.review);
+    //     })
+    //     .catch((e) => {
+    //       console.log(e);
+    //     });
+    // }
+    // 댓글창 열어놓기 위함
+    // reviewDetail에서 reviewid -> review 찾은 후에야 review에서 위의 통신을 해야 하는데, 이 통신이랑 동시에 가는 듯..
+  },
   data() {
     return {
       comment: false,
@@ -124,6 +149,7 @@ export default {
   },
   props: {
     review: Object,
+    alarmTargetCmtId: String, // 댓글 알람온경우 댓글(부모)번호
   },
   methods: {
     dogTypeConvert(dogTypeCode) {

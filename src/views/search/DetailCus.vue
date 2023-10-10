@@ -12,18 +12,20 @@
             <!-- 고객 정보 요약 -->
             <span>
               <v-img
+                @click="clickProfile"
                 v-if="imgUrl"
                 :src="imgUrl"
                 width="147"
                 aspect-ratio="1"
-                style="border-radius: 15px"
+                style="border-radius: 15px; cursor: pointer"
                 cover></v-img>
               <v-img
+                @click="clickProfile"
                 v-if="!imgUrl"
                 src="@/assets/images/profile/profileImage.jpg"
                 width="147"
                 aspect-ratio="1"
-                style="border-radius: 15px"
+                style="border-radius: 15px; cursor: pointer"
                 cover></v-img>
             </span>
           </v-col>
@@ -49,21 +51,34 @@
           <v-spacer />
 
           <!-- 가격, 매너온도 -->
-          <v-col cols="12" md="2" align-self="center">
+          <v-col cols="12" md="3" align-self="center" class="text-regular">
             <div class="mb-3">
-              <span class="black">시간당 </span>
+              <span class="black mr-2">시간당 </span>
               <span class="secondary-color">
                 {{ info.price }}
               </span>
               <span class="black">원</span>
             </div>
+
             <div class="mt-3">
-              <span class="black"> 매너온도 </span>
-              <span class="black">
-                <font-awesome-icon
-                  icon="fa-solid fa-temperature-three-quarters" />
-              </span>
-              <span class="primary-color ml-2">{{ info.temperture }} 1°C</span>
+              <v-tooltip :text="tempertureToolTip" location="bottom">
+                <template v-slot:activator="{ props }">
+                  <span v-bind="props">
+                    <div>
+                      <span class="black mr-2">
+                        <span> 매너온도 </span>
+                        <span>
+                          <font-awesome-icon
+                            icon="fa-solid fa-temperature-three-quarters" />
+                        </span>
+                      </span>
+                      <span class="primary-color ml-2"
+                        >{{ info.temperture }}°C</span
+                      >
+                    </div>
+                  </span>
+                </template>
+              </v-tooltip>
             </div>
           </v-col>
         </v-row>
@@ -137,12 +152,23 @@ export default {
     return {
       info: {},
       imgUrl: '',
+      tempertureToolTip:
+        '고객 매너온도는 산책 종료 후 도그워커가 고객의 매너를 평가한 지표입니다.',
     };
   },
   methods: {
     offer() {
       this.$router.push('offer'); // 제안 확인 창으로
       this.$store.commit('setOpen', true);
+    },
+    clickProfile() {
+      const userInfo = {
+        userId: this.info.customerId,
+        userType: 'customer',
+      };
+      this.$store.commit('setUserInfo', userInfo);
+
+      this.$router.push('cusProfile');
     },
   },
 };

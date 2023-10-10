@@ -13,7 +13,7 @@
     <!-- tab 선택 시 출력될 window -->
     <v-window v-model="tab">
       <v-window-item v-for="t in tabList" :key="t" :value="t">
-        <!-- info 탭이 열리면-->
+        <!--  <<<<<< info 탭이 열리면 >>>>>> -->
         <v-container v-if="t === 'info'" fluid>
           <!-- 각오의 한마디 -->
           <v-row justify="center" class="pt-16 mt-5">
@@ -198,13 +198,13 @@
             <v-spacer />
           </v-row>
         </v-container>
-        <!-- review 탭이 열리면 -->
+        <!-- <<<<<< review 탭이 열리면 >>>>>>-->
         <v-container v-if="t === 'review'" fluid>
           <!-- 리뷰 카운트 -->
           <v-row class="mt-16">
             <div>리뷰 {{ reviewList.length }} 개</div>
           </v-row>
-
+          
           <v-row justify="center">
             <v-divider
               class="border-opacity-25 mt-3 mb-10"

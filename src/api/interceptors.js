@@ -52,8 +52,9 @@ function setInterceptors(instance) {
                         store.dispatch('doReissue', originalReq)
                     } else if(error.response.data.message==="잘못된 계정정보입니다."){
                         store.commit('failLogin','아이디 또는 비밀번호를 잘못 입력했습니다.입력하신 내용을 다시 확인해주세요.')
-                    } 
-                    else {
+                    } else if(error.response.data.message==="이메일 중복"){ // 소셜로그인 시도 시 중복이메일이 존재하는 경우
+                        store.commit('socialDuplEmail', true)
+                    } else {
                         console.log("토큰기한만료 아닌 401에러이다")
                     }
                     break;

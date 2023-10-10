@@ -6,6 +6,8 @@ const state = {
   userType: '',
 
   failLogin: '',
+  // 소셜로그인
+  socialDuplEmail: false,
 
   // 로그인 후 현재 유저 관련
   accessToken: '',
@@ -61,9 +63,14 @@ const mutations = {
   setUsernick(state, usernick){
       state.usernick = usernick
   },
-  setUserImgUrl(state, userImgUrl){
-      state.userImgUrl = userImgUrl
-    
+  setUserImgUrl(state, data){
+    console.log('zz : ',data)
+    const urlfront = 'https://lyd-bucket1.s3.ap-northeast-2.amazonaws.com';
+    if(data.dirName && data.fileName && data.extension){
+      state.userImgUrl = `${urlfront}/${data.dirName}/${data.fileName}.${data.extension}`
+    } else {
+      state.userImgUrl = ''
+    }
   },
 
   //admin
@@ -82,17 +89,13 @@ const mutations = {
   },
   failLogin(state, fail){
     state.failLogin = fail
+  },
+  // 소셜로그인
+  socialDuplEmail(state, bool){
+    state.socialDuplEmail = bool
   }
 }
 
-//   // state 초기화 
-//   reset(state) {
-
-
-//     // localStorage.clear();  //이거 vuex는 못지움
-//   },
-
-// }
 
 const actions = {
   // login
@@ -118,10 +121,8 @@ const actions = {
             commit('setUsernick', res.data.usernick)
             commit('setGoalCnt', res.data.goalCnt)
             commit('setAccountType', "EMAIL")
-            const urlfront = 'https://lyd-bucket1.s3.ap-northeast-2.amazonaws.com';
-            const imgUrl = `${urlfront}/${res.data.dirName}/${res.data.fileName}.${res.data.extension}`;
-            commit('setUserImgUrl', imgUrl)
-            router.go('0')
+            commit('setUserImgUrl', res.data)
+            router.go('/')
         } 
     })
     .catch((e)=>{
@@ -147,10 +148,8 @@ const actions = {
             commit('setUsernick', res.data.usernick)
             commit('setGoalCnt', res.data.goalCnt)
             commit('setAccountType', "KAKAO")
-            const urlfront = 'https://lyd-bucket1.s3.ap-northeast-2.amazonaws.com';
-            const imgUrl = `${urlfront}/${res.data.dirName}/${res.data.fileName}.${res.data.extension}`;
-            commit('setUserImgUrl', imgUrl)
-            router.go(0)
+            commit('setUserImgUrl', res.data)
+            window.location.href = '/' // 이거 안하고 router.go(0) 하면 url에 code가 붙은 상태로 다시 요청가서 code 다시 사용했다는 에러발생(500)
         } 
     })
     .catch((e)=>{
@@ -171,8 +170,13 @@ const actions = {
       console.log('id가져오기 : ',res.data)
       if(res.data.dogwalkerId){
         commit('setDwId', res.data.dogwalkerId) // 도그워커면
+        commit('setCusId', null) // 도그워커면
+        commit('setUserType', 'dogwalker') // 도그워커면
+      
       } else {
         commit('setCusId', res.data.customerId) // 고객이면
+        commit('setDwId', null) // 고객이면
+        commit('setUserType', 'customer') // 고객이면
       }
       // router.push('/')
 
@@ -246,14 +250,14 @@ const actions = {
         if(state.accessToken){
           commit('setAccessToken','')
         }
-        if(state.usernick){
-          commit('setUserNick','')
-        }
+        commit('setUserNick','')
+        
         if(state.goalCnt){
           commit('setGoalCnt',null)
         }
         commit('setUserType','')
         commit('setUserNick','')
+        commit('setAccountType','')
        
         router.push('/')
     })

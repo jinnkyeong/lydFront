@@ -18,14 +18,14 @@ import { faXmark, faChevronLeft, faUser, faLocationDot,
   faCertificate,faVenusMars,faSignal, faMoneyBill,faCalendarDays, faChevronRight,
    faDog, faArrowUp, faArrowDown,faArrowRight, faMagnifyingGlass, faMinus, faCheck, faQuoteLeft, 
    faKey,
-   faClock, faTemperatureThreeQuarters, faAddressCard, faMessage, faN, faG, faEnvelope, faEye, faChevronDown,faChevronUp, faTrashCan, faCircleCheck, faHandshake} 
+   faClock, faTemperatureThreeQuarters, faAddressCard, faMessage, faN, faG, faEnvelope, faEye, faChevronDown,faChevronUp, faTrashCan, faCircleCheck, faHandshake, faFire} 
   from '@fortawesome/free-solid-svg-icons'
 /* 위에서 import한 아이콘들을 Core library에 등록 */
 library.add(faXmark, faChevronLeft, faUser, faLocationDot, 
   faCertificate, faVenusMars,faSignal, faMoneyBill,faCalendarDays, faChevronRight,
   faDog, faArrowUp,faArrowDown,faArrowRight, faMagnifyingGlass, faMinus, faCheck, faQuoteLeft,
   faKey, faClock, faTemperatureThreeQuarters, faAddressCard, faMessage, faN, faG, faEnvelope,faEye, faChevronDown, faChevronUp, faTrashCan,faCircleCheck,
-  faHandshake
+  faHandshake, faFire
   )
 
 

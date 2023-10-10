@@ -14,6 +14,9 @@ const state = {
     title: '',
     lectureTypeId: null,
   },
+  userInfo:{
+
+  },
 
 
   // search 관련
@@ -52,6 +55,29 @@ const state = {
 
   // 지원서 수정해서 수락 관련
   changeApp: 0,
+
+  // 리뷰상세보기용
+  review: {
+    reviewId:null,
+    dogwalkerId:null,
+    customerId:null,
+    customerNick:'',
+    context:'',
+    dirName:'',
+    fileName:'',
+    extension:'',
+    imgUrl:'',
+    breed:'',
+    addrState:'',
+    addrTown:'',
+    star:null,
+    dogType:null,
+    hour:null,
+    min:null,
+    month:null,
+    day:null,
+    commentCnt:null,
+  }
 
 
 }
@@ -165,6 +191,36 @@ const mutations = {
   },
   changeApp(state, appId){
     state.changeApp =  appId
+  },
+
+  // 남이 프로필 보기
+  setUserInfo(state, info){
+    if(info.userId && info.userType){
+      state.userInfo.userId = info.userId
+      state.userInfo.userType = info.userType
+    }
+  },
+  // 리뷰 상세보기용
+  setReview(state, review){
+    if(review){
+      state.reviewId = review.reviewId
+      state.dogwalkerId = review.dogwalkerId
+      state.customerId = review.customerId
+      state.customerNick = review.customerNick
+      state.context = review.context
+      state.dirName = review.dirName
+      state.fileName = review.fileName
+      state.extension = review.extension
+      state.breed = review.breed
+      state.addrState = review.addrState
+      state.star = review.star
+      state.dogType = review.dogType
+      state.hour = review.hour
+      state.min = review.min
+      state.month = review.month
+      state.day = review.day
+      state.commentCnt = review.commentCnt
+    }
   }
 
 

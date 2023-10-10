@@ -9,20 +9,22 @@
               <v-spacer />
               <v-col>
                 <v-img
+                  @click="clickProfile"
                   v-if="imgUrl"
                   :src="imgUrl"
                   width="200"
                   aspect-ratio="1"
                   max-height="200"
-                  style="border-radius: 15px"
+                  style="border-radius: 15px; cursor: pointer"
                   cover />
                 <v-img
+                  @click="clickProfile"
                   v-if="!imgUrl"
                   src="@/assets/images/profile/profileImage.jpg"
                   width="200"
                   aspect-ratio="1"
                   max-height="200"
-                  style="border-radius: 15px"
+                  style="border-radius: 15px; cursor: pointer"
                   cover />
               </v-col>
               <v-spacer />
@@ -162,6 +164,15 @@ export default {
             break;
         }
       }
+    },
+    clickProfile() {
+      const userInfo = {
+        userId: this.info.dogwalkerId,
+        userType: 'dogwalker',
+      };
+      this.$store.commit('setUserInfo', userInfo);
+
+      this.$router.push('dwProfile');
     },
   },
 };

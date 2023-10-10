@@ -35,6 +35,7 @@
               <v-spacer />
               <v-col cols="12" md="10">
                 <v-text-field
+                  type="password"
                   label="비밀번호"
                   v-model="payload.pwd"
                   :rules="pwd_rule"

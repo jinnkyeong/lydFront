@@ -12,7 +12,10 @@
           <v-row justify="center" class="ma-10">
             <v-avatar class="profileImage" size="200px" @click="modProfile">
               <v-img v-if="imgUrl" :src="imgUrl" cover></v-img>
-              <span v-if="!imgUrl" class="text-h5">LYD</span>
+              <v-img
+                v-if="!imgUrl"
+                src="@/assets/images/profile/profileImage.jpg"
+                cover />
             </v-avatar>
           </v-row>
           <!-- nick -->
@@ -26,6 +29,32 @@
                     variant="underlined"
                     readonly></v-text-field>
                 </v-col>
+                <v-col align-self="center" cols="12" md="1">
+                  <font-awesome-icon
+                    @click="modProfile"
+                    icon="fa-solid fa-chevron-right"
+                    size="2xl"
+                    class="mb-5 left-modify" />
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-row>
+          <!-- 프로필 메세지 -->
+          <v-row>
+            <v-container>
+              <v-row class="mt-16" no-gutters>
+                <v-col cols="12" md="10">
+                  <v-field-label ref_for="info.profileMessage">
+                    <span> 프로필 메세지 </span>
+                  </v-field-label>
+                  <v-textarea
+                    class="ma-0 pa-0"
+                    no-resize
+                    rows="3"
+                    readonly
+                    :model-value="info.profileMessage" />
+                </v-col>
+                <v-spacer />
                 <v-col align-self="center" cols="12" md="1">
                   <font-awesome-icon
                     @click="modProfile"
@@ -113,7 +142,9 @@ export default {
         this.info = res.data;
         // 이미지 출력
         const urlfront = 'https://lyd-bucket1.s3.ap-northeast-2.amazonaws.com';
-        this.imgUrl = `${urlfront}/${this.info.dirName}/${this.info.fileName}.${this.info.extension}`;
+        if (this.info.dirName && this.info.fileName && this.info.extension) {
+          this.imgUrl = `${urlfront}/${this.info.dirName}/${this.info.fileName}.${this.info.extension}`;
+        }
       })
       .catch((e) => {
         console.log(e);
@@ -133,7 +164,6 @@ export default {
     modProfile() {
       this.$router.push('/cusInfo/cusInfoMod');
     },
-    modEmail() {},
     modPhone() {
       this.$store.commit('setOpen', true);
       this.$router.push('/cusInfo/changePhone');

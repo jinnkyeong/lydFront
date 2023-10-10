@@ -5,21 +5,24 @@
     <v-row no-gutters>
       <!-- 아바타 -->
       <v-col cols="12" md="1" class="ml-3 mt-1">
-        <v-avatar v-if="comment.imgUrl">
+        <v-avatar v-if="comment.imgUrl" @click="clickWriter">
           <v-img :src="comment.imgUrl" cover />
         </v-avatar>
-        <v-avatar v-if="!comment.imgUrl">
+        <v-avatar v-if="!comment.imgUrl" @click="clickWriter">
           <v-img src="@/assets/images/profile/profileImage.jpg" cover />
         </v-avatar>
       </v-col>
       <v-spacer />
       <v-col cols="12" md="9">
         <!-- 닉네임 -->
-        <v-row class="black semi-bold mt-1">{{ comment.writerNick }}</v-row>
+        <v-row @click="clickWriter" class="black semi-bold mt-1">{{
+          comment.writerNick
+        }}</v-row>
         <v-row>
           <div style="word-break: break-all">
             <!-- 부모댓글 닉네임 -->
             <span
+              @click="clickParentWriter"
               v-if="comment.depth > 2 && comment.parentWriterNick"
               class="secondary-color mr-2">
               @ {{ comment.parentWriterNick }}
@@ -158,6 +161,37 @@ export default {
     },
     getReplied(replied) {
       this.$emit('replied', replied);
+    },
+    // 작성자 정보로 가기
+    clickParentWriter() {
+      // @부모댓글작성자
+      const userInfo = {
+        userId: this.comment.parentWriterId,
+        userType: this.comment.parentWriterType,
+      };
+      this.$store.commit('setUserInfo', userInfo);
+      if (this.comment.parentWriterType == 'dogwalker') {
+        this.$router.push('dwProfile');
+      } else if (this.comment.parentWriterType == 'customer') {
+        this.$router.push('cusProfile');
+      } else {
+        console.log('writertype이 도그워커나 고객이 아닙니다');
+      }
+    },
+    clickWriter() {
+      // 해당댓글작성자
+      const userInfo = {
+        userId: this.comment.writerId,
+        userType: this.comment.writerType,
+      };
+      this.$store.commit('setUserInfo', userInfo);
+      if (this.comment.writerType == 'dogwalker') {
+        this.$router.push('dwProfile');
+      } else if (this.comment.writerType == 'customer') {
+        this.$router.push('cusProfile');
+      } else {
+        console.log('writertype이 도그워커나 고객이 아닙니다');
+      }
     },
   },
 };

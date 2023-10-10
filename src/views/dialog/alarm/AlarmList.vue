@@ -60,6 +60,7 @@
 
 <script>
 import searchApi from '@/api/searchApi';
+import reviewApi from '@/api/reviewApi';
 export default {
   mounted() {
     this.alarmList = this.$store.state.login.alarmList; // 전체 알람 리스트
@@ -152,7 +153,19 @@ export default {
         this.$router.push('/dwInfo'); // 내 정보 보기
       } else if (alarm.msgType === 4) {
         // 4 : 대댓글 작성 -> 부모댓글러  2->1   3->2   4->3 ...
-        console.log('어디로 이동해야합니다');
+        reviewApi
+          .findReviewById(alarm.reviewId)
+          .then((res) => {
+            console.log(res.data);
+            this.$store.commit('setReview', res.data);
+            this.$router.push({
+              path: '/reviewDetail',
+              query: { parentCommentId: alarm.parentCommentId },
+            });
+          })
+          .catch((e) => {
+            console.log(e);
+          });
       } else if (alarm.msgType === 5) {
         // 5 : 댓글,대댓글 작성 -> 원글러 1,2,3,4 -> 0
         console.log('어디로 이동해야합니다');

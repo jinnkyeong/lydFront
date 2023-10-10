@@ -41,10 +41,13 @@ const state = {
 
   reply: 0,
 
+  testInputs:[]
+
 }
 const getters = {}
 const mutations = {
   setOpen(state, open){
+    console.log('setopen ',open)
     state.open = open
   },
   setAlert(state,config){
@@ -126,7 +129,31 @@ const mutations = {
   },
   setReply(state,reply){
     state.reply = reply
-  }
+  },
+  // 테스트
+  addTestInput(state, input){
+    // templist로 옮겨서 작업
+    let tempList =  state.testInputs
+    if(input){
+      if(tempList.length <= 0){ // 처음 저장
+        tempList.push(input)
+
+      } else { // 데이터 존재
+         // 이미 답이 있으면 제거
+        for (let i = 0; i < tempList.length; i++) { 
+          if(tempList[i].questionTypeId == input.questionTypeId){
+            tempList.splice(i,1)
+            break;
+          }   
+        }
+        // 새로운 답 추가
+        tempList.push(input)
+      }
+      // state에 다시 올리기
+      state.testInputs = tempList
+      console.log('addTestInput result : ',state.testInputs)
+    }
+  },
 
 }
 const actions = {

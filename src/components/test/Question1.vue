@@ -1,8 +1,10 @@
 <template>
   <v-container class="field">
+    <!-- 질문 -->
     <v-row class="field-top">
       <div class="field-top-label">{{ q.questionSentence }}</div>
     </v-row>
+    <!-- 객관식 보기 -->
     <v-row class="field-middle" v-for="(a, i) in answers" :key="i">
       <v-radio-group column v-model="picked">
         <v-radio :label="a" :value="a" @change="change(a)" />
@@ -17,11 +19,8 @@ export default {
     q: Object,
   },
   mounted() {
-    console.log('mounted - this.q.answers : ', this.q.answers);
     if (this.q.answers) {
       let shuffledAnswers = [...this.q.answers].sort(() => Math.random() - 0.5); // 보기 배열 섞기(원본 유지)
-      // console.log('after - this.q.answers : ', this.q.answers);
-      // console.log('after - shuffledAnswers : ', shuffledAnswers);
       this.answers = shuffledAnswers;
     }
   },
@@ -30,15 +29,15 @@ export default {
     return {
       answers: [],
       picked: null,
-
-      // post
-      inputs1: [],
     };
   },
   methods: {
     change(answer) {
-      this.$emit('input', answer);
-      // console.log('emit input ', answer);
+      const aObj = {
+        questionTypeId: this.q.questionTypeId,
+        input: answer,
+      };
+      this.$store.commit('addTestInput', aObj);
     },
   },
 };

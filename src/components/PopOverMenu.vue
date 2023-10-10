@@ -17,9 +17,21 @@
 
       <v-card min-width="300">
         <!-- 유저정보 -->
+        <!-- 프로필사진 -->
         <v-list>
           <v-list-item
-            :prepend-avatar="userImgUrl"
+            @click="clickMyInfo"
+            v-if="$store.state.login.userImgUrl"
+            :prepend-avatar="$store.state.login.userImgUrl"
+            :title="nick"
+            :subtitle="describe(userType, cnt)">
+          </v-list-item>
+          <v-list-item
+            @click="clickMyInfo"
+            v-if="!$store.state.login.userImgUrl"
+            :prepend-avatar="
+              require('@/assets/images/profile/profileImage.jpg')
+            "
             :title="nick"
             :subtitle="describe(userType, cnt)">
           </v-list-item>
@@ -27,6 +39,7 @@
 
         <v-divider></v-divider>
 
+        <!-- 버튼 -->
         <v-list>
           <!-- 내 정보 -->
           <v-list-item>
@@ -44,7 +57,12 @@
         </v-list>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn variant="text" @click="menu = false" class="menu-list bar-menu"
+          <v-btn
+            variant="text"
+            @click="menu = false"
+            size="small"
+            color="grey"
+            class="menu-list bar-menu"
             >닫기</v-btn
           >
         </v-card-actions>
@@ -60,7 +78,6 @@ export default {
       this.nick = this.$store.state.login.usernick;
       this.userType = this.$store.state.login.dwId ? 'dogwalker' : 'customer';
       this.cnt = this.$store.state.login.goalCnt;
-      this.userImgUrl = this.$store.state.login.userImgUrl;
     } else {
       this.nick = '';
       this.userType = '';
@@ -73,7 +90,6 @@ export default {
       this.nick = this.$store.state.login.usernick;
       this.userType = this.$store.state.login.dwId ? 'dogwalker' : 'customer';
       this.cnt = this.$store.state.login.goalCnt;
-      this.userImgUrl = this.$store.state.login.userImgUrl;
     } else {
       this.nick = '';
       this.userType = '';

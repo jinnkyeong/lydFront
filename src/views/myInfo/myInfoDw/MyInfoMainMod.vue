@@ -12,25 +12,25 @@
           <!-- avartar -->
           <v-row justify="center" class="ma-10">
             <v-avatar
-              v-if="imgUrl && !fileArray"
+              v-if="imgUrl && !fileArray[0]"
               size="200px"
               @click="modProfile">
               <v-img :src="preview" cover></v-img>
             </v-avatar>
 
             <v-avatar
-              v-if="imgUrl && fileArray"
+              v-if="imgUrl && fileArray[0]"
               size="200px"
               @click="modProfile">
               <v-img :src="preview" cover></v-img>
             </v-avatar>
 
-            <v-avatar v-if="!imgUrl && !fileArray" size="200px" color="info">
-              <span class="text-h5">LYD</span>
+            <v-avatar v-if="!imgUrl && !fileArray[0]" size="200px">
+              <v-img src="@/assets/images/profile/profileImage.jpg" cover />
             </v-avatar>
 
             <v-avatar
-              v-if="!imgUrl && fileArray"
+              v-if="!imgUrl && fileArray[0]"
               size="200px"
               @click="modProfile">
               <v-img :src="preview" cover></v-img>
@@ -49,11 +49,29 @@
               <v-row class="mt-16" no-gutters>
                 <v-field-label ref_for="info.nick">닉네임</v-field-label>
                 <v-text-field
-                  :model-value="info.nick"
+                  v-model="info.nick"
                   variant="underlined"></v-text-field>
               </v-row>
             </v-container>
           </v-row>
+          <!-- 프로필 메세지 -->
+          <v-row>
+            <v-container>
+              <v-row class="mt-16" no-gutters>
+                <v-col cols="12" md="11">
+                  <v-field-label ref_for="info.email">
+                    <span> 프로필 메세지 </span>
+                  </v-field-label>
+                  <v-textarea
+                    class="ma-0 pa-0"
+                    no-resize
+                    rows="3"
+                    v-model="info.profileMessage" />
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-row>
+          <!-- 수정버튼 -->
           <v-row>
             <v-spacer />
             <v-col cols="12" md="3">
@@ -83,7 +101,9 @@ export default {
         this.info = res.data;
         // 이미지 출력
         const urlfront = 'https://lyd-bucket1.s3.ap-northeast-2.amazonaws.com';
-        this.imgUrl = `${urlfront}/${this.info.dirName}/${this.info.fileName}.${this.info.extension}`;
+        if (this.info.dirName && this.info.fileName && this.info.extension) {
+          this.imgUrl = `${urlfront}/${this.info.dirName}/${this.info.fileName}.${this.info.extension}`;
+        }
         if (this.imgUrl != null) {
           this.preview = this.imgUrl;
         }
@@ -124,6 +144,7 @@ export default {
     doModify(mod) {
       this.info.id = this.$store.state.login.dwId;
       this.info.dirName = 'dwProfile';
+      console.log('수정 전 :', this.info);
       if (mod) {
         myInfoApi
           .postModifyProfile(this.fileArray, this.info)
@@ -131,6 +152,7 @@ export default {
             console.log(res.data);
             this.info = res.data;
             this.$router.push('/dwInfo');
+            this.$store.commit('setUserImgUrl', res.data);
           })
           .catch((e) => {
             console.log(e);

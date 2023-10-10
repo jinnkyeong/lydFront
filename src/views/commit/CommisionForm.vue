@@ -7,6 +7,7 @@
           <v-row justify="center" class="mt-16" no-gutters>
             <h2>의뢰서 작성하기</h2>
           </v-row>
+
           <div class="pa-16 ma-16">
             <v-container>
               <div class="creteria">고객 정보</div>
@@ -330,7 +331,7 @@
               <!-- 소중대초대 -->
               <v-container class="field">
                 <v-row class="field-top">
-                  <div class="field-top-label">강아지 구별</div>
+                  <div class="field-top-label">반려견 유형(소/중/대형)</div>
                 </v-row>
                 <v-row class="field-middle">
                   <v-radio-group v-model="info.dogType" column>
@@ -361,34 +362,17 @@
                   </div>
                 </v-row>
                 <v-row justify="end">
-                  <v-btn class="ma-5" color="primary" @click="addCusRequire"
-                    >추가</v-btn
-                  >
-                </v-row>
-                <v-row class="field-middle">
-                  <v-col cols="12" md="1">
-                    <div class="field-middle-label">{{ 1 }}</div>
-                  </v-col>
-                  <v-col cols="12" md="10">
-                    <v-text-field
-                      v-model="firstRequire"
-                      variant="outlined"
-                      counter
-                      label="요청사항"
-                      maxlength="100"
-                      single-line></v-text-field>
-                  </v-col>
-                  <v-col cols="12" md="1">
-                    <div v-if="addCnt >= 1" @click="clickDelReq(1)">닫기</div>
-                  </v-col>
+                  <v-btn class="ma-5" color="primary" @click="addCusRequire">
+                    추가
+                  </v-btn>
                 </v-row>
                 <v-row class="field-middle" v-for="i in addCnt" :key="i">
                   <v-col cols="12" md="1">
-                    <div class="field-middle-label">{{ i + 1 }}</div>
+                    <div class="field-middle-label">{{ i }}</div>
                   </v-col>
                   <v-col cols="12" md="10">
                     <v-text-field
-                      v-model="info.cusRequires[i + 1]"
+                      v-model="info.cusRequires[i]"
                       variant="outlined"
                       counter
                       label="요청사항"
@@ -396,7 +380,7 @@
                       single-line></v-text-field>
                   </v-col>
                   <v-col cols="12" md="1">
-                    <div @click="clickDelReq(i + 1)">닫기</div>
+                    <div @click="clickDelReq(i)">닫기</div>
                   </v-col>
                 </v-row>
               </v-container>
@@ -558,11 +542,12 @@ export default {
       }
     },
     addCusRequire() {
-      if (this.addCnt <= 0) {
-        this.info.cusRequires.push(this.firstRequire); // 첫 요청사항
-      }
+      // if (this.addCnt <= 0) {
+      // 아무것도 안 적은 상태
+      // this.info.cusRequires.push(this.firstRequire); // 첫 요청사항
+      // }
       this.addCnt++;
-      console.log('this.firstRequire : ', this.firstRequire);
+      // console.log('this.firstRequire : ', this.firstRequire);
       console.log('this.info.cusRequires : ', this.info.cusRequires);
     },
     clickSubmit() {
@@ -604,6 +589,7 @@ export default {
     clickDelReq(index) {
       console.log('전 : ', this.info.cusRequires);
       this.addCnt -= 1;
+      // this.info.cusRequires.splice(index, 1);
       this.info.cusRequires.splice(index, 1);
       console.log('후 : ', this.info.cusRequires);
     },

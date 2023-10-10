@@ -29,9 +29,9 @@
     <!-- dialog -->
     <router-view name="dialog"></router-view>
     <!-- alert -->
-    <v-row justify="center">
+    <!-- <v-row justify="center">
       <Alert />
-    </v-row>
+    </v-row> -->
   </v-app>
 </template>
 

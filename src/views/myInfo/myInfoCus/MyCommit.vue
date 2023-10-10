@@ -51,6 +51,18 @@ export default {
         if (res.data.length > 0) {
           this.coms = res.data;
           console.log(this.coms);
+          // image
+          for (let i = 0; i < this.coms.length; i++) {
+            const dirName = this.coms[i].dirName;
+            const fileName = this.coms[i].fileName;
+            const extension = this.coms[i].extension;
+            if (dirName && fileName && extension) {
+              const urlfront =
+                'https://lyd-bucket1.s3.ap-northeast-2.amazonaws.com';
+              const imgUrl = `${urlfront}/${dirName}/${fileName}.${extension}`;
+              this.coms[i].imgUrl = imgUrl;
+            }
+          }
         } else {
           // 없으면
           console.log('부족');

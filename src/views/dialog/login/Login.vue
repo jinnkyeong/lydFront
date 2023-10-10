@@ -165,13 +165,7 @@ export default {
       loginApi
         .kakaologin()
         .then((res) => {
-          // const url =
-          //   'https://kauth.kakao.com/oauth/authorize?client_id=939adb4627ac2f9e1653f58dc85e8ff3&redirect_uri=http://localhost:8080&response_type=code';
-          window.location.href = res.data;
-          // window.open(res.data, '_blank', 'width=500, height=500');
-          // window.open(url, '_blank', 'width=500, height=500');
-          // this.$store.dispatch('doSocialLogin', res.data);
-          // console.log('here : ', window.location.href);
+          window.location.href = res.data; // 받은 url로 화면이동
         })
         .catch((e) => {
           console.log(e);
