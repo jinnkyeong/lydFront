@@ -39,7 +39,7 @@ export default {
             url :`/api/open/reviews/dw/${dwId}`,
         });
     },
-    getReviewsByDwId: function(cusId){
+    getReviewsByCusId: function(cusId){
         return api({
             method : 'get',
             url :`/api/open/reviews/cus/${cusId}`,

@@ -65,12 +65,13 @@
                       <v-img
                         v-if="rs.imgUrl"
                         :src="rs.imgUrl"
-                        height="100px"
+                        height="140px"
+                        aspect-ratio="1"
                         cover></v-img>
                       <v-img
                         v-if="!rs.imgUrl"
                         src="@/assets/images/profile/profileImage.jpg"
-                        height="100px"
+                        height="140px"
                         aspect-ratio="1"
                         cover />
                     </v-col>
@@ -174,12 +175,14 @@
                       <v-img
                         v-if="rs.imgUrl"
                         :src="rs.imgUrl"
-                        height="100px"
+                        height="140px"
+                        aspect-ratio="1"
                         cover></v-img>
                       <v-img
                         v-if="!rs.imgUrl"
                         :src="rs.imgUrl"
-                        height="100px"
+                        height="140px"
+                        aspect-ratio="1"
                         cover></v-img>
                     </v-col>
                     <v-spacer />
@@ -282,12 +285,14 @@
                       <v-img
                         v-if="rs.imgUrl"
                         :src="rs.imgUrl"
-                        height="100px"
+                        height="140px"
+                        aspect-ratio="1"
                         cover></v-img>
                       <v-img
                         v-if="!rs.imgUrl"
                         src="@/assets/images/profile/profileImage.jpg"
-                        height="100px"
+                        height="140px"
+                        aspect-ratio="1"
                         cover></v-img>
                     </v-col>
                     <v-spacer />
@@ -390,12 +395,14 @@
                       <v-img
                         v-if="rs.imgUrl"
                         :src="rs.imgUrl"
-                        height="100px"
+                        height="140px"
+                        aspect-ratio="1"
                         cover></v-img>
                       <v-img
                         v-if="!rs.imgUrl"
                         :src="rs.imgUrl"
-                        height="100px"
+                        height="140px"
+                        aspect-ratio="1"
                         cover></v-img>
                     </v-col>
                     <v-spacer />
@@ -498,12 +505,14 @@
                       <v-img
                         v-if="rs.imgUrl"
                         :src="rs.imgUrl"
-                        height="100px"
+                        height="140px"
+                        aspect-ratio="1"
                         cover></v-img>
                       <v-img
                         v-if="!rs.imgUrl"
                         src="@/assets/images/profile/profileImage.jpg"
-                        height="100px"
+                        height="140px"
+                        aspect-ratio="1"
                         cover></v-img>
                     </v-col>
                     <v-spacer />

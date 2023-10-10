@@ -210,7 +210,7 @@
             <v-row>
               <v-radio-group v-model="paymentTypeId" column>
                 <v-radio label="카드결제" value="1"></v-radio>
-                <v-radio label="모바일결제" value="2"></v-radio>
+                <!-- <v-radio label="모바일결제" value="2"></v-radio> -->
                 <v-radio label="카카오페이" value="3"></v-radio>
               </v-radio-group>
             </v-row>
@@ -302,13 +302,13 @@ export default {
       .then((res) => {
         this.reservation = res.data;
         // 총 가격 저장
-        // this.purchaseData.amount = this.totalPrice(
-        //   this.reservation.price,
-        //   this.reservation.commisionDto.startHour,
-        //   this.reservation.commisionDto.startMin,
-        //   this.reservation.commisionDto.endHour,
-        //   this.reservation.commisionDto.endMin
-        // );
+        this.purchaseData.amount = this.totalPrice(
+          this.reservation.price,
+          this.reservation.commisionDto.startHour,
+          this.reservation.commisionDto.startMin,
+          this.reservation.commisionDto.endHour,
+          this.reservation.commisionDto.endMin
+        );
         // 이미지 출력
         const urlfront = 'https://lyd-bucket1.s3.ap-northeast-2.amazonaws.com';
         this.reservation.imgUrl = `${urlfront}/${this.reservation.dwDirName}/${this.reservation.dwFileName}.${this.reservation.dwExtension}`;
@@ -329,7 +329,7 @@ export default {
       // 아임포트에 전달할 데이터
       purchaseData: {
         merchant_uid: `mid_${new Date().getTime()}`, // 내가 정한 주문번호(재사용불가, DB에 저장)
-        amount: 500, // 결제금액
+        // amount: 500, // 결제금액
         name: 'loveyourdog 산책 서비스 결제', // 주문명
         buyer_name: '', // 구매자 이름
         buyer_tel: '', // 구매자 전화번호

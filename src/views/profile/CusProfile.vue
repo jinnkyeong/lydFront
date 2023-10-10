@@ -34,7 +34,7 @@
             <span class="mr-10">
               <span class="mr-2">이번 달 산책횟수</span>
               <span class="mr-2 semi-bold">{{ info.monthGoalCnt }}</span>
-              <span v-if="info.monthGoalCnt >= 12" class="red">
+              <span v-if="info.monthGoalCnt >= 5" class="red">
                 <v-tooltip :text="fireToolTip">
                   <template v-slot:activator="{ props }">
                     <span v-bind="props">
@@ -202,7 +202,8 @@ export default {
       coms: [],
       tempertureToolTip:
         '고객 매너온도는 산책 종료 후 도그워커가 고객의 매너를 평가한 지표입니다.',
-      fireToolTip: '이번 달 산책횟수가 12 이상으로 활발히 활동하는 회원입니다.',
+      fireToolTip:
+        '이번 달 산책횟수가 5회 이상으로 활발히 활동하는 회원입니다.',
 
       tp: 0,
     };

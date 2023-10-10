@@ -26,19 +26,30 @@
     <v-row class="ma-5">
       <h3>우리동네 인기 도그워커</h3>
     </v-row>
-    <v-row justify="center">
+    <v-row>
       <v-item-group>
         <v-container>
-          <v-row justify="center">
+          <v-row justify="center" v-if="apps.length >= 4">
             <v-col v-for="app in apps" :key="app" cols="12" md="3">
               <v-item>
                 <div
-                  class="pt-15 pl-2 pr-2"
+                  class="mt-15 ml-2 mr-2"
                   @click="selectApp(app.applicationId, app.dogwalkerId)">
                   <Figure :appl="app"></Figure>
                 </div>
               </v-item>
             </v-col>
+          </v-row>
+          <v-row v-if="apps.length < 4">
+            <v-item>
+              <div
+                v-for="app in apps"
+                :key="app"
+                class="mt-15 ml-2 mr-2"
+                @click="selectApp(app.applicationId, app.dogwalkerId)">
+                <Figure :appl="app"></Figure>
+              </div>
+            </v-item>
           </v-row>
         </v-container>
       </v-item-group>

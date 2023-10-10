@@ -21,7 +21,7 @@
       <v-card-text>
         <v-row justify="center" no-gutters style="height: 40px"> </v-row>
         <v-row justify="center" no-gutters style="height: 60px">
-          <div>자격증</div>
+          <div class="text-regular">자격증</div>
         </v-row>
         <v-row justify="center" no-gutters style="height: 100px">
           <v-select

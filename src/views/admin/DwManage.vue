@@ -1,10 +1,14 @@
 <template>
   <v-container>
     <v-row>
-      <v-spacer />
-      <v-col cols="12" md="10">
-        <v-container>
-          <v-row style="border-bottom: solid black 1px">
+      <v-col cols="12" md="12">
+        <v-container class="text-center">
+          <v-row
+            style="
+              border-top: solid var(--color-primary) 2px;
+              border-bottom: solid var(--color-primary) 2px;
+            "
+            class="semi-bold">
             <v-col>도그워커 ID</v-col>
             <v-col>도그워커 닉네임</v-col>
             <v-col>지원서 통과여부</v-col>
@@ -13,7 +17,10 @@
             <v-col>인터뷰 통과여부</v-col>
             <v-col>최종 합격</v-col>
           </v-row>
-          <v-row v-for="dw in dogwalkers" :key="dw">
+          <v-row
+            v-for="dw in dogwalkers"
+            :key="dw"
+            style="border-bottom: solid var(--color-light-grey) 2px">
             <v-col>{{ dw.dogwalkerId }}</v-col>
             <v-col>{{ dw.nick }}</v-col>
             <v-col>
@@ -21,7 +28,9 @@
                 {{ dw.appicationPassed }}
               </div>
               <div>
-                <v-btn @click="clickApplPass(dw)">합격 처리하기</v-btn>
+                <v-btn @click="clickApplPass(dw)" color="secondary"
+                  >합격 처리하기</v-btn
+                >
               </div>
             </v-col>
             <v-col>{{ dw.lecturePassed }}</v-col>
@@ -31,12 +40,13 @@
                 {{ dw.interviewPassed }}
               </div>
               <div>
-                <v-btn @click="clickItvPass(dw)">합격 처리하기</v-btn>
+                <v-btn @click="clickItvPass(dw)" color="secondary"
+                  >합격 처리하기</v-btn
+                >
               </div>
             </v-col>
             <v-col>
               <div
-                class="highlight"
                 v-if="
                   !dw.passed &&
                   dw.appicationPassed &&
@@ -53,15 +63,17 @@
                     // !dw.lecturePassed ||
                     !dw.testPassed ||
                     !dw.interviewPassed)
-                ">
+                "
+                class="grey">
                 조건을 불충족하여 합격처리가 불가능합니다.
               </div>
-              <div class="highlight" v-if="dw.passed">최종합격</div>
+              <div class="semi-bold primary-color" v-if="dw.passed">
+                최종합격
+              </div>
             </v-col>
           </v-row>
         </v-container>
       </v-col>
-      <v-spacer />
     </v-row>
   </v-container>
 </template>

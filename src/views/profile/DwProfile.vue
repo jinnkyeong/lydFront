@@ -34,7 +34,7 @@
             <span class="mr-10">
               <span class="mr-2">이번 달 산책횟수</span>
               <span class="mr-2 semi-bold">{{ info.monthGoalCnt }}</span>
-              <span v-if="info.monthGoalCnt >= 12" class="red">
+              <span v-if="info.monthGoalCnt >= 5" class="red">
                 <v-tooltip :text="fireToolTip">
                   <template v-slot:activator="{ props }">
                     <span v-bind="props">
@@ -137,6 +137,7 @@ export default {
         if (this.info.dirName && this.info.fileName && this.info.extension) {
           this.info.imgUrl = `${urlfront}/${this.info.dirName}/${this.info.fileName}.${this.info.extension}`;
         }
+        this.info.monthGoalCnt = 7;
       })
       .catch((e) => {
         console.log(e);
@@ -185,7 +186,8 @@ export default {
         goalCnt: 0,
       },
       apps: [],
-      fireToolTip: '이번 달 산책횟수가 12 이상으로 활발히 활동하는 회원입니다.',
+      fireToolTip:
+        '이번 달 산책횟수가 5회 이상으로 활발히 활동하는 회원입니다.',
     };
   },
   methods: {

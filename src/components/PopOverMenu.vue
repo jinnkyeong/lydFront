@@ -12,13 +12,18 @@
             class="bar-menu secondary-color menu-list">
             반갑습니다 {{ nick ? nick : '손' }}님
           </div>
+          <div
+            v-if="$store.state.login.adminId"
+            class="bar-menu secondary-color menu-list">
+            관리자 {{ adminId }} 로그인 중
+          </div>
         </v-btn>
       </template>
 
       <v-card min-width="300">
         <!-- 유저정보 -->
         <!-- 프로필사진 -->
-        <v-list>
+        <v-list v-if="!$store.state.login.adminId">
           <v-list-item
             @click="clickMyInfo"
             v-if="$store.state.login.userImgUrl"
@@ -42,7 +47,7 @@
         <!-- 버튼 -->
         <v-list>
           <!-- 내 정보 -->
-          <v-list-item>
+          <v-list-item v-if="!$store.state.login.adminId">
             <v-btn block @click="clickMyInfo" class="menu-list bar-menu">
               내 정보
             </v-btn>

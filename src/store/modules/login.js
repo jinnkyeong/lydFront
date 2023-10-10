@@ -282,6 +282,7 @@ const actions = {
         if (accessToken) {
             commit('setAccessToken', accessToken)
             commit('setAdminId', res.data.adminId)
+            commit('setUserImgUrl', '')
             router.push('/admin/dwManage')
         } else {
             alert('로그인 실패. 다시 로그인해주세요') // 임시

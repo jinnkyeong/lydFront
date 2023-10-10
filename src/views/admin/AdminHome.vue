@@ -1,22 +1,45 @@
 <template>
-  <h1>관리자 로그인</h1>
+  <v-spacer style="height: 100px" />
   <v-row>
+    <v-spacer />
     <v-col cols="12" md="6">
       <v-container>
-        <v-row>
-          id
-          <v-text-field v-model="payload.sign" variant="underlined" />
+        <v-row justify="center">
+          <h2 class="ma-5">Admin Login</h2>
+        </v-row>
+        <v-row justify="center">
+          <v-col cols="12" md="1" align-self="center">
+            <span class="text-regular secondary-color"> id </span>
+          </v-col>
+          <v-col cols="12" md="9">
+            <v-text-field v-model="payload.sign" variant="underlined" />
+          </v-col>
+        </v-row>
+        <v-row justify="center">
+          <v-col cols="12" md="1" align-self="center">
+            <span class="text-regular secondary-color"> pwd </span>
+          </v-col>
+          <v-col cols="12" md="9">
+            <v-text-field
+              v-model="payload.pwd"
+              variant="underlined"
+              type="password" />
+          </v-col>
         </v-row>
         <v-row>
-          패스워드
-          <v-text-field v-model="payload.pwd" variant="underlined" />
-        </v-row>
-        <v-row>
-          <v-btn @click="clickLogin">로그인</v-btn>
+          <v-spacer />
+          <v-col cols="12" md="3">
+            <v-btn @click="clickLogin" block color="grey">
+              <span class="white text-regular"> login </span>
+            </v-btn>
+          </v-col>
+          <v-spacer />
         </v-row>
       </v-container>
     </v-col>
+    <v-spacer />
   </v-row>
+  <v-spacer style="height: 100px" />
 </template>
 
 <script>
