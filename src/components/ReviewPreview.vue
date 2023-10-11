@@ -6,16 +6,14 @@
     <v-row>
       <!-- 나머지 -->
       <v-col cols="12" md="8">
-        <!-- 작성자정보 -->
+        <!-- 작성자정보 -->fdasfdsfsdf
         <v-row>
           <!-- 주소 -->
-          <v-col cols="12" md="4" align-self="center">
-            <div class="title">
+          <v-col cols="12" md="12" align-self="center">
+            <span class="title mr-5">
               {{ review.addrState }} {{ review.addrTown }}
-            </div>
-          </v-col>
-          <!-- 별점 -->
-          <v-col cols="12" md="7" align-self="center">
+            </span>
+            <!-- 별점 -->
             <span>
               <v-rating
                 :model-value="review.star / 2"
@@ -45,14 +43,7 @@
           aspect-ratio="1"
           height="150px"></v-img>
       </v-col>
-      <v-col cols="12" md="1" align-self="center" class="pl-5">
-        <!-- <div>
-          <font-awesome-icon
-            icon="fa-solid fa-chevron-right "
-            size="xl"
-            class="left-modify" />
-        </div> -->
-      </v-col>
+      <v-col cols="12" md="1" align-self="center" class="pl-5"> </v-col>
     </v-row>
   </v-container>
 </template>

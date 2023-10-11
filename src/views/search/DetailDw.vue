@@ -38,7 +38,7 @@ export default {
     CardDw,
     DetailDw,
   },
-  created() {
+  mounted() {
     //도그워커 상세보기
     // applicaiton id -> application
     searchApi

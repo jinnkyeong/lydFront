@@ -11,10 +11,10 @@
           class="filterOpt"
           color="grey"
           @click="openCertOpt">
-          <div class="label label-icon primary-color">
+          <div class="label text-regular label-icon primary-color">
             <font-awesome-icon icon="fa-solid fa-certificate" />
           </div>
-          <div class="label black">자격증</div>
+          <div class="label text-regular black">자격증</div>
         </v-btn>
       </v-col>
       <v-col align-self="center" cols="12" md="4" sm="3">
@@ -26,10 +26,10 @@
           class="filterOpt"
           color="grey"
           @click="openDateOpt">
-          <div class="label label-icon primary-color">
+          <div class="label text-regular label-icon primary-color">
             <font-awesome-icon icon="fa-solid fa-calendar-days" />
           </div>
-          <div class="label black">산책 날짜</div>
+          <div class="label text-regular black">산책 날짜</div>
         </v-btn>
       </v-col>
       <v-col align-self="center" cols="12" md="4" sm="3">
@@ -41,10 +41,10 @@
           class="filterOpt"
           color="grey"
           @click="openPriceOpt">
-          <div class="label label-icon primary-color">
+          <div class="label text-regular label-icon primary-color">
             <font-awesome-icon icon="fa-solid fa-money-bill" />
           </div>
-          <div class="label black">시간당 가격</div>
+          <div class="label text-regular black">시간당 가격</div>
         </v-btn>
       </v-col>
     </v-row>
@@ -59,11 +59,11 @@
           class="filterOpt"
           color="grey"
           @click="openAgeOpt">
-          <div class="label label-icon primary-color">
+          <div class="label text-regular label-icon primary-color">
             <font-awesome-icon icon="fa-solid fa-signal" />
           </div>
 
-          <div class="label black">나이</div>
+          <div class="label text-regular black">나이</div>
         </v-btn>
       </v-col>
       <v-col align-self="center" cols="12" md="4" sm="3">
@@ -75,11 +75,11 @@
           class="filterOpt"
           color="grey"
           @click="openGenOpt">
-          <div class="label label-icon primary-color">
+          <div class="label text-regular label-icon primary-color">
             <font-awesome-icon icon="fa-solid fa-venus-mars" />
           </div>
 
-          <div class="label black">성별</div>
+          <div class="label text-regular black">성별</div>
         </v-btn>
       </v-col>
       <v-col align-self="center" cols="12" md="4" sm="3"></v-col>

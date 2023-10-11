@@ -64,14 +64,14 @@ export default {
     getProfileByCusId:function(cusId){
         return api({
             method : 'get',
-            url :`/api/customers/${cusId}`,
+            url :`/api/open/customers/${cusId}`,
         });
     },
     // dogwalker id -> profile
     getProfileByDwId:function(dwId){
         return api({
             method : 'get',
-            url :`/api/dogwalkers/${dwId}`,
+            url :`/api/open/dogwalkers/${dwId}`,
         });
     },
 

@@ -6,46 +6,51 @@
     v-model="$store.state.just_state.open">
     <!-- 너버 - 임의로 정함 -->
     <v-card>
-      <v-card-title>
-        <v-row no-gutters style="height: 20px">
-          <v-col align-self="center" cols="12" md="11" sm="11"></v-col>
-          <v-col align-self="end" cols="12" md="1" sm="1">
-            <!-- 나가기 버튼 -->
-            <button @click="clickClose">
-              <font-awesome-icon icon="fa-solid fa-xmark" />
-            </button>
-          </v-col>
-        </v-row>
-      </v-card-title>
+      <v-spacer style="height: 30px" />
 
       <v-card-text>
-        <v-row justify="center" no-gutters style="height: 40px"> </v-row>
-        <v-row justify="center" no-gutters style="height: 60px">
-          <h3>산책날짜</h3>
+        <!-- 제목 -->
+        <v-row no-gutters style="height: 60px">
+          <v-spacer />
+          <v-col cols="12" md="11">
+            <div class="title-medium">산책날짜</div>
+          </v-col>
         </v-row>
+        <!-- 선택 -->
         <v-row justify="center" no-gutters>
-          <v-select
-            v-model="result.month"
-            :items="monthList"
-            label="월"></v-select>
+          <v-col>
+            <v-select
+              v-model="result.month"
+              :items="monthList"
+              label="월"></v-select>
+          </v-col>
+          <v-col>
+            <v-select
+              v-model="result.day"
+              :items="dayList"
+              label="일"></v-select>
+          </v-col>
         </v-row>
-        <v-row justify="center" no-gutters>
-          <v-select v-model="result.day" :items="dayList" label="일"></v-select>
-        </v-row>
+
         <!-- <v-row justify="center" no-gutters>
           <v-select
             v-model="result.weekday"
             :items="weekdayList"
             label="요일"></v-select>
         </v-row> -->
-        <v-row justify="center" no-gutters style="height: 40px"> </v-row>
+          <!-- 버튼 -->
+          <v-row justify="center" no-gutters style="height: 40px"></v-row>
         <v-row justify="center" no-gutters style="height: 40px">
           <v-col class="ml-7 text-center" cols="12" md="4">
-            <v-btn block @click="clickSubmit" color="primary">확인</v-btn>
+            <v-btn block size="large" @click="clickSubmit" color="primary">
+              <span class="white text-regular"> 확인 </span>
+            </v-btn>
           </v-col>
           <v-spacer />
           <v-col class="mr-7 text-center" cols="12" md="4">
-            <v-btn block @click="clickCancel" color="grey">취소</v-btn>
+            <v-btn block size="large" @click="clickCancel" color="grey">
+              <span class="white text-regular"> 취소 </span>
+            </v-btn>
           </v-col>
         </v-row>
         <v-row justify="center" no-gutters style="height: 40px"> </v-row>

@@ -371,5 +371,17 @@ export default {
           return grade;
       }
     }
-  }
+  },
+  showSentence(st, limit) {
+    if (st) {
+      if (st.length >= limit) {
+        // limit개 글자 이상은 자르기
+        return st.substring(0, limit-1) + '...';
+      } else {
+        return st;
+      }
+    } else {
+      console.log('//');
+    }
+  },
 }

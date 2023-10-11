@@ -720,6 +720,14 @@ const routes = [
                             dialog: ()=> import('@/views/dialog/review/ReviewForm')
                         }        
                     },
+                    {
+                        path: '/cusInfo/reservDetail/reviewSuccess',
+                        name: 'reviewSuccess',
+                        components: {
+                            default: () => import('@/views/myInfo/myInfoCus/ReservDetail'),
+                            dialog: ()=> import('@/views/dialog/review/ReviewSuccess')
+                        }        
+                    },
                  
                 ]
             },

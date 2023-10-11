@@ -6,40 +6,39 @@
     v-model="$store.state.just_state.open">
     <!-- 너버 - 임의로 정함 -->
     <v-card>
-      <v-card-title>
-        <v-row no-gutters style="height: 20px">
-          <v-col align-self="center" cols="12" md="11" sm="11"></v-col>
-          <v-col align-self="end" cols="12" md="1" sm="1">
-            <!-- 나가기 버튼 -->
-            <button @click="clickClose">
-              <font-awesome-icon icon="fa-solid fa-xmark" />
-            </button>
+      <v-spacer style="height: 30px" />
+      <v-card-text>
+        <!-- 제목 -->
+        <v-row no-gutters style="height: 60px">
+          <v-spacer />
+          <v-col cols="12" md="11">
+            <div class="title-medium">자격증</div>
           </v-col>
         </v-row>
-      </v-card-title>
-
-      <v-card-text>
-        <v-row justify="center" no-gutters style="height: 40px"> </v-row>
-        <v-row justify="center" no-gutters style="height: 60px">
-          <div class="text-regular">자격증</div>
-        </v-row>
+        <!-- 선택 -->
         <v-row justify="center" no-gutters style="height: 100px">
           <v-select
             v-model="selected"
             :items="certificates"
             label="자격증을 선택하세요(중복가능)"></v-select>
         </v-row>
+        <!-- 칩 -->
         <v-row class="text-center">
           <Chip :selectedList="selectedList" @cancelChip="cancelChip" />
         </v-row>
+        <!-- 버튼 -->
         <v-row justify="center" no-gutters style="height: 40px"></v-row>
         <v-row justify="center" no-gutters style="height: 40px">
           <v-col class="ml-7 text-center" cols="12" md="4">
-            <v-btn block @click="clickSubmit" color="primary">확인</v-btn>
+            <v-btn block size="large" @click="clickSubmit" color="primary">
+              <span class="white text-regular"> 확인 </span>
+            </v-btn>
           </v-col>
           <v-spacer />
           <v-col class="mr-7 text-center" cols="12" md="4">
-            <v-btn block @click="clickCancel" color="grey">취소</v-btn>
+            <v-btn block size="large" @click="clickCancel" color="grey">
+              <span class="white text-regular"> 취소 </span>
+            </v-btn>
           </v-col>
         </v-row>
         <v-row justify="center" no-gutters style="height: 40px"> </v-row>

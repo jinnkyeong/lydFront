@@ -204,8 +204,9 @@ export default {
       reviewApi
         .postReview(this.fileArray, this.info)
         .then((res) => {
-          console.log(res.data);
-          this.$store.commit('setOpen', false); // 창 닫기
+          const newReviewId = res.data;
+          this.$store.commit('setReviewId', newReviewId);
+          this.$router.push('/cusInfo/reservDetail/reviewSuccess');
         })
         .catch((e) => {
           console.log(e);

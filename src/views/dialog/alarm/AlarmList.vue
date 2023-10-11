@@ -88,7 +88,6 @@ export default {
     }
   },
   updated() {
-    console.log('updated');
     this.alarmList = this.$store.state.login.alarmList; // 전체 알람 리스트
     console.log('this.alarmList', this.alarmList);
     // msgTypeStr
@@ -168,7 +167,19 @@ export default {
           });
       } else if (alarm.msgType === 5) {
         // 5 : 댓글,대댓글 작성 -> 원글러 1,2,3,4 -> 0
-        console.log('어디로 이동해야합니다');
+        reviewApi
+          .findReviewById(alarm.reviewId)
+          .then((res) => {
+            console.log(res.data);
+            this.$store.commit('setReview', res.data);
+            this.$router.push({
+              path: '/reviewDetail',
+              query: { parentCommentId: alarm.parentCommentId },
+            });
+          })
+          .catch((e) => {
+            console.log(e);
+          });
       } else {
         console.log('msgtype이 이상합니다');
       }

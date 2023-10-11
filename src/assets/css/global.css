@@ -209,6 +209,11 @@ ul {
     font-weight: var(--weight-semi-bold);
     color: var(--color-grey);
 }
+.title-medium{
+    font-size: var(--font-medium);
+    /* font-weight: var(--weight-semi-bold); */
+    /* color: var(--color-black); */
+}
 /* 좀 더 작은 제목 */
 .title-regular{
     font-size: var(--font-regular);
@@ -245,7 +250,6 @@ ul {
     color: var(--color-black);
     font-size: var(--font-medium);
     font-weight: var(--weight-semi-bold);
-
 }
 /* my info 리스트 */
 .list-box{

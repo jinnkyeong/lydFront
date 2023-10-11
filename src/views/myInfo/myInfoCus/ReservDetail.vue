@@ -98,7 +98,7 @@
             </v-col>
             <v-col align-self="center" cols="12" md="9">
               <span v-if="info.diaryStatus === 1" class="card-data">
-                산책일지이 일부분 작성되었습니다. 현재 상태를 확인할까요?
+                산책일지의 일부분 작성되었습니다. 현재 상태를 확인할까요?
               </span>
               <span
                 v-if="info.diaryStatus === 2"
@@ -125,12 +125,23 @@
                   </v-col>
                   <v-col cols="12" md="3">
                     <v-btn
+                      v-if="!info.reviewWriten"
                       @click="clickReview"
                       color="primary"
                       block
                       style="height: 50px">
                       <span class="text-regular white"> 리뷰 작성하기</span>
                     </v-btn>
+                    <div v-if="info.reviewWriten">
+                      <span class="text-regular semi-bold grey mr-4">
+                        리뷰 작성완료
+                      </span>
+                      <span>
+                        <v-btn @click="showReview" color="primary">
+                          <span class="white">리뷰보기</span>
+                        </v-btn>
+                      </span>
+                    </div>
                   </v-col>
                 </v-row>
               </v-container>
@@ -229,6 +240,10 @@ export default {
     showDiary() {
       this.$router.push('/cusInfo/cusInfoDiary/diaryDetail');
       this.$store.commit('setOpen', true);
+    },
+    showReview() {
+      this.$store.commit('setReviewId', this.info.reviewId);
+      this.$router.push('/reviewDetail');
     },
   },
 };

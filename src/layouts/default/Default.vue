@@ -12,15 +12,7 @@
           elementum tempor vel ut orci. Orci varius natoque penatibus et magnis
           dis parturient montes, nascetur ridiculus mus.
         </div>
-        <v-btn
-          v-for="link in links"
-          :key="link"
-          color="white"
-          variant="text"
-          class="mx-2"
-          rounded="xl">
-          {{ link }}
-        </v-btn>
+
         <v-col class="text-center mt-4" cols="12">
           {{ new Date().getFullYear() }} — <strong>LoveYourDog</strong>
         </v-col>

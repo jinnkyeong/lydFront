@@ -6,80 +6,79 @@
     v-model="$store.state.just_state.open">
     <!-- 너버 - 임의로 정함 -->
     <v-card>
-      <v-card-title>
-        <v-row no-gutters style="height: 20px">
-          <v-col align-self="center" cols="12" md="11" sm="11"></v-col>
-          <v-col align-self="end" cols="12" md="1" sm="1">
-            <!-- 나가기 버튼 -->
-            <button @click="clickClose">
-              <font-awesome-icon icon="fa-solid fa-xmark" />
-            </button>
-          </v-col>
-        </v-row>
-      </v-card-title>
+      <v-spacer style="height: 30px" />
 
       <v-card-text>
-        <v-row justify="center" no-gutters style="height: 40px"> </v-row>
-        <v-row justify="center" no-gutters>
-          <div>산책 시간</div>
+        <!-- 제목 -->
+        <v-row no-gutters style="height: 60px">
+          <v-spacer />
+          <v-col cols="12" md="11">
+            <div class="title-medium">산책 시간</div>
+          </v-col>
         </v-row>
+        <!-- 선택 -->
+        <div class="ml-2 pa-0 grey-little-light text-micro">시간 시간</div>
         <v-row justify="center" no-gutters>
           <v-col>
             <v-text-field
-              class="pt-16 pb-0"
+              class="pa-1"
               label="시작 시"
               v-model="result.startH"
-              variant="outlined"
               suffix="시">
             </v-text-field>
           </v-col>
           <v-col>
             <v-text-field
-              class="pt-16 pb-0"
+              class="pa-1"
               label="시작 분"
               v-model="result.startM"
-              variant="outlined"
               suffix="분">
             </v-text-field>
           </v-col>
         </v-row>
+        <div class="ml-2 pa-0 grey-little-light text-micro">종료 시간</div>
         <v-row justify="center" no-gutters>
           <v-col>
             <v-text-field
-              class="pt-5 pb-0"
+              class="pa-1"
               label="종료 시"
               v-model="result.endH"
-              variant="outlined"
               suffix="시">
             </v-text-field>
           </v-col>
           <v-col>
             <v-text-field
-              class="pt-5 pb-0"
+              class="pa-1"
               label="종료 분"
               v-model="result.endM"
-              variant="outlined"
               suffix="분">
             </v-text-field>
           </v-col>
         </v-row>
         <v-row>
           <v-spacer />
-          <v-col cols="12" md="10"> {{ message }} </v-col>
+          <v-col cols="12" md="10">
+            <span class="secondary-color">{{ message }}</span>
+          </v-col>
           <v-spacer />
         </v-row>
 
+        <!-- 버튼 -->
         <v-row justify="center" no-gutters style="height: 40px"></v-row>
         <v-row justify="center" no-gutters style="height: 40px">
           <v-col class="ml-7 text-center" cols="12" md="4">
-            <v-btn block @click="clickSubmit">확인</v-btn>
+            <v-btn block size="large" @click="clickSubmit" color="primary">
+              <span class="white text-regular"> 확인 </span>
+            </v-btn>
           </v-col>
           <v-spacer />
           <v-col class="mr-7 text-center" cols="12" md="4">
-            <v-btn block @click="clickCancel">취소</v-btn>
+            <v-btn block size="large" @click="clickCancel" color="grey">
+              <span class="white text-regular"> 취소 </span>
+            </v-btn>
           </v-col>
         </v-row>
-        <v-row justify="center" no-gutters style="height: 40px"></v-row>
+        <v-row justify="center" no-gutters style="height: 40px"> </v-row>
       </v-card-text>
     </v-card>
   </v-dialog>

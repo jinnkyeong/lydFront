@@ -12,10 +12,10 @@
           class="filterOpt"
           color="grey"
           @click="openCertOpt">
-          <div class="label label-icon primary-color">
+          <div class="label text-regular label-icon primary-color">
             <font-awesome-icon icon="fa-solid fa-certificate" />
           </div>
-          <div class="label black">자격증</div>
+          <div class="label text-regular black">자격증</div>
         </v-btn>
       </v-col>
       <!-- 요일 -->
@@ -28,10 +28,10 @@
           class="filterOpt"
           color="grey"
           @click="openWeekdayOpt">
-          <div class="label label-icon primary-color">
+          <div class="label text-regular label-icon primary-color">
             <font-awesome-icon icon="fa-solid fa-calendar-days" />
           </div>
-          <div class="label black">산책 요일</div>
+          <div class="label text-regular black">산책 요일</div>
         </v-btn>
       </v-col>
       <v-col align-self="center" cols="12" md="4" sm="3">
@@ -43,10 +43,10 @@
           class="filterOpt"
           color="grey"
           @click="openPriceOpt">
-          <div class="label label-icon primary-color">
+          <div class="label text-regular label-icon primary-color">
             <font-awesome-icon icon="fa-solid fa-money-bill" />
           </div>
-          <div class="label black">시간당 가격</div>
+          <div class="label text-regular black">시간당 가격</div>
         </v-btn>
       </v-col>
     </v-row>
@@ -61,10 +61,10 @@
           class="filterOpt"
           color="grey"
           @click="openDogAggrOpt">
-          <div class="label label-icon primary-color">
+          <div class="label text-regular label-icon primary-color">
             <font-awesome-icon icon="fa-solid fa-signal" />
           </div>
-          <div class="label black">강아지의 공격성</div>
+          <div class="label text-regular black">강아지의 공격성</div>
         </v-btn>
       </v-col>
       <v-col align-self="center" cols="12" md="4" sm="3">
@@ -76,11 +76,11 @@
           class="filterOpt"
           color="grey"
           @click="openDogTypeOpt">
-          <div class="label label-icon primary-color">
+          <div class="label text-regular label-icon primary-color">
             <font-awesome-icon icon="fa-solid fa-venus-mars" />
           </div>
 
-          <div class="label black">소/중/대/초대형</div>
+          <div class="label text-regular black">소/중/대/초대형</div>
         </v-btn>
       </v-col>
       <v-col align-self="center" cols="12" md="4" sm="3">
@@ -92,11 +92,11 @@
           class="filterOpt"
           color="grey"
           @click="openTimeOpt">
-          <div class="label label-icon primary-color">
+          <div class="label text-regular label-icon primary-color">
             <font-awesome-icon icon="fa-solid fa-venus-mars" />
           </div>
 
-          <div class="label black">산책 시간대</div>
+          <div class="label text-regular black">산책 시간대</div>
         </v-btn>
       </v-col>
     </v-row>

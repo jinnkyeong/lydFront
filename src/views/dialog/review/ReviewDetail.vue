@@ -18,7 +18,6 @@ export default {
     Review,
   },
   created() {
-    // this.review = this.$route.query.review;
     this.review = this.$store.state.item.review;
     console.log('reviewdetail로들어옴');
     // console.log('reviewdetail review : ', this.$route.query.review);

@@ -386,11 +386,11 @@
               <!-- 작성자정보 -->
               <v-row>
                 <!-- 주소 -->
-                <v-col cols="12" md="4" align-self="center">
-                  <div class="title">{{ r.addrState }} {{ r.addrTown }}</div>
-                </v-col>
-                <!-- 별점 -->
-                <v-col cols="12" md="7" align-self="center">
+                <v-col cols="12" md="12" align-self="center">
+                  <span class="title mr-5">
+                    {{ r.addrState }} {{ r.addrTown }}
+                  </span>
+                  <!-- 별점 -->
                   <span>
                     <v-rating
                       :model-value="r.star / 2"
@@ -406,7 +406,7 @@
               <v-row>
                 <v-spacer />
                 <v-col cols="12" md="12" class="text-regular">
-                  {{ r.context }}
+                  {{ showSentence(r.context) }}
                 </v-col>
                 <v-spacer />
               </v-row>
@@ -446,6 +446,7 @@ import Figure from '@/components/Figure';
 
 import DropMain from '@/components/DropMain';
 import reviewApi from '@/api/reviewApi';
+import format from '@/utillFunction/format';
 import GoodReview from '@/components/GoodReview.vue';
 
 export default {
@@ -469,6 +470,11 @@ export default {
       this.$store.state.login.socialDuplEmail = false;
     }
 
+    // 로그인 된 상태에서만 소켓 열기
+    if (this.$store.state.login.accessToken) {
+      this.connect();
+    }
+
     if (
       this.$store.state.login.accessToken &&
       ((!this.$store.state.login.dwId && !this.$store.state.login.cusId) ||
@@ -479,9 +485,6 @@ export default {
     ) {
       this.$store.dispatch('setUserIdAfterSL'); // 소셜로그인 이후 state에 현재 유저정보 올리기
     }
-
-    // 소켓 연결
-    this.connect();
 
     // 알림창 닫아 놓은 상태로 시작
     if (this.$store.state.login.alarmOpen) {
@@ -546,11 +549,12 @@ export default {
     goodReviews: [],
   }),
   methods: {
-    // 선택 시 상세보기
+    // 도그워커 선택 시 상세보기
     selectApp(appId, dwId) {
       this.$store.commit('setAppId', appId);
       this.$router.push({ name: 'detailDw', query: { applicationId: appId } }); // 상세보기
     },
+    // 지원서 폼으로 가기
     clickCommit() {
       this.$router.push('commisionForm');
     },
@@ -638,6 +642,10 @@ export default {
       this.$store.commit('setReviewId', review.reviewId);
       this.$store.commit('setOpen', true);
       this.$store.commit('setReview', review);
+    },
+    // 글자수 자르기
+    showSentence(st) {
+      return format.showSentence(st, 57);
     },
   },
 };

@@ -43,7 +43,7 @@
     <v-row>
       <v-spacer />
       <!-- 첫번째 -->
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <!-- 이미지 -->
         <v-row>
           <v-spacer />
@@ -75,7 +75,7 @@
         </v-row>
       </v-col>
       <!-- 두번째 -->
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <!-- 이미지 -->
         <v-row>
           <v-spacer />
@@ -108,10 +108,10 @@
     <!-- 경계선 -->
     <v-row>
       <v-spacer />
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <v-divider thickness="2" class="mt-6 mb-6" />
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <v-divider thickness="2" class="mt-6 mb-6" />
       </v-col>
       <v-spacer />
@@ -120,7 +120,7 @@
     <v-row>
       <v-spacer />
       <!-- 세번째 -->
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <!-- 이미지 -->
         <v-row>
           <v-spacer />
@@ -146,7 +146,7 @@
         </v-row>
       </v-col>
       <!-- 네번째 -->
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <!-- 이미지 -->
         <v-row>
           <v-spacer />
@@ -208,8 +208,8 @@
         <v-container class="pa-10 process-box">
           <v-row no-gutters class="mb-3">
             <h3>
-              <span class="secondary-color mr-3">STEP 1</span>
-              <span class="">지원서 작성</span>
+              <div class="secondary-color mr-3">STEP 1</div>
+              <div class="">지원서 작성</div>
             </h3>
           </v-row>
           <v-row no-gutters>
@@ -221,7 +221,7 @@
           </v-row>
         </v-container>
       </v-col>
-      <span style="margin-top: 120px" class="pl-2 pr-2">
+      <span style="margin-top: 150px" class="pl-2 pr-2">
         <font-awesome-icon
           icon="fa-solid fa-chevron-right "
           size="xl"
@@ -232,8 +232,8 @@
         <v-container class="pa-10 process-box">
           <v-row no-gutters class="mb-3">
             <h3>
-              <span class="secondary-color mr-3">STEP 2</span>
-              <span class="">온라인 교육</span>
+              <div class="secondary-color mr-3">STEP 2</div>
+              <div class="">온라인 교육</div>
             </h3>
           </v-row>
           <v-row no-gutters>
@@ -246,7 +246,7 @@
           </v-row>
         </v-container>
       </v-col>
-      <span style="margin-top: 120px" class="pl-2 pr-2">
+      <span style="margin-top: 150px" class="pl-2 pr-2">
         <font-awesome-icon
           icon="fa-solid fa-chevron-right "
           size="xl"
@@ -257,8 +257,8 @@
         <v-container class="pa-10 process-box">
           <v-row no-gutters class="mb-3">
             <h3>
-              <span class="secondary-color mr-3">STEP 3</span>
-              <span class="">테스트</span>
+              <div class="secondary-color mr-3">STEP 3</div>
+              <div class="">테스트</div>
             </h3>
           </v-row>
           <v-row no-gutters>
@@ -271,7 +271,7 @@
           </v-row>
         </v-container>
       </v-col>
-      <span style="margin-top: 120px" class="pl-2 pr-2">
+      <span style="margin-top: 150px" class="pl-2 pr-2">
         <font-awesome-icon
           icon="fa-solid fa-chevron-right "
           size="xl"
@@ -282,8 +282,8 @@
         <v-container class="pa-10 process-box">
           <v-row no-gutters class="mb-3">
             <h3>
-              <span class="secondary-color mr-3">STEP 4</span>
-              <span class="">전화 인터뷰</span>
+              <div class="secondary-color mr-3">STEP 4</div>
+              <div class="">전화 인터뷰</div>
             </h3>
           </v-row>
           <v-row no-gutters>
@@ -321,6 +321,6 @@ export default {
 .process-box {
   border-radius: 30px;
   background-color: var(--color-white);
-  height: 300px;
+  min-height: 330px;
 }
 </style>

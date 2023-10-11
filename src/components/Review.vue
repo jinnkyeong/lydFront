@@ -74,10 +74,10 @@
         </v-col>
       </v-row>
       <!-- 내용 -->
-      <v-row>
-        <p>
-          {{ review.context }}
-        </p>
+      <v-row no-gutters>
+          <v-col cols="12" md="12">
+            <span>{{ review.context }}</span>
+          </v-col>
       </v-row>
       <!-- 댓글창 열기버튼 -->
       <v-row justify="end">

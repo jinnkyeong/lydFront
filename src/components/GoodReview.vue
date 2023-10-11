@@ -12,7 +12,7 @@
           <!-- 주소 -->
           <v-col cols="12" md="4" align-self="center">
             <div class="title">
-              {{ review.addrState }} {{ review.addrTown }}
+              {{ review.addrState }} {{ review.addrTown }}dfdsfdsf
             </div>
           </v-col>
           <!-- 별점 -->
